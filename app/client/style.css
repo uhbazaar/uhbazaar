@@ -1,6 +1,6 @@
 .user-profile-background {
-  background-color: #def2f1;
   color: #2b7a78;
   padding: 0 40px 0 40px;
   border-radius: 10px;
+  border: solid 2px #feffff;
 }

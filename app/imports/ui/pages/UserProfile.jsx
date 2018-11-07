@@ -92,7 +92,8 @@ export default class UserProfile extends React.Component {
     return (
         <div>
           <Container>
-            <style>{'body { background-color: #84CCC8; }'}</style>
+            <style>{'body { background: url(images/uh-logo.png) no-repeat center fixed; }'}</style>
+            <style>{'body { background-color: #def2f1; }'}</style>
             <UserCard/>
             <UserShowCase/>
           </Container>
