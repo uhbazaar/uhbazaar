@@ -10,9 +10,7 @@ class UserCard extends React.Component {
     return (
         <Grid container verticalAlign='middle' style={gridStyle}>
           <Container>
-            <style>{'body { background-color: #3aafa9; }'}</style>
             <Grid verticalAlign='middle' className='user-profile-background' columns={4}>
-
               <Grid.Row centered>
                 <Grid.Column width={6}>
                   <Image style={borderStyle} size='medium' rounded floated='left'
@@ -38,6 +36,7 @@ class UserCard extends React.Component {
                     </Card.Content>
                   </Card>
                 </Grid.Column>
+
               </Grid.Row>
             </Grid>
           </Container>
@@ -92,8 +91,11 @@ export default class UserProfile extends React.Component {
   render() {
     return (
         <div>
-          <UserCard/>
-          <UserShowCase/>
+          <Container>
+            <style>{'body { background-color: #3aafa9; }'}</style>
+            <UserCard/>
+            <UserShowCase/>
+          </Container>
         </div>
     );
   }
