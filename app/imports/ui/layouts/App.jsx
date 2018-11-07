@@ -23,6 +23,7 @@ class App extends React.Component {
     return (
         <Router>
           <div>
+            <NavBar/>
             <Switch>
               <Route exact path="/" component={Landing}/>
               <Route exact path="/userprofile" component={UserProfile}/>
@@ -35,6 +36,7 @@ class App extends React.Component {
               <ProtectedRoute path="/signout" component={Signout}/>
               <Route component={NotFound}/>
             </Switch>
+            <Footer/>
           </div>
         </Router>
     );
