@@ -1,5 +1,6 @@
 .background-color {
-  background-color: #2b7a78;
+  background-color: #def2f1;
   color: #2b7a78;
-  padding: 50px 50px;
+  padding: 0 40px 0 40px;
+  border-radius: 10px;
 }
