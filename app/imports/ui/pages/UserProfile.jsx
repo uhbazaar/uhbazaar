@@ -9,7 +9,7 @@ export default class UserProfile extends React.Component {
         <Grid container verticalAlign='middle' style={gridStyle}>
             <Container>
               <style>{'body { background-color: #3aafa9; }'}</style>
-              <Grid verticalAlign='middle' className='background-color' columns={4}>
+              <Grid verticalAlign='middle' className='user-profile-background' columns={4}>
 
                 <Grid.Row centered>
                   <Grid.Column width={6}>
