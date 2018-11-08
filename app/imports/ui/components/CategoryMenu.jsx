@@ -1,52 +1,59 @@
 import React from 'react';
-import { Card, Icon } from 'semantic-ui-react';
+import { Grid, Card, Image } from 'semantic-ui-react';
 
 export default class CategoryMenu extends React.Component {
+
   render() {
-    /*
-    const categoryCards = [
-      { header: 'Books' },
-      { header: 'Furniture' },
-      { header: 'Free' },
-      { header: 'Housing' },
-      { header: 'Personals' },
-      { header: 'Pets' },
-      { header: 'Recreation' },
-    ]; */
-   // const createCards = () => <Card.Group items={ categoryCards }/>;
+/*
+    const itemData = [
+      {
+        name: 'Lawn Mower',
+        image: 'lawn-mower.jpeg',
+        description: 'After some years of mowing dem lawns for, its about time I retired.',
+        location: '1234 Oak ln Greenbow, AL 98475',
+        price: '300',
+        category: 'Vehicles',
+      },
+    ];
+*/
+    const gridStyle = { marginTop: '64px' };
+
     return (
-        <Card.Group centered>
-        <Card>
-          <Card.Content >
-            <Card.Header> <Icon size='big' name='book'/>Books</Card.Header>
-          </Card.Content>
-        </Card>
-          <Card>
-            <Card.Content>
-              <Card.Header> <Icon size='big' name='bed'/>Furniture</Card.Header>
-            </Card.Content>
-          </Card>
-          <Card>
-            <Card.Content>
-              <Card.Header> <Icon size='big' name='heart'/>Personals</Card.Header>
-            </Card.Content>
-          </Card>
-          <Card>
-            <Card.Content>
-              <Card.Header> <Icon size='big' name='circle'/>Free</Card.Header>
-            </Card.Content>
-          </Card>
-          <Card>
-            <Card.Content>
-              <Card.Header> <Icon size='big' name='home'/>Housing</Card.Header>
-            </Card.Content>
-          </Card>
-          <Card>
-            <Card.Content>
-              <Card.Header> <Icon size='big' name='sticker mule'/>Pets</Card.Header>
-            </Card.Content>
-          </Card>
-        </Card.Group>
+        <Grid className='ui link cards' verticalAlign='middle' style={gridStyle}>
+          <Card.Group itemsPerRow='1'>
+            <Card>
+              <Card.Content>
+                <Image floated='left' size='medium' src='/images/lawn-mower.jpeg' />
+                <Card.Header>John Deer</Card.Header>
+                <Card.Meta>
+                  <span className='price'>$1200</span>
+                </Card.Meta>
+                <Card.Meta>
+                  <span className='location'>Greenbow Alabama</span>
+                </Card.Meta>
+                <Card.Meta>
+                  After some years of mowing dem lawns for you fine folks, its about time I retired.
+                </Card.Meta>
+              </Card.Content>
+            </Card>
+            <Card>
+              <Card.Content>
+                <Image floated='left' size='medium' src='/images/hardbody.jpg' />
+                <Card.Header>89 Toyota Truck</Card.Header>
+                <Card.Meta>
+                  <span className='price'>$5000</span>
+                </Card.Meta>
+                <Card.Meta>
+                  <span className='location'>East Oahu</span>
+                </Card.Meta>
+                <Card.Meta>
+                  Get rust, but still runs cherry
+                </Card.Meta>
+              </Card.Content>
+            </Card>
+
+          </Card.Group>
+        </Grid>
     );
   }
 }
