@@ -1,0 +1,18 @@
+.ui.category-menu.menu {
+  border: none;
+  box-shadow: none;
+  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+
+.user-profile-background {
+  color: #2b7a78;
+  padding: 0 40px 0 40px;
+  border-radius: 10px;
+  border: solid 2px #feffff;
+}
+
+.ui.category-topmenu.menu {
+  border: none;
+  box-shadow: none;
+  background-color: #2b7a78;
+}
