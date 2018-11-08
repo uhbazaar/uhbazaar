@@ -1,18 +1,40 @@
 import React from 'react';
+import { Container, Divider, Icon } from 'semantic-ui-react';
 
 /** The Footer appears at the bottom of every page. Rendered by the App Layout component. */
 class Footer extends React.Component {
   render() {
-    const divStyle = { paddingTop: '15px' };
+    const divStyle = {
+      position: 'relative',
+      bottom: '0',
+      width: '100%',
+      height: '100px',
+      paddingTop: '16vh',
+    };
+    const darkify = {
+      backgroundColor: '#17252a',
+      paddingTop: '16px',
+      paddingBottom: '64px',
+    };
     return (
-        <footer>
-          <div style={divStyle} className="ui center aligned container">
-            <hr />
-              Department of Information and Computer Sciences <br />
-              University of Hawaii<br />
-              Honolulu, HI 96822
-          </div>
-        </footer>
+        <Container fluid style={divStyle}>
+          <footer>
+            <Container fluid style={darkify}>
+              <br/>
+              <Divider horizontal inverted>
+                UH Bazaar
+              </Divider>
+              <Divider horizontal inverted>
+                <Icon name='cogs'>
+                </Icon>
+              </Divider>
+              <Divider horizontal inverted>
+                Where East Meets West
+              </Divider>
+
+            </Container>
+          </footer>
+        </Container>
     );
   }
 }
