@@ -31,7 +31,6 @@ class Footer extends React.Component {
               <Divider horizontal inverted>
                 Where East Meets West
               </Divider>
-
             </Container>
           </footer>
         </Container>
