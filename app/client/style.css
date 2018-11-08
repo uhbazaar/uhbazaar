@@ -16,3 +16,15 @@
   box-shadow: none;
   background-color: #2b7a78;
 }
+
+/** USE FOR WELCOME ON USER,ADMIN,LANDING PAGE
+.welcome{
+  font-family:"Copperplate",sans-serif;
+  font-size: 100px;
+  color: white;
+  position: absolute;
+  top: 25%;
+  left:30%
+}
+ */
+
