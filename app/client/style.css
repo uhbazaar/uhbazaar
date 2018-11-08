@@ -1,5 +1,6 @@
-.ui.category-topmenu.menu {
+.ui.category-menu.menu {
   border: none;
   box-shadow: none;
-  background-color: #2b7a78;
+  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
+
