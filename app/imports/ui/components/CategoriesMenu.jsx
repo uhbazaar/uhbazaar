@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Icon, Grid } from 'semantic-ui-react';
 
-export default class CategoryMenu extends React.Component {
+export default class CategoriesMenu extends React.Component {
   render() {
     /*
     const categoryCards = [
