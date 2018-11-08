@@ -8,6 +8,8 @@ import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import ListItems from '../pages/ListItems';
+import UHBazaar from '../pages/UHBazaar';
+import ListStuff from '../pages/ListStuff';
 import ListStuffAdmin from '../pages/ListStuffAdmin';
 import AddStuff from '../pages/NotifyAdmin';
 import EditStuff from '../pages/EditStuff';
@@ -16,8 +18,8 @@ import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
 import Categories from '../pages/Categories';
-import UserProfile from '../pages/UserProfile';
 import Category from '../pages/Category';
+import UserProfile from '../pages/UserProfile';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -27,12 +29,14 @@ class App extends React.Component {
           <div>
             <NavBar/>
             <Switch>
-              <Route exact path="/" component={Landing}/>
+              <Route exact path="/" component={UHBazaar}/>
               <Route exact path="/userprofile" component={UserProfile}/>
               <Route path="/signin" component={Signin}/>
               <Route path="/signup" component={Signup}/>
               <Route exact path="/categories" component={Categories}/>
               <ProtectedRoute path="/list" component={ListItems}/>
+              <Route exact path="/category" component={Category}/>
+              <ProtectedRoute path="/list" component={ListStuff}/>
               <ProtectedRoute path="/add" component={AddStuff}/>
               <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
               <AdminProtectedRoute path="/admin" component={ListStuffAdmin}/>

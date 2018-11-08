@@ -1,8 +1,3 @@
-.ui.category-menu.menu {
-  border: none;
-  box-shadow: none;
-  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
-}
 
 .user-profile-background {
   color: #2b7a78;
@@ -11,8 +6,11 @@
   border: solid 2px #feffff;
 }
 
-.ui.category-topmenu.menu {
-  border: none;
-  box-shadow: none;
-  background-color: #2b7a78;
+.landing-welcome{
+  font-family:"Copperplate",sans-serif;
+  font-size: 100px;
+  color: white;
+  position: absolute;
+  top: 25%;
+  left:30%
 }

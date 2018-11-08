@@ -9,7 +9,7 @@ class Footer extends React.Component {
       bottom: '0',
       width: '100%',
       height: '100px',
-      paddingTop: '16vh',
+      // paddingTop: '16vh',
     };
     const darkify = {
       backgroundColor: '#17252a',
