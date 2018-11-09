@@ -16,5 +16,6 @@ if (Categories.find().count() === 0) {
 }
 
 Meteor.publish('Categories', function publish() {
-  return this.ready();
+  console.log(Categories.find());
+  return Categories.find();
 });

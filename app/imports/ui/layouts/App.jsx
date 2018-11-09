@@ -16,7 +16,7 @@ import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
-import Categories from '../pages/Categories';
+import CategoriesPage from '../pages/CategoriesPage';
 import Category from '../pages/Category';
 import UserProfile from '../pages/UserProfile';
 
@@ -32,7 +32,7 @@ class App extends React.Component {
               <Route exact path="/userprofile" component={UserProfile}/>
               <Route path="/signin" component={Signin}/>
               <Route path="/signup" component={Signup}/>
-              <Route exact path="/categories" component={Categories}/>
+              <Route exact path="/categoriespage" component={CategoriesPage}/>
               <ProtectedRoute path="/list" component={ListItems}/>
               <Route exact path="/category" component={Category}/>
               <ProtectedRoute path="/list" component={ListStuff}/>
