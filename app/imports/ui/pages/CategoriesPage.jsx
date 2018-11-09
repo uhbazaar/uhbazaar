@@ -14,16 +14,16 @@ class CategoriesPage extends React.Component {
   }
 
   renderPage() {
-    const gridStyle = { marginTop: '64px' };
+    const gridStyleCards = { marginTop: '48px', marginBottom: '64px' };
     return (
         <div>
-          <Grid className='ui link cards' verticalAlign='middle' style={gridStyle}>
-          <Container>
-            <style>{'body {background-color: #def2f1;}'}</style>
-              <Card.Group centered>
+          <Grid verticalAlign='middle' style={gridStyleCards}>
+            <Container>
+              <style>{'body {background-color: #def2f1;}'}</style>
+              <Card.Group doubling itemsPerRow='4'>
                 {this.props.categories.map((category) => <CategoriesMenu key={category._id} category={category}/>)}
               </Card.Group>
-          </Container>
+            </Container>
           </Grid>
         </div>
     );
