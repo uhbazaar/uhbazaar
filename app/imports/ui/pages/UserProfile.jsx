@@ -1,10 +1,12 @@
 import React from 'react';
-import { Card, Image, Icon, Container, Grid, Button, Header } from 'semantic-ui-react';
+import { Card, Image, Icon, Container, Grid, Header } from 'semantic-ui-react';
+import UserProfileShowcase from '../components/UserProfileShowcase';
+
 
 class UserCard extends React.Component {
   render() {
     const cardFontStyle = { color: '#17252a' };
-    const gridStyle = { marginTop: '128px' };
+    const gridStyle = { marginTop: '128px', marginBottom: '128px' };
     const borderStyle = { border: 'solid 1px #feffff' };
     const cardColor = { backgroundColor: '#feffff' };
     return (
@@ -45,48 +47,6 @@ class UserCard extends React.Component {
   }
 }
 
-class UserShowCase extends React.Component {
-  render() {
-    const showcaseStyle = { marginTop: '32px' };
-    const cardColor = { backgroundColor: '#feffff' };
-    const cardFontStyle = { color: '#17252a' };
-    return (
-        <Grid container centered style={showcaseStyle}>
-          <Grid.Row columns={3}>
-
-            <Grid.Column>
-            </Grid.Column>
-
-            <Grid.Column>
-              <Card style={cardColor}>
-                <Card.Content>
-                  <Image rounded floated='right' size='small' src='/images/lawn-mower.jpeg'/>
-                  <Header as='h3' style={cardFontStyle}>Lawn Mower</Header>
-                  <Card.Meta style={cardFontStyle}>John Deere</Card.Meta>
-                  <Card.Description style={cardFontStyle}>
-                    This is a really superb lawn mower! Runs like a champ, great for
-                    drinking Coors Light while mowing.
-                  </Card.Description>
-                </Card.Content>
-                <Card.Content extra>
-                  <div className='ui center aligned'>
-                    <Button basic color='blue'>
-                      View
-                    </Button>
-                  </div>
-                </Card.Content>
-              </Card>
-            </Grid.Column>
-
-            <Grid.Column>
-            </Grid.Column>
-
-          </Grid.Row>
-        </Grid>
-    );
-  }
-}
-
 export default class UserProfile extends React.Component {
   render() {
     return (
@@ -95,7 +55,7 @@ export default class UserProfile extends React.Component {
             <style>{'body { background: url(images/uh-logo.png) no-repeat center fixed; }'}</style>
             <style>{'body { background-color: #def2f1; }'}</style>
             <UserCard/>
-            <UserShowCase/>
+            <UserProfileShowcase/>
           </Container>
         </div>
     );
