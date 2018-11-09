@@ -12,13 +12,18 @@
   ],
 
   "defaultCategories": [
-    { "name": "Books", "icon": "book"},
-    { "name": "Furniture", "icon": "bed"},
-    { "name": "Vehicles", "icon": "truck"},
-    { "name": "Personals", "icon": "heart"},
+    { "name": "Books", "icon": "book" },
+    { "name": "Furniture", "icon": "bed" },
+    { "name": "Vehicles", "icon": "truck" },
+    { "name": "Personals", "icon": "heart" },
     { "name": "Free", "icon": "circle"},
-    { "name": "Housing", "icon": "home"},
-    { "name": "Pets", "icon": "sticker mule"}
+    { "name": "Housing", "icon": "home" },
+    { "name": "Pets", "icon": "sticker mule" },
+    { "name": "Sporting Goods", "icon": "football ball" },
+    { "name": "Electronics", "icon": "computer" },
+    { "name": "Jobs", "icon": "money bill alternate" },
+    { "name": "Tutoring", "icon": "pencil alternate" },
+    { "name": "Community", "icon": "handshake" }
   ],
 
   "defaultItems": [
@@ -30,7 +35,8 @@
       "price": "1200",
       "description": "After some years of mowing dem lawns for you fine folks, its about time I retired.",
       "location": "Kalihi",
-      "seller": "john@foo.com"
+      "seller": "john@foo.com",
+      "showCased": false
     },
     {
       "name": "89 Toyota Pickup",
@@ -40,7 +46,8 @@
       "price": "5000",
       "description": "Get rust, but still runs cherry",
       "location": "East Oahu",
-      "seller": "john@foo.com"
+      "seller": "john@foo.com",
+      "showCased": false
     },
     {
       "name": "Free Otter Pops",
@@ -50,7 +57,8 @@
       "price": "0",
       "description": "I hate these things please take them",
       "location": "Uh Dorms",
-      "seller": "john@foo.com"
+      "seller": "john@foo.com",
+      "showCased": false
     }
   ]
 }
