@@ -3,19 +3,7 @@ import { Card, Icon, Grid } from 'semantic-ui-react';
 
 export default class CategoriesMenu extends React.Component {
   render() {
-    /*
-    const categoryCards = [
-      { header: 'Books' },
-      { header: 'Furniture' },
-      { header: 'Free' },
-      { header: 'Housing' },
-      { header: 'Personals' },
-      { header: 'Pets' },
-      { header: 'Recreation' },
-    ]; */
-   // const createCards = () => <Card.Group items={ categoryCards }/>;
     const gridStyle = { marginTop: '64px' };
-
     return (
         <Grid className='ui link cards' verticalAlign='middle' style={gridStyle}>
         <Card.Group centered>
