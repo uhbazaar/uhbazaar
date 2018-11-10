@@ -3,7 +3,7 @@ import { Container } from 'semantic-ui-react';
 import CategoryMenu from '../components/CategoryMenu';
 
 /** A simple static component to render some text for the landing page. */
-class Category extends React.Component {
+class CategoryPage extends React.Component {
   render() {
     return (
         <div>
@@ -16,4 +16,4 @@ class Category extends React.Component {
   }
 }
 
-export default Category;
+export default CategoryPage;

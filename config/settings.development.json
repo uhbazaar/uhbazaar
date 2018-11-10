@@ -9,5 +9,56 @@
     { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
     { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
+  ],
+
+  "defaultCategories": [
+    { "name": "Books", "icon": "book" },
+    { "name": "Furniture", "icon": "bed" },
+    { "name": "Vehicles", "icon": "truck" },
+    { "name": "Personals", "icon": "heart" },
+    { "name": "Free", "icon": "circle"},
+    { "name": "Housing", "icon": "home" },
+    { "name": "Pets", "icon": "sticker mule" },
+    { "name": "Sporting Goods", "icon": "football ball" },
+    { "name": "Electronics", "icon": "computer" },
+    { "name": "Jobs", "icon": "money bill alternate" },
+    { "name": "Tutoring", "icon": "pencil alternate" },
+    { "name": "Community", "icon": "handshake" }
+  ],
+
+  "defaultItems": [
+    {
+      "name": "John Deer Mower",
+      "date": "10/29/18",
+      "path": "lawn-mower.jpeg",
+      "category": "Vehicles",
+      "price": "1200",
+      "description": "After some years of mowing dem lawns for you fine folks, its about time I retired.",
+      "location": "Kalihi",
+      "seller": "john@foo.com",
+      "showCased": false
+    },
+    {
+      "name": "89 Toyota Pickup",
+      "date": "10/28/18",
+      "path": "hardbody.jpg",
+      "category": "Vehicles",
+      "price": "5000",
+      "description": "Get rust, but still runs cherry",
+      "location": "East Oahu",
+      "seller": "john@foo.com",
+      "showCased": false
+    },
+    {
+      "name": "Free Otter Pops",
+      "date": "11/3/18",
+      "path": "pops.jpeg",
+      "category": "Free",
+      "price": "0",
+      "description": "I hate these things please take them",
+      "location": "Uh Dorms",
+      "seller": "john@foo.com",
+      "showCased": false
+    }
   ]
 }
