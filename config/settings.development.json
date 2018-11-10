@@ -48,7 +48,7 @@
       "firstName": "Bob",
       "lastName": "Waters",
       "description": "I am an actor of sorts",
-      "image": "blah",
+      "image": "/images/user.png",
       "username": "admin@foo.com"
     }
   ]
