@@ -11,7 +11,7 @@ export default class UserShowCase extends React.Component {
 
           <Grid.Row centered>
             <Header as='h2' icon textAlign='center'>
-              <Icon name='gem' circular/>
+              <Icon name='trophy' circular/>
               <Header.Content>SHOWCASE</Header.Content>
             </Header>
           </Grid.Row>
