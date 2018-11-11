@@ -17,7 +17,7 @@ class Footer extends React.Component {
       paddingBottom: '64px',
     };
     return (
-        <Container fluid style={divStyle}>
+        <div style={divStyle}>
           <footer>
             <Container fluid style={darkify}>
               <br/>
@@ -33,7 +33,7 @@ class Footer extends React.Component {
               </Divider>
             </Container>
           </footer>
-        </Container>
+        </div>
     );
   }
 }
