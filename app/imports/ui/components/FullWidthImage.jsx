@@ -14,11 +14,12 @@ export default class FullWidthImage extends React.Component {
       width: '75%',
       bottom: '0',
       borderRadius: '20px',
+      padding: '0 16px 16px 16px',
     };
     const logoContainerStyle = {
       backgroundColor: '#def2f1',
       opacity: '0.8',
-      width: '50%',
+      width: '60%',
       bottom: '0',
       borderRadius: '20px',
       paddingBottom: '16px',
@@ -49,7 +50,8 @@ export default class FullWidthImage extends React.Component {
                 </Header>
 
                 <Header style={headerStyle} textAlign='center' as='h3'>
-                  pass down, trade up, avoid getting burned
+                  {/* eslint-disable-next-line */}
+                  pass down, trade up, don't get burned
                 </Header>
               </Container>
 
