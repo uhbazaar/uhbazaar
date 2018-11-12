@@ -1,15 +1,17 @@
 import React from 'react';
-import { Grid, Loader, Header, Segment } from 'semantic-ui-react';
+import { Grid, Loader, Header, Segment, Button } from 'semantic-ui-react';
 import { Users, UserSchema } from '/imports/api/user/user';
 import { Bert } from 'meteor/themeteorchef:bert';
 import AutoForm from 'uniforms-semantic/AutoForm';
 import TextField from 'uniforms-semantic/TextField';
 import LongTextField from 'uniforms-semantic/LongTextField';
+import SubmitField from 'uniforms-semantic/SubmitField';
 import HiddenField from 'uniforms-semantic/HiddenField';
 import ErrorsField from 'uniforms-semantic/ErrorsField';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 /** Renders the Page for editing a single document. */
 class EditUserProfile extends React.Component {
@@ -29,8 +31,13 @@ class EditUserProfile extends React.Component {
 
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   renderPage() {
+    const formStyle = {
+      marginTop: '64px',
+      marginBottom: '64px',
+      paddingBottom: '16vh',
+    };
     return (
-        <Grid container centered>
+        <Grid style={formStyle} container centered>
           <Grid.Column>
             <Header as="h2" textAlign="center">Edit Profile</Header>
             <AutoForm schema={UserSchema} onSubmit={this.submit} model={this.props.doc}>
@@ -39,8 +46,12 @@ class EditUserProfile extends React.Component {
                 <TextField name='lastName'/>
                 <LongTextField name='description'/>
                 <TextField name='image'/>
+                <SubmitField value='Submit'/>
+                <Link to={`/userprofile/`}>
+                  <Button floated='right'>Back to Profile</Button>
+                </Link>
                 <ErrorsField/>
-                <HiddenField name='username' />
+                <HiddenField name='username'/>
               </Segment>
             </AutoForm>
           </Grid.Column>
