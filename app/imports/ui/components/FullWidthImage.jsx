@@ -3,7 +3,11 @@ import { Header, Container, Grid, Icon } from 'semantic-ui-react';
 
 export default class FullWidthImage extends React.Component {
   render() {
-    const containerStyle = { marginTop: '400px', marginBottom: '64vh' };
+    const containerStyle = {
+      marginTop: '332px',
+      paddingBottom: '128px',
+      marginBottom: '64vh',
+    };
     const containerStyle2 = {
       backgroundColor: '#feffff',
       opacity: '0.7',
@@ -12,7 +16,12 @@ export default class FullWidthImage extends React.Component {
       borderRadius: '20px',
     };
     const headerStyle = { fontFamily: 'Baven' };
-    const headerStyle2 = { marginTop: '512px', fontFamily: 'Baven' };
+    const headerStyle2 = {
+      marginTop: '728px',
+      fontFamily: 'Baven',
+      paddingBottom: '16px',
+      paddingTop: '16px',
+    };
     return (
         <Container fluid style={containerStyle}>
           <Grid verticalAlign='middle'>
@@ -21,11 +30,9 @@ export default class FullWidthImage extends React.Component {
               <Header style={headerStyle} textAlign='center' size='huge'>
                 A Marketplace for Students, By Students
               </Header>
+
               <Header style={headerStyle} textAlign='center' as='h3'>
-                Welcome to a place to buy, sell, or exchange
-              </Header>
-              <Header style={headerStyle} textAlign='center' as='h3'>
-                Pass down, trade up, avoid getting burned
+                pass down, trade up, avoid getting burned
               </Header>
 
               <Container fluid style={containerStyle2}>
