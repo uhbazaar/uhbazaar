@@ -3,8 +3,6 @@ import FullWidthImage from '../components/FullWidthImage';
 
 export default class UHBazaar extends React.Component {
   render() {
-    const cardColor = { backgroundColor: '#feffff' };
-    const cardFontStyle = { color: '#17252a' };
     return (
         <div>
           <style>
