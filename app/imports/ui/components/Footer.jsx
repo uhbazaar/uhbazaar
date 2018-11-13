@@ -14,10 +14,10 @@ class Footer extends React.Component {
     const darkify = {
       backgroundColor: '#17252a',
       paddingTop: '16px',
-      paddingBottom: '64px',
+      paddingBottom: '32px',
     };
     return (
-        <Container fluid style={divStyle}>
+        <div style={divStyle}>
           <footer>
             <Container fluid style={darkify}>
               <br/>
@@ -33,7 +33,7 @@ class Footer extends React.Component {
               </Divider>
             </Container>
           </footer>
-        </Container>
+        </div>
     );
   }
 }
