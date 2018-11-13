@@ -41,8 +41,13 @@ class AddStuff extends React.Component {
 
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   render() {
+    const mainContainerStyle = {
+      marginTop: '200px',
+      paddingBottom: '128px',
+      marginBottom: '16vh',
+    };
     return (
-        <Grid container centered>
+        <Grid container centered style={mainContainerStyle}>
           <Grid.Column>
             <Header as="h2" textAlign="center">Add Stuff</Header>
             <AutoForm ref={(ref) => { this.formRef = ref; }} schema={StuffSchema} onSubmit={this.submit}>
