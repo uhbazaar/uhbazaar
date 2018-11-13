@@ -1,7 +1,8 @@
 import React from 'react';
-import { Container, Header, Icon, Image, Grid, Card } from 'semantic-ui-react';
+import { Container, Header, Icon, Image, Grid, Card, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
+import { Link } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 import { Users } from '../../api/user/user';
 
@@ -19,15 +20,15 @@ class UserProfileCard extends React.Component {
               <Grid.Row centered>
                 <Grid.Column width={6}>
                   <Image style={borderStyle} size='medium' rounded floated='left'
-                         src={ this.props.user.image }/>
+                         src={this.props.user.image}/>
                 </Grid.Column>
 
                 <Grid.Column width={8}>
                   <Card style={cardColor} floated='right' fluid>
                     <Card.Content>
-                      <Header as='h1'>{ this.props.user.firstName } { this.props.user.lastName }</Header>
+                      <Header as='h1'>{this.props.user.firstName} {this.props.user.lastName}</Header>
                       <Card.Description style={cardFontStyle}>
-                        { this.props.user.description }
+                        {this.props.user.description}
                       </Card.Description>
                     </Card.Content>
                     <Card.Content extra>
@@ -35,6 +36,11 @@ class UserProfileCard extends React.Component {
                         <Icon name='gem'/>
                         10 Items for sale!
                       </a>
+                    </Card.Content>
+                    <Card.Content extra>
+                      <Link to={`/edituserprofile/${this.props.user._id}`}>
+                        <Button floated='right' color='black' size='tiny' >Edit Profile</Button>
+                      </Link>
                     </Card.Content>
                   </Card>
                 </Grid.Column>
