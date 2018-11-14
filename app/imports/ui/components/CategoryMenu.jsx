@@ -19,7 +19,7 @@ export default class CategoryMenu extends React.Component {
     const gridStyle = { marginTop: '64px' };
 
     return (
-        <Grid className='ui link cards' verticalAlign='middle' style={gridStyle}>
+        <Grid centered className='ui link cards' verticalAlign='middle' style={gridStyle}>
           <Card.Group itemsPerRow='1'>
             <Card>
               <Card.Content>

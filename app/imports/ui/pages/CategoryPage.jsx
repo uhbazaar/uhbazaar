@@ -5,9 +5,14 @@ import CategoryMenu from '../components/CategoryMenu';
 /** A simple static component to render some text for the landing page. */
 class CategoryPage extends React.Component {
   render() {
+    const mainContainerStyle = {
+      marginTop: '128px',
+      paddingBottom: '128px',
+      marginBottom: '24vh',
+    };
     return (
         <div>
-          <Container>
+          <Container style={mainContainerStyle}>
             <style>{'body {background-color: #def2f1;, color: }'}</style>
             <CategoryMenu/>
           </Container>

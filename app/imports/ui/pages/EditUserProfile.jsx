@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Loader, Header, Segment, Button } from 'semantic-ui-react';
+import { Grid, Loader, Header, Segment, Button, Container } from 'semantic-ui-react';
 import { Users, UserSchema } from '/imports/api/user/user';
 import { Bert } from 'meteor/themeteorchef:bert';
 import AutoForm from 'uniforms-semantic/AutoForm';
@@ -37,25 +37,29 @@ class EditUserProfile extends React.Component {
       paddingBottom: '16vh',
     };
     return (
-        <Grid style={formStyle} container centered>
-          <Grid.Column>
-            <Header as="h2" textAlign="center">Edit Profile</Header>
-            <AutoForm schema={UserSchema} onSubmit={this.submit} model={this.props.doc}>
-              <Segment>
-                <TextField name='firstName'/>
-                <TextField name='lastName'/>
-                <LongTextField name='description'/>
-                <TextField name='image'/>
-                <SubmitField value='Submit'/>
-                <Link to={`/userprofile/`}>
-                  <Button floated='right'>Back to Profile</Button>
-                </Link>
-                <ErrorsField/>
-                <HiddenField name='username'/>
-              </Segment>
-            </AutoForm>
-          </Grid.Column>
-        </Grid>
+        <Container>
+          <style>{'body { background: url(images/uh-logo.png) no-repeat center fixed; }'}</style>
+          <style>{'body { background-color: #def2f1; }'}</style>
+          <Grid style={formStyle} container centered>
+            <Grid.Column>
+              <Header as="h2" textAlign="center">Edit Profile</Header>
+              <AutoForm schema={UserSchema} onSubmit={this.submit} model={this.props.doc}>
+                <Segment>
+                  <TextField name='firstName'/>
+                  <TextField name='lastName'/>
+                  <LongTextField name='description'/>
+                  <TextField name='image'/>
+                  <SubmitField value='Submit'/>
+                  <Link to={`/userprofile/`}>
+                    <Button floated='right'>Back to Profile</Button>
+                  </Link>
+                  <ErrorsField/>
+                  <HiddenField name='username'/>
+                </Segment>
+              </AutoForm>
+            </Grid.Column>
+          </Grid>
+        </Container>
     );
   }
 }
