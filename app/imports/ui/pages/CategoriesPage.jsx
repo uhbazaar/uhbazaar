@@ -14,7 +14,11 @@ class CategoriesPage extends React.Component {
   }
 
   renderPage() {
-    const gridStyleCards = { marginTop: '48px', marginBottom: '64px' };
+    const gridStyleCards = {
+      marginTop: '172px',
+      paddingBottom: '64px',
+      marginBottom: '24vh',
+    };
     return (
         <div>
           <Grid verticalAlign='middle' style={gridStyleCards}>
