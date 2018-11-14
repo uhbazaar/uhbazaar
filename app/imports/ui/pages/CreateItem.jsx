@@ -1,8 +1,9 @@
 import React from 'react';
-import { Stuffs, StuffSchema } from '/imports/api/stuff/stuff';
-import { Grid, Segment, Header } from 'semantic-ui-react';
+import { Items, ItemSchema } from '/imports/api/item/item';
+import { Grid, Segment, Header, Container } from 'semantic-ui-react';
 import AutoForm from 'uniforms-semantic/AutoForm';
 import TextField from 'uniforms-semantic/TextField';
+import LongTextField from 'uniforms-semantic/LongTextField';
 import NumField from 'uniforms-semantic/NumField';
 import SelectField from 'uniforms-semantic/SelectField';
 import SubmitField from 'uniforms-semantic/SubmitField';
@@ -12,7 +13,7 @@ import { Bert } from 'meteor/themeteorchef:bert';
 import { Meteor } from 'meteor/meteor';
 
 /** Renders the Page for adding a document. */
-class AddStuff extends React.Component {
+class CreateItem extends React.Component {
 
   /** Bind 'this' so that a ref to the Form can be saved in formRef and communicated between render() and submit(). */
   constructor(props) {
@@ -34,36 +35,43 @@ class AddStuff extends React.Component {
 
   /** On submit, insert the data. */
   submit(data) {
-    const { name, quantity, condition } = data;
+    const { thing, quantity, condition, description } = data;
     const owner = Meteor.user().username;
-    Stuffs.insert({ name, quantity, condition, owner }, this.insertCallback);
+    Items.insert({ thing, quantity, condition, description, owner }, this.insertCallback);
   }
 
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   render() {
     const mainContainerStyle = {
-      marginTop: '200px',
+      marginTop: '128px',
       paddingBottom: '128px',
-      marginBottom: '16vh',
+      marginBottom: '24vh',
     };
     return (
-        <Grid container centered style={mainContainerStyle}>
-          <Grid.Column>
-            <Header as="h2" textAlign="center">Add Stuff</Header>
-            <AutoForm ref={(ref) => { this.formRef = ref; }} schema={StuffSchema} onSubmit={this.submit}>
-              <Segment>
-                <TextField name='name'/>
-                <NumField name='quantity' decimal={false}/>
-                <SelectField name='condition'/>
-                <SubmitField value='Submit'/>
-                <ErrorsField/>
-                <HiddenField name='owner' value='fakeuser@foo.com'/>
-              </Segment>
-            </AutoForm>
-          </Grid.Column>
-        </Grid>
+        <Container>
+          <style>{'body { background: url(images/uh-logo.png) no-repeat center fixed; }'}</style>
+          <style>{'body { background-color: #def2f1; }'}</style>
+          <Grid container centered style={mainContainerStyle}>
+            <Grid.Column>
+              <Header as="h2" textAlign="center">Get Rid of It!</Header>
+              <AutoForm ref={(ref) => {
+                this.formRef = ref;
+              }} schema={ItemSchema} onSubmit={this.submit}>
+                <Segment>
+                  <TextField name='thing'/>
+                  <NumField name='quantity' decimal={false}/>
+                  <SelectField name='condition'/>
+                  <LongTextField name='description'/>
+                  <SubmitField value='Post'/>
+                  <ErrorsField/>
+                  <HiddenField name='owner' value='fakeuser@foo.com'/>
+                </Segment>
+              </AutoForm>
+            </Grid.Column>
+          </Grid>
+        </Container>
     );
   }
 }
 
-export default AddStuff;
+export default CreateItem;

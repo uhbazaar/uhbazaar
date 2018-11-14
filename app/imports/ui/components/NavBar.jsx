@@ -29,7 +29,7 @@ class NavBar extends React.Component {
                   Categories
                 </Menu.Item>,
               <Menu.Item as={NavLink} activeClassName="active" exact to="/createitem" key='list'>
-                Sell Something
+                New Item
               </Menu.Item>]
           ) : ''}
 
