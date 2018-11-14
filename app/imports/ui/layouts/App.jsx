@@ -11,6 +11,7 @@ import UHBazaar from '../pages/UHBazaar';
 import ListStuff from '../pages/ListStuff';
 import ListStuffAdmin from '../pages/ListStuffAdmin';
 import AddStuff from '../pages/NotifyAdmin';
+import CreateItem from '../pages/CreateItem';
 import EditStuff from '../pages/EditStuff';
 import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
@@ -38,6 +39,7 @@ class App extends React.Component {
               <Route path="/categorypage" component={CategoryPage}/>
               <ProtectedRoute path="/list" component={ListStuff}/>
               <ProtectedRoute path="/add" component={AddStuff}/>
+              <ProtectedRoute path="/createitem" component={CreateItem}/>
               <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
               <ProtectedRoute path="/edituserprofile/:_id" component={EditUserProfile}/>
               <AdminProtectedRoute path="/admin" component={ListStuffAdmin}/>
