@@ -12,8 +12,8 @@ class CategoriesMenu extends React.Component {
                   <Icon size='big' name={this.props.category.icon}/> {`  ${this.props.category.name}`}</Card.Header>
               </Card.Content>
               <Card.Content extra>
-                  <Icon name='list' />
-                  Number of Listings
+                <Icon name='list' />
+                Number of Listings
               </Card.Content>
             </Card>
     );
