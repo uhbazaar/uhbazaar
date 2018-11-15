@@ -20,7 +20,7 @@ export default class UserShowCase extends React.Component {
             <Grid.Column>
               <Card style={cardColor}>
                 <Card.Content>
-                  <Image rounded floated='right' size='small' src='/images/lawn-mower.jpeg'/>
+                  <Image rounded floated='right' size='small' src='/images/backpack.jpg'/>
                   <Header as='h3' style={cardFontStyle}>Lawn Mower</Header>
                   <Card.Meta style={cardFontStyle}>John Deere</Card.Meta>
                   <Card.Description style={cardFontStyle}>
@@ -41,7 +41,7 @@ export default class UserShowCase extends React.Component {
             <Grid.Column>
               <Card style={cardColor}>
                 <Card.Content>
-                  <Image rounded floated='right' size='small' src='/images/lawn-mower.jpeg'/>
+                  <Image rounded floated='right' size='small' src='/images/scooter.jpeg'/>
                   <Header as='h3' style={cardFontStyle}>Lawn Mower</Header>
                   <Card.Meta style={cardFontStyle}>John Deere</Card.Meta>
                   <Card.Description style={cardFontStyle}>
@@ -62,7 +62,7 @@ export default class UserShowCase extends React.Component {
             <Grid.Column>
               <Card style={cardColor}>
                 <Card.Content>
-                  <Image rounded floated='right' size='small' src='/images/lawn-mower.jpeg'/>
+                  <Image rounded floated='right' size='small' src='/images/textbook.jpeg'/>
                   <Header as='h3' style={cardFontStyle}>Lawn Mower</Header>
                   <Card.Meta style={cardFontStyle}>John Deere</Card.Meta>
                   <Card.Description style={cardFontStyle}>

@@ -64,7 +64,7 @@ class CreateItem extends React.Component {
                   <LongTextField name='description'/>
                   <SubmitField value='Post'/>
                   <ErrorsField/>
-                  <HiddenField name='owner' value='fakeuser@foo.com'/>
+                  <HiddenField name='owner' value='john@foo.com'/>
                 </Segment>
               </AutoForm>
             </Grid.Column>
