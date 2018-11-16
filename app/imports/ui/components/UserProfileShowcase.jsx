@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Card, Button, Header, Image, Icon } from 'semantic-ui-react';
+import { Grid, Card, Button, Icon, Feed } from 'semantic-ui-react';
 
 export default class UserShowCase extends React.Component {
   render() {
@@ -9,78 +9,48 @@ export default class UserShowCase extends React.Component {
     return (
         <Grid container centered style={showcaseStyle}>
 
-          <Grid.Row centered>
-            <Header as='h2' icon textAlign='center'>
-              <Icon name='trophy' circular/>
-              <Header.Content>SHOWCASE</Header.Content>
-            </Header>
-          </Grid.Row>
-          <Grid.Row columns={3}>
+          <Card style={cardColor}>
+            <Card.Content>
+              <Card.Header style={cardFontStyle}><Icon name='trophy' circular/>Showcase</Card.Header>
+            </Card.Content>
+            <Card.Content>
+              <Feed>
+                <Feed.Event>
+                  <Feed.Label image='/images/backpack.jpg'/>
+                  <Feed.Content>
+                    <Feed.Date content='1 day ago'/>
+                    <Feed.Summary style={cardFontStyle}>
+                      Backpack
+                      <Button floated='right'>View</Button>
+                    </Feed.Summary>
+                  </Feed.Content>
+                </Feed.Event>
 
-            <Grid.Column>
-              <Card style={cardColor}>
-                <Card.Content>
-                  <Image rounded floated='right' size='small' src='/images/lawn-mower.jpeg'/>
-                  <Header as='h3' style={cardFontStyle}>Lawn Mower</Header>
-                  <Card.Meta style={cardFontStyle}>John Deere</Card.Meta>
-                  <Card.Description style={cardFontStyle}>
-                    This is a really superb lawn mower! Runs like a champ, great for
-                    drinking Coors Light while mowing.
-                  </Card.Description>
-                </Card.Content>
-                <Card.Content extra>
-                  <div className='ui center aligned'>
-                    <Button basic color='blue'>
-                      View
-                    </Button>
-                  </div>
-                </Card.Content>
-              </Card>
-            </Grid.Column>
+                <Feed.Event>
+                  <Feed.Label image='/images/scooter.jpeg'/>
+                  <Feed.Content>
+                    <Feed.Date content='3 days ago'/>
+                    <Feed.Summary style={cardFontStyle}>
+                      Razor Scooter
+                      <Button floated='right'>View</Button>
+                    </Feed.Summary>
+                  </Feed.Content>
+                </Feed.Event>
 
-            <Grid.Column>
-              <Card style={cardColor}>
-                <Card.Content>
-                  <Image rounded floated='right' size='small' src='/images/lawn-mower.jpeg'/>
-                  <Header as='h3' style={cardFontStyle}>Lawn Mower</Header>
-                  <Card.Meta style={cardFontStyle}>John Deere</Card.Meta>
-                  <Card.Description style={cardFontStyle}>
-                    This is a really superb lawn mower! Runs like a champ, great for
-                    drinking Coors Light while mowing.
-                  </Card.Description>
-                </Card.Content>
-                <Card.Content extra>
-                  <div className='ui center aligned'>
-                    <Button basic color='blue'>
-                      View
-                    </Button>
-                  </div>
-                </Card.Content>
-              </Card>
-            </Grid.Column>
+                <Feed.Event>
+                  <Feed.Label image='/images/textbook.jpeg'/>
+                  <Feed.Content>
+                    <Feed.Date content='4 days ago'/>
+                    <Feed.Summary style={cardFontStyle}>
+                      CLRS Textbook
+                      <Button floated='right'>View</Button>
+                    </Feed.Summary>
+                  </Feed.Content>
+                </Feed.Event>
+              </Feed>
+            </Card.Content>
+          </Card>
 
-            <Grid.Column>
-              <Card style={cardColor}>
-                <Card.Content>
-                  <Image rounded floated='right' size='small' src='/images/lawn-mower.jpeg'/>
-                  <Header as='h3' style={cardFontStyle}>Lawn Mower</Header>
-                  <Card.Meta style={cardFontStyle}>John Deere</Card.Meta>
-                  <Card.Description style={cardFontStyle}>
-                    This is a really superb lawn mower! Runs like a champ, great for
-                    drinking Coors Light while mowing.
-                  </Card.Description>
-                </Card.Content>
-                <Card.Content extra>
-                  <div className='ui center aligned'>
-                    <Button basic color='blue'>
-                      View
-                    </Button>
-                  </div>
-                </Card.Content>
-              </Card>
-            </Grid.Column>
-
-          </Grid.Row>
         </Grid>
     );
   }

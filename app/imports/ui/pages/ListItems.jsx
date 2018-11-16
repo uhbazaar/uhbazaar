@@ -24,7 +24,7 @@ class ListItems extends React.Component {
               <Header as="h2" textAlign="center">Category Name</Header>
               <Card.Group centered itemsPerRow={2}>
                 <Card>
-                  <Image src='images/lawn-mower.jpeg'/>
+                  <Image src='images/textbook.jpeg'/>
                   <Card.Content>
                     <Card.Header>Lawn Mower</Card.Header>
                     <Card.Meta>Vehicles</Card.Meta>
@@ -40,7 +40,7 @@ class ListItems extends React.Component {
                   </Card.Content>
                 </Card>
                 <Card>
-                  <Image src='images/lawn-mower.jpeg'/>
+                  <Image src='images/backpack.jpg'/>
                   <Card.Content>
                     <Card.Header>Lawn Mower</Card.Header>
                     <Card.Meta>Vehicles</Card.Meta>

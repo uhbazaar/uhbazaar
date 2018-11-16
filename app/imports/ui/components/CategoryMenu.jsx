@@ -23,31 +23,31 @@ export default class CategoryMenu extends React.Component {
           <Card.Group itemsPerRow='1'>
             <Card>
               <Card.Content>
-                <Image floated='left' size='medium' src='/images/lawn-mower.jpeg' />
-                <Card.Header>John Deer</Card.Header>
+                <Image floated='left' size='medium' src='/images/textbook.jpeg' />
+                <Card.Header>Algorithms</Card.Header>
                 <Card.Meta>
-                  <span className='price'>$1200</span>
+                  <span className='price'>$50</span>
                 </Card.Meta>
                 <Card.Meta>
-                  <span className='location'>Greenbow Alabama</span>
+                  <span className='location'>Manoa</span>
                 </Card.Meta>
                 <Card.Meta>
-                  After some years of mowing dem lawns for you fine folks, its about time I retired.
+                  Great read for improving your algorithmic skills.
                 </Card.Meta>
               </Card.Content>
             </Card>
             <Card>
               <Card.Content>
-                <Image floated='left' size='medium' src='/images/hardbody.jpg' />
-                <Card.Header>89 Toyota Truck</Card.Header>
+                <Image floated='left' size='medium' src='/images/backpack.jpg' />
+                <Card.Header>Backpack</Card.Header>
                 <Card.Meta>
-                  <span className='price'>$5000</span>
+                  <span className='price'>$50</span>
                 </Card.Meta>
                 <Card.Meta>
-                  <span className='location'>East Oahu</span>
+                  <span className='location'>Manoa</span>
                 </Card.Meta>
                 <Card.Meta>
-                  Get rust, but still runs cherry
+                  Nice backpack.
                 </Card.Meta>
               </Card.Content>
             </Card>
