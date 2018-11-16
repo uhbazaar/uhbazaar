@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 import React from 'react';
-import { Card, Header, Icon, Button, Container, Image } from 'semantic-ui-react';
+import { Card, Icon, Button, Image } from 'semantic-ui-react';
 
 class ShowUser extends React.Component {
 

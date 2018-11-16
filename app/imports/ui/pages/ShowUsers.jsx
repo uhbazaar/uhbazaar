@@ -6,7 +6,6 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import ShowUser from '../components/ShowUser';
 
-
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ShowUsers extends React.Component {
 
@@ -18,10 +17,19 @@ class ShowUsers extends React.Component {
   /** Render the page once subscriptions have been received. */
   renderPage() {
     const styleCards = {
-      marginTop: '172px',
+      marginTop: '200px',
       paddingBottom: '64px',
-      marginBottom: '24vh',
+      marginBottom: '64vh',
     };
+    if (!this.userId) {
+      return (
+          <Container style={styleCards}>
+            <style>{'body { background: url(images/uh-logo.png) no-repeat center fixed; }'}</style>
+            <style>{'body { background-color: #def2f1; }'}</style>
+            <Header as="h2" textAlign="center">Please log in to see the current users</Header>
+          </Container>
+    );
+    }
     return (
         <Container style={styleCards}>
           <style>{'body { background: url(images/uh-logo.png) no-repeat center fixed; }'}</style>
@@ -29,12 +37,13 @@ class ShowUsers extends React.Component {
           <Header as="h2" textAlign="center">Current Users</Header>
           <Card.Group centered>
             {this.props.users.map((user, index) => <ShowUser key={index}
-                                                                 user={user} />)}
+                                                             user={user}/>)}
           </Card.Group>
         </Container>
     );
   }
 }
+
 /** Require an array of Stuff documents in the props. */
 ShowUsers.propTypes = {
   users: PropTypes.array.isRequired,
