@@ -18,7 +18,7 @@ export default class FullWidthImage extends React.Component {
       padding: '0 16px 16px 16px',
     };
     const logoContainerStyle = {
-      backgroundColor: '#def2f1',
+      backgroundColor: '#feffff',
       opacity: '0.8',
       width: '60%',
       bottom: '0',
@@ -28,7 +28,7 @@ export default class FullWidthImage extends React.Component {
       marginBottom: '360px',
     };
     const headerStyle = {
-      fontFamily: 'Baven',
+      fontFamily: 'Anton',
       opacity: '10 !important',
       color: '#17252a',
     };
