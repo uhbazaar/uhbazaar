@@ -23,7 +23,7 @@ class ShowUser extends React.Component {
             </Card.Description>
           </Card.Content>
           <Card.Content centered extra>
-              <Link to={`/userprofile/${this.props.user._id}`}>
+              <Link to={`/userprofilebyid/${this.props.user._id}`}>
                 <Button color='blue' size='tiny' >View</Button>
               </Link>
           </Card.Content>

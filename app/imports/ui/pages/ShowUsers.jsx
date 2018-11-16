@@ -17,18 +17,18 @@ class ShowUsers extends React.Component {
   /** Render the page once subscriptions have been received. */
   renderPage() {
     const styleCards = {
-      marginTop: '200px',
+      marginTop: '180px',
       paddingBottom: '64px',
       marginBottom: '64vh',
     };
-    if (!this.userId) {
+    if (!Users.findOne()) {
       return (
           <Container style={styleCards}>
             <style>{'body { background: url(images/uh-logo.png) no-repeat center fixed; }'}</style>
             <style>{'body { background-color: #def2f1; }'}</style>
             <Header as="h2" textAlign="center">Please log in to see the current users</Header>
           </Container>
-    );
+      );
     }
     return (
         <Container style={styleCards}>
