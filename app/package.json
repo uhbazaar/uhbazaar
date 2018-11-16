@@ -13,6 +13,7 @@
     "react-dom": "^16.2.0",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
+    "react-search": "^2.0.5",
     "semantic-ui-css": "^2.4.0",
     "semantic-ui-react": "^0.82.5",
     "simpl-schema": "^1.5.3",
