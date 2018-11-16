@@ -16,26 +16,32 @@ class NavBar extends React.Component {
         <Menu stackable style={menuStyle} attached="top" borderless inverted>
 
           <Menu.Item as={NavLink} activeClassName="" exact to="/">
-              <Header style={headerStyle} inverted as='h1' content='UH Bazaar' textAlign='right'>
-                <Image style={imageStyle} size='medium' src='images/uh-bazaar-logo.png' circular/>UH Bazaar
-              </Header>
-          </Menu.Item>
-
-          <Menu.Item as={NavLink} activeClassName="" exact to="/showusers" key='show'>
-            Current Users
+            <Header style={headerStyle} inverted as='h1' content='UH Bazaar' textAlign='right'>
+              <Image style={imageStyle} size='medium' src='images/uh-bazaar-logo.png' circular/>UH Bazaar
+            </Header>
           </Menu.Item>
 
           {this.props.currentUser ? (
-              [<Menu.Item as={NavLink} activeClassName="active" exact to="/userprofile" key='add'>
-                My Profile
-              </Menu.Item>,
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/categoriespage" key='category'>
-                  Categories
-                </Menu.Item>,
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/createitem" key='list'>
-                  New Item
-                </Menu.Item>]
+              [<Menu.Item key='menu'>
+                <Dropdown text='Menu'>
+                  <Dropdown.Menu>
+                    <Menu.Item as={NavLink} activeClassName="active" exact to="/userprofile" key='add'>
+                      My Profile
+                    </Menu.Item>,
+                    <Menu.Item as={NavLink} activeClassName="active" exact to="/categoriespage" key='category'>
+                      Categories
+                    </Menu.Item>,
+                    <Menu.Item as={NavLink} activeClassName="active" exact to="/createitem" key='list'>
+                      New Item
+                    </Menu.Item>,
+                    <Menu.Item as={NavLink} activeClassName="" exact to="/showusers" key='show'>
+                      Current Users
+                    </Menu.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </Menu.Item>]
           ) : ''}
+
 
           {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
               <Menu.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'>Admin</Menu.Item>
