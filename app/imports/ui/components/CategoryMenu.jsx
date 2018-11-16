@@ -1,21 +1,14 @@
 import React from 'react';
 import { Grid, Card, Image } from 'semantic-ui-react';
+import { withRouter } from 'react-router-dom';
 
-export default class CategoryMenu extends React.Component {
+class CategoryMenu extends React.Component {
+  constructor(props) {
+    super(props);
+    this.currentCategory = props;
+  }
 
   render() {
-/*
-    const itemData = [
-      {
-        name: 'Lawn Mower',
-        image: 'lawn-mower.jpeg',
-        description: 'After some years of mowing dem lawns for, its about time I retired.',
-        location: '1234 Oak ln Greenbow, AL 98475',
-        price: '300',
-        category: 'Vehicles',
-      },
-    ];
-*/
     const gridStyle = { marginTop: '64px' };
 
     return (
@@ -57,3 +50,4 @@ export default class CategoryMenu extends React.Component {
     );
   }
 }
+export default withRouter(CategoryMenu);

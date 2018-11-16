@@ -8,7 +8,6 @@ import CategoriesMenu from '../components/CategoriesMenu';
 
 /** A simple static component to render some text for the landing page. */
 class CategoriesPage extends React.Component {
-
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
