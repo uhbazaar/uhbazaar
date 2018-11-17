@@ -28,7 +28,7 @@ export default class FullWidthImage extends React.Component {
       marginBottom: '360px',
     };
     const headerStyle = {
-      fontFamily: 'Anton',
+      fontFamily: 'Bowlby One SC',
       opacity: '10 !important',
       color: '#17252a',
     };

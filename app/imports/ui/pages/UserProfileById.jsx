@@ -4,6 +4,7 @@ import { Users } from '/imports/api/user/user';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
+import UserShowCase from '../components/UserProfileShowcase';
 
 /** Renders the Page for editing a single document. */
 class UserProfileById extends React.Component {
@@ -19,8 +20,12 @@ class UserProfileById extends React.Component {
     const gridStyle = { marginTop: '128px', marginBottom: '128px' };
     const borderStyle = { border: 'solid 1px #feffff' };
     const cardColor = { backgroundColor: '#feffff' };
+    const showcaseRow = { marginTop: '64px' };
     return (
         <Grid container verticalAlign='middle' style={gridStyle}>
+          <style>{'body { background: url(images/uh-logo.png) no-repeat center fixed; }'}</style>
+          <style>{'body { background-color: #def2f1; }'}</style>
+
           <Container>
             <Grid verticalAlign='middle' className='user-profile-background' columns={4}>
               <Grid.Row centered>
@@ -28,7 +33,6 @@ class UserProfileById extends React.Component {
                   <Image style={borderStyle} size='medium' rounded floated='left'
                          src={this.props.doc.image}/>
                 </Grid.Column>
-
                 <Grid.Column width={8}>
                   <Card style={cardColor} floated='right' fluid>
                     <Card.Content>
@@ -45,10 +49,16 @@ class UserProfileById extends React.Component {
                     </Card.Content>
                   </Card>
                 </Grid.Column>
+              </Grid.Row>
+            </Grid>
 
+            <Grid>
+              <Grid.Row style={showcaseRow}>
+                <UserShowCase/>
               </Grid.Row>
             </Grid>
           </Container>
+
         </Grid>
     );
   }
