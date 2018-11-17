@@ -20,29 +20,6 @@ class NavBar extends React.Component {
               <Image style={imageStyle} size='medium' src='images/uh-bazaar-logo.png' circular/>UH Bazaar
             </Header>
           </Menu.Item>
-
-          {this.props.currentUser ? (
-              [<Menu.Item key='menu'>
-                <Dropdown text='Menu'>
-                  <Dropdown.Menu>
-                    <Menu.Item as={NavLink} activeClassName="active" exact to="/userprofile" key='add'>
-                      My Profile
-                    </Menu.Item>,
-                    <Menu.Item as={NavLink} activeClassName="active" exact to="/categoriespage" key='category'>
-                      Categories
-                    </Menu.Item>,
-                    <Menu.Item as={NavLink} activeClassName="active" exact to="/createitem" key='list'>
-                      New Item
-                    </Menu.Item>,
-                    <Menu.Item as={NavLink} activeClassName="" exact to="/showusers" key='show'>
-                      Current Users
-                    </Menu.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
-              </Menu.Item>]
-          ) : ''}
-
-
           {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
               <Menu.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'>Admin</Menu.Item>
           ) : ''}
@@ -58,12 +35,15 @@ class NavBar extends React.Component {
             ) : (
                 <Dropdown text={this.props.currentUser} pointing="top right" icon={'user'}>
                   <Dropdown.Menu>
+                    <Dropdown.Item text="My Account" as={NavLink} className="active" exact to="/userprofile" key='add'/>
+                      <Dropdown.Item text="Categories" as={NavLink} className="active" exact to="/categoriespage" key='category'/>
+                      <Dropdown.Item text="Add New Item" as={NavLink} className="active" exact to="/createitem" key='list'/>
+                      <Dropdown.Item text="Other Sellers" as={NavLink} className="" exact to="/showusers" key='show'/>
                     <Dropdown.Item icon="sign out" text="Sign Out" as={NavLink} exact to="/signout"/>
-                  </Dropdown.Menu>
+                    </Dropdown.Menu>
                 </Dropdown>
             )}
           </Menu.Item>
-
         </Menu>
     );
   }

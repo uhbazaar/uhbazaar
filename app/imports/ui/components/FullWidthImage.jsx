@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Container, Grid, Icon, Image } from 'semantic-ui-react';
+import { Header, Container, Grid, Image } from 'semantic-ui-react';
 import LandingBar from './LandingBar';
 
 export default class FullWidthImage extends React.Component {
