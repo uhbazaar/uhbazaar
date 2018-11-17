@@ -39,7 +39,8 @@ class App extends React.Component {
               <Route exact path="/categoriespage" component={CategoriesPage}/>
               <Route path="/showusers" component={ShowUsers}/>
               <ProtectedRoute path="/list" component={ListItems}/>
-              <Route path="/categorypage" component={CategoryPage}/>
+              <Route path="/categorypage/:name" component={CategoryPage}/>
+
               <ProtectedRoute path="/list" component={ListStuff}/>
               <ProtectedRoute path="/add" component={AddStuff}/>
               <ProtectedRoute path="/createitem" component={CreateItem}/>
@@ -62,6 +63,7 @@ class App extends React.Component {
  * Checks for Meteor login before routing to the requested page, otherwise goes to signin page.
  * @param {any} { component: Component, ...rest }
  */
+
 const ProtectedRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
@@ -80,6 +82,7 @@ const ProtectedRoute = ({ component: Component, ...rest }) => (
  * Checks for Meteor login and admin role before routing to the requested page, otherwise goes to signin page.
  * @param {any} { component: Component, ...rest }
  */
+
 const AdminProtectedRoute = ({ component: Component, ...rest }) => (
     <Route
         {...rest}
@@ -105,5 +108,6 @@ AdminProtectedRoute.propTypes = {
   component: PropTypes.func.isRequired,
   location: PropTypes.object,
 };
+
 
 export default App;
