@@ -8,7 +8,7 @@ import CategoryMenu from '../components/CategoryMenu';
 class CategoryPage extends React.Component {
   render() {
     const titleStyle = {
-      paddingTop: '4vh',
+      paddingTop: '3.5vh',
       paddingBottom: '3vh',
       paddingLeft: '3vh',
       fontSize: '46px',
@@ -16,6 +16,7 @@ class CategoryPage extends React.Component {
     };
     const mainContainerStyle = {
       paddingTop: '20px',
+      marginLeft: '10vh',
       paddingBottom: '20px',
       marginBottom: '24vh',
     };

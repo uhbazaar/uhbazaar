@@ -1,48 +1,120 @@
 import React from 'react';
-import { Grid, Card, Image, Container } from 'semantic-ui-react';
+import { Card, Icon, Image, Grid } from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
 
 class CategoryMenu extends React.Component {
 
   render() {
-
     return (
-        <Grid centered className='ui link cards'>
-          <Container>
-          <Card.Group itemsPerRow='3'>
-            <Card>
-              <Image src='/images/textbook.jpeg' />
-              <Card.Content>
-                <Card.Header>Algorithms</Card.Header>
-                <Card.Meta>
-                  <span className='price'>$50</span>
-                </Card.Meta>
-                <Card.Meta>
-                  <span className='location'>Manoa</span>
-                </Card.Meta>
-                <Card.Meta>
-                  Great read for improving your algorithmic skills.
-                </Card.Meta>
-              </Card.Content>
-            </Card>
-            <Card>
-              <Image src='/images/backpack.jpg' />
-              <Card.Content>
-                <Card.Header>Backpack</Card.Header>
-                <Card.Meta>
-                  <span className='price'>$50</span>
-                </Card.Meta>
-                <Card.Meta>
-                  <span className='location'>Manoa</span>
-                </Card.Meta>
-                <Card.Meta>
-                  Nice backpack.
-                </Card.Meta>
-              </Card.Content>
-            </Card>
-          </Card.Group>
-          </Container>
-        </Grid>
+          <Grid className='ui link cards' verticalAlign='middle'>
+              <Card.Group centered itemsPerRow={4}>
+                <Card>
+                  <Image src='images/backpack.jpg'/>
+                  <Card.Content>
+                    <Card.Header>Lawn Mower</Card.Header>
+                    <Card.Description>After some years of mowing dem lawns for you fine folks,
+                      its about time I retired.</Card.Description>
+                  </Card.Content>
+                  <Card.Content extra>
+                    <Icon name='money'/>
+                    <span className='price'>300</span>
+                  </Card.Content>
+                  <Card.Content extra>
+                    <span className='location'>1234 Oak ln Greenbow, AL 98475</span>
+                  </Card.Content>
+                </Card>
+                <Card>
+                  <Image src='images/lawn-mower.jpeg'/>
+                  <Card.Content>
+                    <Card.Header>Lawn Mower</Card.Header>
+                    <Card.Description>After some years of mowing dem lawns for you fine folks,
+                      its about time I retired.</Card.Description>
+                  </Card.Content>
+                  <Card.Content extra>
+                    <Icon name='money'/>
+                    <span className='price'>300</span>
+                  </Card.Content>
+                  <Card.Content extra>
+                    <span className='location'>1234 Oak ln Greenbow, AL 98475</span>
+                  </Card.Content>
+                </Card>
+                <Card>
+                  <Image src='images/lawn-mower.jpeg'/>
+                  <Card.Content>
+                    <Card.Header>Lawn Mower</Card.Header>
+                    <Card.Description>After some years of mowing dem lawns for you fine folks,
+                      its about time I retired.</Card.Description>
+                  </Card.Content>
+                  <Card.Content extra>
+                    <Icon name='money'/>
+                    <span className='price'>300</span>
+                  </Card.Content>
+                  <Card.Content extra>
+                    <span className='location'>1234 Oak ln Greenbow, AL 98475</span>
+                  </Card.Content>
+                </Card>
+                <Card>
+                  <Image src='images/lawn-mower.jpeg'/>
+                  <Card.Content>
+                    <Card.Header>Lawn Mower</Card.Header>
+                    <Card.Description>After some years of mowing dem lawns for you fine folks,
+                      its about time I retired.</Card.Description>
+                  </Card.Content>
+                  <Card.Content extra>
+                    <Icon name='money'/>
+                    <span className='price'>300</span>
+                  </Card.Content>
+                  <Card.Content extra>
+                    <span className='location'>1234 Oak ln Greenbow, AL 98475</span>
+                  </Card.Content>
+                </Card>
+                <Card>
+                  <Image src='images/lawn-mower.jpeg'/>
+                  <Card.Content>
+                    <Card.Header>Lawn Mower</Card.Header>
+                    <Card.Description>After some years of mowing dem lawns for you fine folks,
+                      its about time I retired.</Card.Description>
+                  </Card.Content>
+                  <Card.Content extra>
+                    <Icon name='money'/>
+                    <span className='price'>300</span>
+                  </Card.Content>
+                  <Card.Content extra>
+                    <span className='location'>1234 Oak ln Greenbow, AL 98475</span>
+                  </Card.Content>
+                </Card>
+                <Card>
+                  <Image src='images/lawn-mower.jpeg'/>
+                  <Card.Content>
+                    <Card.Header>Lawn Mower</Card.Header>
+                    <Card.Description>After some years of mowing dem lawns for you fine folks,
+                      its about time I retired.</Card.Description>
+                  </Card.Content>
+                  <Card.Content extra>
+                    <Icon name='money'/>
+                    <span className='price'>300</span>
+                  </Card.Content>
+                  <Card.Content extra>
+                    <span className='location'>1234 Oak ln Greenbow, AL 98475</span>
+                  </Card.Content>
+                </Card>
+                <Card>
+                  <Image src='images/lawn-mower.jpeg'/>
+                  <Card.Content>
+                    <Card.Header>Lawn Mower</Card.Header>
+                    <Card.Description>After some years of mowing dem lawns for you fine folks,
+                      its about time I retired.</Card.Description>
+                  </Card.Content>
+                  <Card.Content extra>
+                    <Icon name='money'/>
+                    <span className='price'>300</span>
+                  </Card.Content>
+                  <Card.Content extra>
+                    <span className='location'>1234 Oak ln Greenbow, AL 98475</span>
+                  </Card.Content>
+                </Card>
+              </Card.Group>
+          </Grid>
     );
   }
 }
