@@ -6,7 +6,7 @@
 1. Describe some ideas that came up throughout your process.
 
 **Where some bugs discovered that were not fixed?**
-Detail :
+*Detail :*
 1. where 
 2. when
 3. how.  
