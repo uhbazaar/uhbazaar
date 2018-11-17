@@ -1,3 +1,6 @@
+html {
+  min-height: 100vh;
+}
 
 .user-profile-background {
   color: #2b7a78;
