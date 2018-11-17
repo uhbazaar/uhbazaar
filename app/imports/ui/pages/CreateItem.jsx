@@ -5,7 +5,6 @@ import AutoForm from 'uniforms-semantic/AutoForm';
 import TextField from 'uniforms-semantic/TextField';
 import LongTextField from 'uniforms-semantic/LongTextField';
 import NumField from 'uniforms-semantic/NumField';
-import SelectField from 'uniforms-semantic/SelectField';
 import SubmitField from 'uniforms-semantic/SubmitField';
 import HiddenField from 'uniforms-semantic/HiddenField';
 import ErrorsField from 'uniforms-semantic/ErrorsField';
@@ -35,9 +34,9 @@ class CreateItem extends React.Component {
 
   /** On submit, insert the data. */
   submit(data) {
-    const { item, quantity, condition, description } = data;
+    const { item, price, image, category, description } = data;
     const owner = Meteor.user().username;
-    Items.insert({ item, quantity, condition, description, owner }, this.insertCallback);
+    Items.insert({ item, price, image, category, description, owner }, this.insertCallback);
   }
 
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
@@ -59,8 +58,9 @@ class CreateItem extends React.Component {
               }} schema={ItemSchema} onSubmit={this.submit}>
                 <Segment>
                   <TextField name='item'/>
-                  <NumField name='quantity' decimal={false}/>
-                  <SelectField name='condition'/>
+                  <NumField name='price' decimal={false}/>
+                  <TextField name='category'/>
+                  <TextField name='image'/>
                   <LongTextField name='description'/>
                   <SubmitField value='Post'/>
                   <ErrorsField/>
