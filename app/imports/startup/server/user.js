@@ -23,3 +23,10 @@ Meteor.publish('Users', function publish() {
   }
   return this.ready();
 });
+
+Meteor.publish('UserSearch', function publish() {
+  if (this.userId) {
+    return Users.find();
+  }
+  return this.ready();
+});

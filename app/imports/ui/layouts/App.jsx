@@ -21,6 +21,8 @@ import CategoriesPage from '../pages/CategoriesPage';
 import CategoryPage from '../pages/CategoryPage';
 import UserProfile from '../pages/UserProfile';
 import EditUserProfile from '../pages/EditUserProfile';
+import ShowUsers from '../pages/ShowUsers';
+import UserProfileById from '../pages/UserProfileById';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -35,13 +37,16 @@ class App extends React.Component {
               <Route path="/signin" component={Signin}/>
               <Route path="/signup" component={Signup}/>
               <Route exact path="/categoriespage" component={CategoriesPage}/>
+              <Route path="/showusers" component={ShowUsers}/>
               <ProtectedRoute path="/list" component={ListItems}/>
-              <Route path="/categorypage" component={CategoryPage}/>
+              <Route path="/categorypage/:name" component={CategoryPage}/>
+
               <ProtectedRoute path="/list" component={ListStuff}/>
               <ProtectedRoute path="/add" component={AddStuff}/>
               <ProtectedRoute path="/createitem" component={CreateItem}/>
               <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
               <ProtectedRoute path="/edituserprofile/:_id" component={EditUserProfile}/>
+              <ProtectedRoute path="/userprofilebyid/:_id" component={UserProfileById}/>
               <AdminProtectedRoute path="/admin" component={ListStuffAdmin}/>
               <ProtectedRoute path="/signout" component={Signout}/>
               <Route component={NotFound}/>
@@ -58,6 +63,7 @@ class App extends React.Component {
  * Checks for Meteor login before routing to the requested page, otherwise goes to signin page.
  * @param {any} { component: Component, ...rest }
  */
+
 const ProtectedRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
@@ -76,6 +82,7 @@ const ProtectedRoute = ({ component: Component, ...rest }) => (
  * Checks for Meteor login and admin role before routing to the requested page, otherwise goes to signin page.
  * @param {any} { component: Component, ...rest }
  */
+
 const AdminProtectedRoute = ({ component: Component, ...rest }) => (
     <Route
         {...rest}
@@ -101,5 +108,6 @@ AdminProtectedRoute.propTypes = {
   component: PropTypes.func.isRequired,
   location: PropTypes.object,
 };
+
 
 export default App;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Container, Grid, Icon, Image } from 'semantic-ui-react';
+import { Header, Container, Grid, Image } from 'semantic-ui-react';
 import LandingBar from './LandingBar';
 
 export default class FullWidthImage extends React.Component {
@@ -9,16 +9,8 @@ export default class FullWidthImage extends React.Component {
       paddingBottom: '128px',
       marginBottom: '64vh',
     };
-    const infoContainerStyle = {
-      backgroundColor: '#feffff',
-      opacity: '0.8',
-      width: '75%',
-      bottom: '0',
-      borderRadius: '20px',
-      padding: '0 16px 16px 16px',
-    };
     const logoContainerStyle = {
-      backgroundColor: '#def2f1',
+      backgroundColor: '#feffff',
       opacity: '0.8',
       width: '60%',
       bottom: '0',
@@ -28,9 +20,11 @@ export default class FullWidthImage extends React.Component {
       marginBottom: '360px',
     };
     const headerStyle = {
-      fontFamily: 'Baven',
+      fontFamily: 'Cinzel',
       opacity: '10 !important',
       color: '#17252a',
+      paddingLeft: '16px',
+      paddingRight: '16px',
     };
     const imageStyle = { opacity: '0.9' };
     return (

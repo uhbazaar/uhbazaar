@@ -1,3 +1,6 @@
+html {
+  min-height: 100vh;
+}
 
 .user-profile-background {
   color: #2b7a78;
@@ -7,7 +10,7 @@
 }
 
 .landing-welcome{
-  font-family:"Baven", sans-serif;
+  font-family:"Allerta Stencil", sans-serif;
   font-size: 100px;
   color: white;
   position: absolute;
