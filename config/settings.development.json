@@ -39,9 +39,9 @@
 
   "defaultUsers": [
     {
-      "firstName": "Tommy",
-      "lastName": "Hanks",
-      "description": "I am a comedian living in Nashville baby!",
+      "firstName": "Zak",
+      "lastName": "G",
+      "description": "I am a student, that is all.",
       "image": "/images/zak-g.jpeg",
       "username": "john@foo.com"
     },

@@ -9,14 +9,6 @@ export default class FullWidthImage extends React.Component {
       paddingBottom: '128px',
       marginBottom: '64vh',
     };
-    const infoContainerStyle = {
-      backgroundColor: '#feffff',
-      opacity: '0.8',
-      width: '75%',
-      bottom: '0',
-      borderRadius: '20px',
-      padding: '0 16px 16px 16px',
-    };
     const logoContainerStyle = {
       backgroundColor: '#feffff',
       opacity: '0.8',
@@ -28,9 +20,11 @@ export default class FullWidthImage extends React.Component {
       marginBottom: '360px',
     };
     const headerStyle = {
-      fontFamily: 'Bowlby One SC',
+      fontFamily: 'Cinzel',
       opacity: '10 !important',
       color: '#17252a',
+      paddingLeft: '16px',
+      paddingRight: '16px',
     };
     const imageStyle = { opacity: '0.9' };
     return (
