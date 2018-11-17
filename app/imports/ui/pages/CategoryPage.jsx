@@ -7,6 +7,10 @@ import CategoryMenu from '../components/CategoryMenu';
 class CategoryPage extends React.Component {
   render() {
     console.log(this.props.match.params);
+    const titleStyle = {
+      marginTop: '20px',
+      paddingBottom: '20px',
+    }
     const mainContainerStyle = {
       marginTop: '128px',
       paddingBottom: '128px',
@@ -14,7 +18,8 @@ class CategoryPage extends React.Component {
     };
     return (
         <div>
-          <Header>{this.props.match.params.name}</Header>
+          <Header style={titleStyle}>
+            {this.props.match.params.name}</Header>
           <Container style={mainContainerStyle}>
             <style>{'body {background-color: #def2f1;, color: }'}</style>
             <CategoryMenu/>
