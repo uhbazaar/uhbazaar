@@ -4,7 +4,7 @@ import { Grid, Header, Icon } from 'semantic-ui-react';
 export default class LandingBar extends React.Component {
   render() {
     const headerStyle2 = {
-      fontFamily: 'Baven',
+      fontFamily: 'Bowlby One SC',
       fontSize: '20px',
       color: '#feffff',
     };
