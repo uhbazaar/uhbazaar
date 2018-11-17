@@ -40,7 +40,6 @@ class App extends React.Component {
               <Route path="/showusers" component={ShowUsers}/>
               <ProtectedRoute path="/list" component={ListItems}/>
               <Route path="/categorypage/:name" component={CategoryPage}/>
-
               <ProtectedRoute path="/list" component={ListStuff}/>
               <ProtectedRoute path="/add" component={AddStuff}/>
               <ProtectedRoute path="/createitem" component={CreateItem}/>

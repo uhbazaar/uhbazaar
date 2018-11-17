@@ -1,22 +1,18 @@
 import React from 'react';
-import { Grid, Card, Image } from 'semantic-ui-react';
+import { Grid, Card, Image, Container } from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
 
 class CategoryMenu extends React.Component {
-  constructor(props) {
-    super(props);
-    this.currentCategory = props;
-  }
 
   render() {
-    const gridStyle = { marginTop: '64px' };
 
     return (
-        <Grid centered className='ui link cards' verticalAlign='middle' style={gridStyle}>
-          <Card.Group itemsPerRow='1'>
+        <Grid centered className='ui link cards'>
+          <Container>
+          <Card.Group itemsPerRow='3'>
             <Card>
+              <Image src='/images/textbook.jpeg' />
               <Card.Content>
-                <Image floated='left' size='medium' src='/images/textbook.jpeg' />
                 <Card.Header>Algorithms</Card.Header>
                 <Card.Meta>
                   <span className='price'>$50</span>
@@ -30,8 +26,8 @@ class CategoryMenu extends React.Component {
               </Card.Content>
             </Card>
             <Card>
+              <Image src='/images/backpack.jpg' />
               <Card.Content>
-                <Image floated='left' size='medium' src='/images/backpack.jpg' />
                 <Card.Header>Backpack</Card.Header>
                 <Card.Meta>
                   <span className='price'>$50</span>
@@ -44,8 +40,8 @@ class CategoryMenu extends React.Component {
                 </Card.Meta>
               </Card.Content>
             </Card>
-
           </Card.Group>
+          </Container>
         </Grid>
     );
   }
