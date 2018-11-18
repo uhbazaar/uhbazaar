@@ -10,7 +10,7 @@ export default class FullWidthImage extends React.Component {
       marginBottom: '64vh',
     };
     const logoContainerStyle = {
-      backgroundColor: '#2b7a78',
+      // backgroundColor: '#2b7a78',
       // opacity: '0.8',
       width: '200%',
       bottom: '0',
@@ -19,30 +19,38 @@ export default class FullWidthImage extends React.Component {
       paddingTop: '16px',
       marginBottom: '360px',
     };
-    const headerStyle = {
-      fontFamily: 'Cinzel',
+    const headerOneStyle = {
+      fontFamily: 'PT Sans Caption',
       opacity: '10 !important',
-      color: '#17252a',
+      color: '#084543',
       paddingLeft: '16px',
       paddingRight: '16px',
+      fontSize: '80px',
     };
+    const headerTwoStyle = {
+                  fontFamily: 'PT Sans Caption',
+            opacity: '10 !important',
+            color: '#084543',
+            paddingLeft: '16px',
+            paddingRight: '16px',
+            fontSize: '30px',
+    };
+
     return (
         <Container fluid style={mainContainerStyle}>
           <Grid verticalAlign='middle'>
             {/*<Container centered>*/}
 
-              <Container style={logoContainerStyle} fixed>
+            <Container style={logoContainerStyle} fixed>
+              <Header style={headerOneStyle} textAlign='center' size='70px'>
+                A MARKETPLACE FOR STUDENTS
+              </Header>
 
-
-                <Header style={headerStyle} textAlign='left' size='huge'>
-                  A Marketplace for Students, By Students
-                </Header>
-
-                <Header style={headerStyle} textAlign='left' as='h3'>
-                  {/* eslint-disable-next-line */}
-                  pass down, trade up, don't get burned
-                </Header>
-              </Container>
+              <Header style={headerTwoStyle} textAlign='center' as='h3'>
+                {/* eslint-disable-next-line */}
+                PASS DOWN, TRADE UP, DON'T GET BURNED
+              </Header>
+            </Container>
 
             {/*</Container>*/}
           </Grid>

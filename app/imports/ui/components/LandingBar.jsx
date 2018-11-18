@@ -4,7 +4,7 @@ import { Grid, Header, Icon } from 'semantic-ui-react';
 export default class LandingBar extends React.Component {
   render() {
     const headerStyle2 = {
-      fontFamily: 'Cinzel',
+      fontFamily: 'PT Sans Caption',
       fontSize: '20px',
       color: '#feffff',
     };
@@ -23,9 +23,9 @@ export default class LandingBar extends React.Component {
               </Header>
             </Grid.Row>
             <Grid.Row>
-              <p style={headerStyle2}>At UH Bazaar, the focus is the student.  What UHB aims to provide is
+              <p style={headerStyle2}>At UH Bazaar, the focus is the student. What UHB aims to provide is
                 a comfortable and easy experience when it comes to getting the things
-                you need.  Leaving more time and energy to focus on what matters: Learning.
+                you need. Leaving more time and energy to focus on what matters: Learning.
               </p>
             </Grid.Row>
           </Grid>
