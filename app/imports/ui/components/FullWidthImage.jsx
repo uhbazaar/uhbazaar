@@ -5,14 +5,14 @@ import LandingBar from './LandingBar';
 export default class FullWidthImage extends React.Component {
   render() {
     const mainContainerStyle = {
-      marginTop: '200px',
+      marginTop: '300px',
       paddingBottom: '128px',
       marginBottom: '64vh',
     };
     const logoContainerStyle = {
-      backgroundColor: '#feffff',
-      opacity: '0.8',
-      width: '60%',
+      backgroundColor: '#2b7a78',
+      // opacity: '0.8',
+      width: '200%',
       bottom: '0',
       borderRadius: '20px',
       paddingBottom: '16px',
@@ -26,26 +26,25 @@ export default class FullWidthImage extends React.Component {
       paddingLeft: '16px',
       paddingRight: '16px',
     };
-    const imageStyle = { opacity: '0.9' };
     return (
         <Container fluid style={mainContainerStyle}>
           <Grid verticalAlign='middle'>
-            <Container centered>
+            {/*<Container centered>*/}
 
-              <Container style={logoContainerStyle} centered>
-                <Image style={imageStyle} centered src='/images/uh-bazaar-logo.png' size='medium' circular/>
+              <Container style={logoContainerStyle} fixed>
 
-                <Header style={headerStyle} textAlign='center' size='huge'>
+
+                <Header style={headerStyle} textAlign='left' size='huge'>
                   A Marketplace for Students, By Students
                 </Header>
 
-                <Header style={headerStyle} textAlign='center' as='h3'>
+                <Header style={headerStyle} textAlign='left' as='h3'>
                   {/* eslint-disable-next-line */}
                   pass down, trade up, don't get burned
                 </Header>
               </Container>
 
-            </Container>
+            {/*</Container>*/}
           </Grid>
           <LandingBar/>
         </Container>

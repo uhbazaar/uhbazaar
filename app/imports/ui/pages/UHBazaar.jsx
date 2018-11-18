@@ -6,9 +6,7 @@ export default class UHBazaar extends React.Component {
     return (
         <div>
           {/* eslint-disable-next-line max-len */}
-          <style>{'body { background: url(\'https://farm2.staticflickr.com/1228/1273406911_5023b91baa_b.jpg\') no-repeat center center fixed; }'}</style>
-          <style>
-            {'body { background-size: cover; }'}
+          <style>{'body { background: rgba(222,242,241, 0.7) url(\'/images/uhsketch.png\') no-repeat center center fixed; background-blend-mode: overlay; }'}
           </style>
           <FullWidthImage/>
         </div>
