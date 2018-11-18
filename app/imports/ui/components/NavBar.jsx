@@ -12,7 +12,6 @@ class NavBar extends React.Component {
     const menuStyle = { /* marginBottom: '10px', */ backgroundColor: '#17252a', fontFamily: 'PT Sans Caption' };
     return (
         <Menu stackable style={menuStyle} attached="top" borderless inverted>
-
           <Menu.Item as={NavLink} activeClassName="" exact to="/">
             <Image size='medium' src='images/navbar-logo.png'/>
           </Menu.Item>
@@ -28,23 +27,23 @@ class NavBar extends React.Component {
                   </Dropdown.Menu>
                 </Dropdown>
             ) : (
-              <Menu.Item>
-                <Menu.Item position={'right'}>
-                  My Account
-                <Dropdown /*text={this.props.currentUser}*/ pointing="top right" icon={'dropdown'}>
-                  <Dropdown.Menu>
-                    <Dropdown.Item text="My Profile" as={NavLink} className="active" exact to="/userprofile" key='add'/>
-                    <Dropdown.Item text="Categories" as={NavLink} className="active" exact to="/categoriespage"
-                                   key='category'/>
-                    <Dropdown.Item text="Add New Item" as={NavLink} className="active" exact to="/createitem"
-                                   key='list'/>
-                    <Dropdown.Item text="Other Sellers" as={NavLink} className="active" exact to="/showusers"
-                                   key='show'/>
-                    <Dropdown.Item icon="sign out" text="Sign Out" as={NavLink} exact to="/signout"/>
-                  </Dropdown.Menu>
-                </Dropdown>
+                <Menu.Item>
+                  <Menu.Item position={'right'}>
+                    My Account
+                    <Dropdown /*text={this.props.currentUser}*/ pointing="top right" icon={'dropdown'}>
+                      <Dropdown.Menu>
+                        <Dropdown.Item text="My Profile" as={NavLink} exact to="/userprofile" key='add'/>
+                        <Dropdown.Item text="Categories" as={NavLink} exact to="/categoriespage"
+                                       key='category'/>
+                        <Dropdown.Item text="Add New Item" as={NavLink} exact to="/createitem"
+                                       key='list'/>
+                        <Dropdown.Item text="Other Sellers" as={NavLink} exact to="/showusers"
+                                       key='show'/>
+                        <Dropdown.Item icon="sign out" text="Sign Out" as={NavLink} exact to="/signout"/>
+                      </Dropdown.Menu>
+                    </Dropdown>
+                  </Menu.Item>
                 </Menu.Item>
-              </Menu.Item>
             )}
           </Menu.Item>
         </Menu>
