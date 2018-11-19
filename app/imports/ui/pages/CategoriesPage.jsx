@@ -23,7 +23,9 @@ class CategoriesPage extends React.Component {
         <div>
           <Grid verticalAlign='middle' style={gridStyleCards}>
             <Container>
-              <style>{'body {background-color: #def2f1;}'}</style>
+              {/*<style>{'body {background-color: #def2f1;}'}</style>*/}
+              <style>{'body { background: url(\'/images/merchendise.png\'); }'}
+              </style>
               <Card.Group doubling itemsPerRow='4'>
                 {this.props.categories.map((category) => <CategoriesMenu key={category._id} category={category}/>)}
               </Card.Group>
