@@ -1,51 +1,80 @@
 import React from 'react';
-import { Header, Container, Grid, Image } from 'semantic-ui-react';
+import { Header, Container, Grid, Button } from 'semantic-ui-react';
 import LandingBar from './LandingBar';
+import { Link } from 'react-router-dom';
+
 
 export default class FullWidthImage extends React.Component {
   render() {
     const mainContainerStyle = {
-      marginTop: '200px',
+      marginTop: '300px',
       paddingBottom: '128px',
       marginBottom: '64vh',
     };
     const logoContainerStyle = {
-      backgroundColor: '#feffff',
-      opacity: '0.8',
-      width: '60%',
+      // backgroundColor: '#2b7a78',
+      // opacity: '0.8',
+      width: '200%',
       bottom: '0',
       borderRadius: '20px',
       paddingBottom: '16px',
       paddingTop: '16px',
       marginBottom: '360px',
     };
-    const headerStyle = {
-      fontFamily: 'Cinzel',
+    const headerOneStyle = {
+      fontFamily: 'PT Sans Caption',
       opacity: '10 !important',
       color: '#17252a',
       paddingLeft: '16px',
       paddingRight: '16px',
+      fontSize: '80px',
     };
-    const imageStyle = { opacity: '0.9' };
+
+    const headerTwoStyle = {
+      fontFamily: 'PT Sans Caption',
+      marginLeft: '150px',
+      fontSize: '80px',
+      color: '#084543',
+    };
+    const buttonOneStyle = {
+      fontFamily: 'PT Sans Caption',
+      // color: '#084543',
+      // paddingLeft: '50px',
+      // paddingRight: '16px',
+      fontSize: '20px',
+
+    };
+
+    const buttonTwoStyle = {
+      fontFamily: 'PT Sans Caption',
+      fontSize: '20px',
+      marginLeft: '50px',
+    };
+
     return (
         <Container fluid style={mainContainerStyle}>
           <Grid verticalAlign='middle'>
-            <Container centered>
+            {/*<Container centered>*/}
 
-              <Container style={logoContainerStyle} centered>
-                <Image style={imageStyle} centered src='/images/uh-bazaar-logo.png' size='medium' circular/>
+            <Container style={logoContainerStyle} fixed>
+              <Header style={headerOneStyle} textAlign='center' size='70px'>
+                CLASSIFIED ADS AND COMMUNITY NOTICES FOR THE UHM OHANA
+              </Header>
 
-                <Header style={headerStyle} textAlign='center' size='huge'>
-                  A Marketplace for Students, By Students
-                </Header>
-
-                <Header style={headerStyle} textAlign='center' as='h3'>
-                  {/* eslint-disable-next-line */}
-                  pass down, trade up, don't get burned
-                </Header>
-              </Container>
-
+            <Grid centered>
+              <Link to={'/signup'}>
+              <Button basic color={'black'} style={buttonOneStyle}>
+                BECOME A MEMBER
+              </Button>
+              </Link>
+               <Link to={'/signin'}>
+              <Button color={'black'} style={buttonTwoStyle} >
+                LOGIN
+              </Button>
+               </Link>
+            </Grid>
             </Container>
+            {/*</Container>*/}
           </Grid>
           <LandingBar/>
         </Container>
