@@ -6,10 +6,11 @@ import { withRouter, NavLink } from 'react-router-dom';
 class CategoriesMenu extends React.Component {
 
   render() {
-      return (
+    const words = { fontFamily: 'Cinzel' };
+    return (
           <Card raised link as={NavLink} to={`/categorypage/${this.props.category.name}`}>
             <Card.Content>
-              <Card.Header>
+              <Card.Header style={words}>
                 <Icon size='big' name={this.props.category.icon}/> {`  ${this.props.category.name}`}</Card.Header>
             </Card.Content>
             <Card.Content extra>
