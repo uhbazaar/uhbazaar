@@ -16,7 +16,7 @@ class NavBar extends React.Component {
         <Menu stackable style={menuStyle} attached="top" borderless inverted>
 
           <Menu.Item as={NavLink} activeClassName="" exact to="/">
-            <Header style={headerStyle} inverted as='h1' content='UH Bazaar' textAlign='right'>
+            <Header style={headerStyle} inverted as='h1' textAlign='right'>
               <Image style={imageStyle} size='medium' src='images/uh-bazaar-logo.png' circular/>UH Bazaar
             </Header>
           </Menu.Item>
