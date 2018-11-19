@@ -34,9 +34,10 @@ class CreateItem extends React.Component {
 
   /** On submit, insert the data. */
   submit(data) {
-    const { item, price, image, category, description } = data;
+    const { title, price, location, image, category, description } = data;
     const owner = Meteor.user().username;
-    Items.insert({ item, price, image, category, description, owner }, this.insertCallback);
+    const date = '11/09/1998'
+    Items.insert({ title, price, location, image, category, description, owner, date }, this.insertCallback);
   }
 
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
@@ -57,14 +58,16 @@ class CreateItem extends React.Component {
                 this.formRef = ref;
               }} schema={ItemSchema} onSubmit={this.submit}>
                 <Segment>
-                  <TextField name='item'/>
+                  <TextField name='title'/>
                   <NumField name='price' decimal={false}/>
+                  <TextField name='location'/>
                   <TextField name='category'/>
                   <TextField name='image'/>
                   <LongTextField name='description'/>
                   <SubmitField value='Post'/>
                   <ErrorsField/>
                   <HiddenField name='owner' value='john@foo.com'/>
+                  <HiddenField name='date' value='john@foo.com'/>
                 </Segment>
               </AutoForm>
             </Grid.Column>
