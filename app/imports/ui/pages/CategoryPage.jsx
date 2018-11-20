@@ -1,10 +1,11 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Checkbox, Menu, Search, Icon, Sidebar, Grid } from 'semantic-ui-react';
+import { Checkbox, Menu, Search, Icon, Sidebar, Grid, Card } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import CategoryMenu from '../components/CategoryMenu';
 import { Categories } from '../../api/category/category';
+import { Items } from '../../api/item/item';
 import CategoriesMenu from '../components/CategoriesMenu';
 
 /** A simple static component to render some text for the landing page. */
@@ -25,6 +26,7 @@ class CategoryPage extends React.Component {
     const catSideMenu = {
       fontWeight: 'bold',
     };
+
     return (
 
         <div>
@@ -58,7 +60,8 @@ class CategoryPage extends React.Component {
             <Sidebar.Pusher >
               <Grid container style={mainContainerStyle}>
               <style>{'body {background-color: #def2f1;, color: }'}</style>
-                  <CategoryMenu/>
+                  <Card.Group>{this.props.items.filter(item => item.category === this.props.match.params.name).map((item) => <CategoryMenu key={item._id} item={item}/>)}
+                  </Card.Group>
               </Grid>
             </Sidebar.Pusher>
           </Sidebar.Pushable>
@@ -70,13 +73,18 @@ class CategoryPage extends React.Component {
 CategoryPage.propTypes = {
   match: PropTypes.object,
   categories: PropTypes.array.isRequired,
-
+  items: PropTypes.array.isRequired,
+  ready: PropTypes.bool.isRequired,
+  ready2: PropTypes.bool.isRequired,
 };
 
 export default withTracker(() => {
   const subscription = Meteor.subscribe('Categories');
+  const itemSubscription = Meteor.subscribe('Items');
   return {
     categories: Categories.find({}).fetch(),
-    ready: subscription.ready(),
+    items: Items.find({}).fetch(),
+    ready: itemSubscription.ready(),
+    ready2: subscription.ready(),
   };
 })(CategoryPage);
