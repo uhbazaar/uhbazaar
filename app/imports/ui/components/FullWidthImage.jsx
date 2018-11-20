@@ -55,8 +55,8 @@ export default class FullWidthImage extends React.Component {
         <Container fluid style={mainContainerStyle}>
           <Grid verticalAlign='middle'>
 
-            <Container style={logoContainerStyle} fixed>
-              <Header style={headerOneStyle} textAlign='center' size='70px'>
+            <Container style={logoContainerStyle}>
+              <Header style={headerOneStyle} textAlign='center'>
                 CLASSIFIED ADS AND COMMUNITY NOTICES FOR THE UHM OHANA
               </Header>
 
