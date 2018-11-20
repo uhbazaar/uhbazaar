@@ -13,7 +13,7 @@ class NavBar extends React.Component {
     return (
         <Menu stackable style={menuStyle} attached="top" borderless inverted>
           <Menu.Item as={NavLink} activeClassName="" exact to="/">
-            <Image size='medium' src='images/navbar-logo.png'/>
+            <Image size='mini' src='images/navbar-logo.png'/>
           </Menu.Item>
           {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
               <Menu.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'>Admin</Menu.Item>
