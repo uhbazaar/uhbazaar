@@ -9,16 +9,14 @@ import { Roles } from 'meteor/alanning:roles';
 /** The NavBar appears at the top of every page. Rendered by the App Layout component. */
 class NavBar extends React.Component {
   render() {
-    const menuStyle = { /* marginBottom: '10px', */ backgroundColor: '#17252a', fontFamily: 'Cinzel' };
+    const menuStyle = { /* marginBottom: '10px', */ backgroundColor: '#17252a', fontFamily: 'PT Sans Caption' };
     const headerStyle = { fontFamily: 'Cinzel' };
     const imageStyle = { marginTop: '0', marginBottom: '4px' };
     return (
         <Menu stackable style={menuStyle} attached="top" borderless inverted>
 
           <Menu.Item as={NavLink} activeClassName="" exact to="/">
-            <Header style={headerStyle} inverted as='h1' content='UH Bazaar' textAlign='right'>
-              <Image style={imageStyle} size='medium' src='images/uh-bazaar-logo.png' circular/>UH Bazaar
-            </Header>
+              <Image style={imageStyle} size='medium' src='images/navbar-logo.png'/>
           </Menu.Item>
           {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
               <Menu.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'>Admin</Menu.Item>
@@ -33,11 +31,11 @@ class NavBar extends React.Component {
                   </Dropdown.Menu>
                 </Dropdown>
             ) : (
-                <Dropdown text={this.props.currentUser} pointing="top right" icon={'user'}>
+                <Dropdown text="My Account" pointing="top right" icon={'user'}>
                   <Dropdown.Menu>
-                    <Dropdown.Item text="My Account" as={NavLink} className="active" exact to="/userprofile" key='add'/>
-                      <Dropdown.Item text="Categories" as={NavLink} className="active" exact to="/categoriespage" key='category'/>
-                      <Dropdown.Item text="Add New Item" as={NavLink} className="active" exact to="/createitem" key='list'/>
+                    <Dropdown.Item text="My Account" as={NavLink} className="" exact to="/userprofile" key='add'/>
+                      <Dropdown.Item text="Categories" as={NavLink} className="" exact to="/categoriespage" key='category'/>
+                      <Dropdown.Item text="Add New Item" as={NavLink} className="" exact to="/createitem" key='list'/>
                       <Dropdown.Item text="Other Sellers" as={NavLink} className="" exact to="/showusers" key='show'/>
                     <Dropdown.Item icon="sign out" text="Sign Out" as={NavLink} exact to="/signout"/>
                     </Dropdown.Menu>
