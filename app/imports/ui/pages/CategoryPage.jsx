@@ -10,7 +10,15 @@ import CategoriesMenu from '../components/CategoriesMenu';
 
 /** A simple static component to render some text for the landing page. */
 class CategoryPage extends React.Component {
-  state = { visible: true };
+  constructor(props) {
+    super(props);
+    this.state = { visible: true };
+  }
+
+  sortByItem(items, cat) {
+    console.log(_.sortBy(items, 'name'));
+      return items.filter(item => item.category === cat).map((item) => <CategoryMenu key={item._id} item={item}/>);
+  }
 
   render() {
     const { visible } = this.state;
@@ -42,26 +50,27 @@ class CategoryPage extends React.Component {
                 </Menu.Header>
               </Menu.Item>
               <Menu.Item as='a'>
-                <Search />
+                <Search/>
               </Menu.Item>
               <Menu.Item as='a'>
-                <Checkbox label='Name' />
+                <Checkbox label='Name'/>
               </Menu.Item>
               <Menu.Item as='a'>
-                <Checkbox label='Date' />
+                <Checkbox label='Date'/>
               </Menu.Item>
               <Menu.Item as='a'>
-                <Checkbox label='Price' />
+                <Checkbox label='Price'/>
               </Menu.Item>
-              <Menu.Item style={catSideMenu }>
+              <Menu.Item style={catSideMenu}>
                 {this.props.categories.map((category) => <CategoriesMenu key={category._id} category={category}/>)}
               </Menu.Item>
             </Sidebar>
-            <Sidebar.Pusher >
+            <Sidebar.Pusher>
               <Grid container style={mainContainerStyle}>
-              <style>{'body {background-color: #def2f1;, color: }'}</style>
-                  <Card.Group>{this.props.items.filter(item => item.category === this.props.match.params.name).map((item) => <CategoryMenu key={item._id} item={item}/>)}
-                  </Card.Group>
+                <style>{'body {background-color: #def2f1;, color: }'}</style>
+                <Card.Group>
+                  {this.sortByItem(this.props.items, this.props.match.params.name)}
+                </Card.Group>
               </Grid>
             </Sidebar.Pusher>
           </Sidebar.Pushable>
