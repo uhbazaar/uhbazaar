@@ -23,8 +23,8 @@ class CategoriesPage extends React.Component {
         <div>
           <Grid verticalAlign='middle' style={gridStyleCards}>
             <Container>
-              {/*<style>{'body {background-color: #def2f1;}'}</style>*/}
-              <style>{'body { background: url(\'/images/merchendise.png\'); }'}
+              <style>{'body { background: rgba(222,242,241, 0.7) url(\'/images/merchendise.png\');' +
+              ' background-blend-mode: overlay;}'}
               </style>
               <Card.Group doubling itemsPerRow='4'>
                 {this.props.categories.map((category) => <CategoriesMenu key={category._id} category={category}/>)}

@@ -6,8 +6,7 @@ class CategoryMenu extends React.Component {
 
   render() {
     return (
-          <Grid className='ui link cards' verticalAlign='middle'>
-              <Card.Group centered itemsPerRow={4}>
+              <Card.Group >
                 <Card>
                   <Image src='images/backpack.jpg'/>
                   <Card.Content>
@@ -114,7 +113,6 @@ class CategoryMenu extends React.Component {
                   </Card.Content>
                 </Card>
               </Card.Group>
-          </Grid>
     );
   }
 }
