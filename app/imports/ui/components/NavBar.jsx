@@ -13,7 +13,7 @@ class NavBar extends React.Component {
     return (
         <Menu stackable style={menuStyle} attached="top" borderless inverted>
           <Menu.Item as={NavLink} activeClassName="" exact to="/">
-            <Image size='mini' src='images/navbar-logo.png'/>
+            <Image size='medium' src='images/navbar-logo.png'/>
           </Menu.Item>
           {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
               <Menu.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'>Admin</Menu.Item>
@@ -29,8 +29,7 @@ class NavBar extends React.Component {
             ) : (
                 <Menu.Item>
                   <Menu.Item position={'right'}>
-                    My Account
-                    <Dropdown /*text={this.props.currentUser}*/ pointing="top right" icon={'dropdown'}>
+                    <Dropdown text='My Account' pointing="top right" icon={'dropdown'}>
                       <Dropdown.Menu>
                         <Dropdown.Item text="My Profile" as={NavLink} exact to="/userprofile" key='add'/>
                         <Dropdown.Item text="Categories" as={NavLink} exact to="/categoriespage"
