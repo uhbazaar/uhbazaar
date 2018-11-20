@@ -39,6 +39,15 @@ export default class Signin extends React.Component {
 
   /** Render the signin form. */
   render() {
+
+    const signInStyle = {
+      fontFamily: 'PT Sans Caption',
+    };
+    const headerLoginStyle = {
+      fontFamily: 'PT Sans Caption',
+      paddingTop: '10px',
+
+    };
     const { from } = this.props.location.state || { from: { pathname: '/' } };
     // if correct authentication, redirect to page instead of login screen
     if (this.state.redirectToReferer) {
@@ -46,12 +55,11 @@ export default class Signin extends React.Component {
     }
     // Otherwise return the Login form.
     return (
-        <Container>
+        <Container style={signInStyle}>
           <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
             <Grid.Column>
-              <Header as="h2" textAlign="center">
-                Login to your account
-              </Header>
+              <Header as="h2" textAlign="center" style={headerLoginStyle}>
+                LOGIN TO YOUR ACCOUNT </Header>
               <Form onSubmit={this.handleSubmit}>
                 <Segment stacked>
                   <Form.Input
@@ -76,7 +84,7 @@ export default class Signin extends React.Component {
                 </Segment>
               </Form>
               <Message>
-                <Link to="/signup">Click here to Register</Link>
+                <Link to="/signup">CLICK HERE TO REGISTER</Link>
               </Message>
               {this.state.error === '' ? (
                   ''

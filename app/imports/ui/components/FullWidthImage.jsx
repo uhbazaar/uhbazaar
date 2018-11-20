@@ -1,7 +1,7 @@
 import React from 'react';
 import { Header, Container, Grid, Button } from 'semantic-ui-react';
-import LandingBar from './LandingBar';
 import { Link } from 'react-router-dom';
+import LandingBar from './LandingBar';
 
 
 export default class FullWidthImage extends React.Component {
@@ -54,7 +54,6 @@ export default class FullWidthImage extends React.Component {
     return (
         <Container fluid style={mainContainerStyle}>
           <Grid verticalAlign='middle'>
-            {/*<Container centered>*/}
 
             <Container style={logoContainerStyle} fixed>
               <Header style={headerOneStyle} textAlign='center' size='70px'>
@@ -74,7 +73,6 @@ export default class FullWidthImage extends React.Component {
                </Link>
             </Grid>
             </Container>
-            {/*</Container>*/}
           </Grid>
           <LandingBar/>
         </Container>
