@@ -1,12 +1,11 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Checkbox, Menu, Search, Icon, Sidebar } from 'semantic-ui-react';
+import { Checkbox, Menu, Search, Icon, Sidebar, Grid } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import CategoryMenu from '../components/CategoryMenu';
 import { Categories } from '../../api/category/category';
 import CategoriesMenu from '../components/CategoriesMenu';
-import { Card } from 'semantic-ui-react/dist/commonjs/views/Card/Card';
 
 /** A simple static component to render some text for the landing page. */
 class CategoryPage extends React.Component {
@@ -57,10 +56,10 @@ class CategoryPage extends React.Component {
               </Menu.Item>
             </Sidebar>
             <Sidebar.Pusher >
-              <Container style={mainContainerStyle}>
+              <Grid container style={mainContainerStyle}>
               <style>{'body {background-color: #def2f1;, color: }'}</style>
                   <CategoryMenu/>
-              </Container>
+              </Grid>
             </Sidebar.Pusher>
           </Sidebar.Pushable>
         </div>

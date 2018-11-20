@@ -1,12 +1,12 @@
 import React from 'react';
-import { Card, Icon, Image, Grid } from 'semantic-ui-react';
+import { Card, Icon, Image } from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
 
 class CategoryMenu extends React.Component {
 
   render() {
     return (
-              <Card.Group >
+              <Card.Group>
                 <Card>
                   <Image src='images/backpack.jpg'/>
                   <Card.Content>
