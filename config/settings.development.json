@@ -71,70 +71,64 @@
 
   "defaultItems": [
     {
-      "name": "Rosen Text Book",
+      "title": "Rosen Text Book",
       "date": "10/28/2018",
-      "path": "rosen.jpeg",
+      "image": "rosen.jpeg",
       "category": "Books",
       "price": "30",
       "description": "A discrete mathematics text book for ics students, contains material for ICS 141/241",
       "location": "Kapahulu",
-      "seller": "john@foo.com",
-      "showCased": false
+      "owner": "john@foo.com"
     },
     {
-      "name": "CLRS Text Book",
+      "title": "CLRS Text Book",
       "date": "10/29/2018",
-      "path": "textbook.jpeg",
+      "image": "textbook.jpeg",
       "category": "Books",
       "price": "45",
       "description": "An algorithms text book for ics students, contains material for ICS 311. This book is the second most cited book in computer science. ",
       "location": "Eva",
-      "seller": "john@foo.com",
-      "showCased": false
+      "owner": "john@foo.com"
     },
     {
-      "name": "Algorithms and Data Structures",
+      "title": "Algorithms and Data Structures",
       "date": "10/03/2018",
-      "path": "dataStruct.jpeg",
+      "image": "dataStruct.jpeg",
       "category": "Books",
       "price": "20",
       "description": "An algorithms text book. Not sure what class this is for ",
       "location": "Manoa",
-      "seller": "john@foo.com",
-      "showCased": false
+      "owner": "john@foo.com"
     },
     {
-      "name": "The C Programming Language",
+      "title": "The C Programming Language",
       "date": "10/20/2018",
-      "path": "Clan.jpeg",
+      "image": "Clan.jpeg",
       "category": "Books",
       "price": "45",
       "description": "The one and only complete guide to the C Programming Language",
       "location": "Liliha",
-      "seller": "john@foo.com",
-      "showCased": false
+      "owner": "john@foo.com"
     },
     {
-      "name": "89 Toyota Pickup",
+      "title": "89 Toyota Pickup",
       "date": "10/28/18",
-      "path": "hardbody.jpg",
+      "image": "hardbody.jpg",
       "category": "Vehicles",
       "price": "5000",
       "description": "Get rust, but still runs cherry",
       "location": "East Oahu",
-      "seller": "john@foo.com",
-      "showCased": false
+      "owner": "john@foo.com"
     },
     {
-      "name": "Free Otter Pops",
+      "title": "Free Otter Pops",
       "date": "11/3/18",
-      "path": "pops.jpeg",
+      "image": "pops.jpeg",
       "category": "Free",
       "price": "0",
       "description": "I hate these things please take them",
       "location": "Uh Dorms",
-      "seller": "john@foo.com",
-      "showCased": false
+      "owner": "john@foo.com"
     }
   ]
 }

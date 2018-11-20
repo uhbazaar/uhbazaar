@@ -8,7 +8,7 @@ class CategoryMenu extends React.Component {
   render() {
     return (
                 <Card raised link>
-                  <Image src={`images/${this.props.item.path}`}/>
+                  <Image src={`images/${this.props.item.image}`}/>
                   <Card.Content>
                     <Card.Header>{this.props.item.name}</Card.Header>
                     <Card.Description>{this.props.item.description}</Card.Description>
@@ -21,7 +21,7 @@ class CategoryMenu extends React.Component {
                     <span className='location'>{this.props.item.location}</span>
                   </Card.Content>
                   <Card.Content extra>
-                    <span className='seller'>{this.props.item.seller}</span>
+                    <span className='seller'>{this.props.item.owner}</span>
                   </Card.Content>
                 </Card>
     );
