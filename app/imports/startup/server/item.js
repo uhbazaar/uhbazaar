@@ -3,7 +3,14 @@ import { Items } from '../../api/item/item.js';
 
 /** Initialize the database with a default data document. */
 function addData(data) {
-  console.log(`  Adding: ${data.name} `);
+  console.log(`  Adding: ${data.title}`);
+  console.log(`  Adding: ${data.date}`);
+  console.log(`  Adding: ${data.image}`);
+  console.log(`  Adding: ${data.category}`);
+  console.log(`  Adding: ${data.price}`);
+  console.log(`  Adding: ${data.description}`);
+  console.log(`  Adding: ${data.location}`);
+  console.log(`  Adding: ${data.uwner}`);
   Items.insert(data);
 }
 
