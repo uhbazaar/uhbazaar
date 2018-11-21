@@ -50,7 +50,7 @@ class EditUserProfile extends React.Component {
                   <LongTextField name='description'/>
                   <TextField name='image'/>
                   <SubmitField value='Submit'/>
-                  <Link to={`/userprofile/`}>
+                  <Link to={'/userprofile/'}>
                     <Button floated='right'>Back to Profile</Button>
                   </Link>
                   <ErrorsField/>

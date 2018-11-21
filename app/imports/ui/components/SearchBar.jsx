@@ -6,7 +6,6 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { Search, Grid } from 'semantic-ui-react';
 import { Items } from '../../api/item/item';
 
-
 class SearchBar extends Component {
   componentWillMount() {
     this.resetComponent();
@@ -23,22 +22,24 @@ class SearchBar extends Component {
       if (this.state.value.length < 1) return this.resetComponent();
 
       const re = new RegExp(_.escapeRegExp(this.state.value), 'i');
-      const isMatch = result => re.test(result.title);
+      const isMatch = result => re.test(result.title) || re.test(result.price) || re.test(result.location);
 
       this.setState({
         isLoading: false,
         results: _.filter(Items.find({}).fetch(), isMatch),
       });
+      return true;
     }, 300);
   }
 
   render() {
     const { isLoading, value, results } = this.state;
-
+    const gridStyle = { marginRight: '0' };
     return (
-        <Grid>
+        <Grid style={gridStyle}>
           <Grid.Column width={6}>
             <Search
+                placeholder='Search by item'
                 loading={isLoading}
                 onResultSelect={this.handleResultSelect}
                 onSearchChange={_.debounce(this.handleSearchChange, 500, { leading: true })}
