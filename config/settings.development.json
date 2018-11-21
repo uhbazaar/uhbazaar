@@ -104,19 +104,48 @@
   ],
   "defaultItems": [
     {
-      "title": "John Deer Mower",
-      "date": "10/29/18",
-      "image": "/images/lawn-mower.jpeg",
-      "category": "Vehicles",
-      "price": "1200",
-      "description": "After some years of mowing dem lawns for you fine folks, its about time I retired.",
-      "location": "Kalihi",
+      "title": "Rosen Text Book",
+      "date": "10/28/2018",
+      "image": "rosen.jpeg",
+      "category": "Books",
+      "price": "30",
+      "description": "A discrete mathematics text book for ics students, contains material for ICS 141/241",
+      "location": "Kapahulu",
       "owner": "john@foo.com"
+    },
+    {
+      "title": "CLRS Text Book",
+      "date": "10/29/2018",
+      "image": "textbook.jpeg",
+      "category": "Books",
+      "price": "45",
+      "description": "An algorithms text book for ics students, contains material for ICS 311. This book is the second most cited book in computer science. ",
+      "location": "Eva",
+      "owner": "john@foo.com"
+    },
+    {
+      "title": "Algorithms and Data Structures",
+      "date": "10/03/2018",
+      "image": "dataStruct.jpeg",
+      "category": "Books",
+      "price": "20",
+      "description": "An algorithms text book. Not sure what class this is for ",
+      "location": "Manoa",
+      "owner": "john@foo.com"
+    },
+    {
+      "title": "The C Programming Language",
+      "date": "10/20/2018",
+      "image": "Clan.jpeg",
+      "category": "Books",
+      "price": "45",
+      "description": "The one and only complete guide to the C Programming Language",
+      "location": "Liliha"
     },
     {
       "title": "89 Toyota Pickup",
       "date": "10/28/18",
-      "image": "/images/hardbody.jpg",
+      "image": "hardbody.jpg",
       "category": "Vehicles",
       "price": "5000",
       "description": "Get rust, but still runs cherry",
@@ -126,7 +155,7 @@
     {
       "title": "Free Otter Pops",
       "date": "11/3/18",
-      "image": "/images/pops.jpeg",
+      "image": "pops.jpeg",
       "category": "Free",
       "price": "0",
       "description": "I hate these things please take them",
