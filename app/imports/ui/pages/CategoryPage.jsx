@@ -16,7 +16,7 @@ class CategoryPage extends React.Component {
   }
 
   sortByItem(items, cat) {
-    const stuff = _.sortBy(items, 'name');
+    const stuff = _.sortBy(items, 'title');
     return stuff.filter(item => item.category === cat).map((item) => <CategoryMenu key={item._id} item={item}/>);
   }
 

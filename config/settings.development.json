@@ -140,7 +140,8 @@
       "category": "Books",
       "price": "45",
       "description": "The one and only complete guide to the C Programming Language",
-      "location": "Liliha"
+      "location": "Liliha",
+      "owner": "john@foo.com"
     },
     {
       "title": "89 Toyota Pickup",
