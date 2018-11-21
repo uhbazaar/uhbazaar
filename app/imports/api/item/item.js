@@ -8,13 +8,13 @@ const Items = new Mongo.Collection('Items');
 /** Create a schema to constrain the structure of documents associated with this collection. */
 const ItemSchema = new SimpleSchema({
   title: String,
-  date: String,
+  price: Number,
+  owner: String,
+  description: String,
   image: String,
   category: String,
-  price: String,
-  description: String,
   location: String,
-  owner: String,
+  date: String,
 }, { tracker: Tracker });
 
 /** Attach this schema to the collection. */

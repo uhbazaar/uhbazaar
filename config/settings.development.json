@@ -36,7 +36,6 @@
       "condition": "excellent"
     }
   ],
-
   "defaultUsers": [
     {
       "firstName": "Zak",
@@ -53,22 +52,56 @@
       "username": "admin@foo.com"
     }
   ],
-
   "defaultCategories": [
-    { "name": "Books", "icon": "book" },
-    { "name": "Furniture", "icon": "bed" },
-    { "name": "Vehicles", "icon": "truck" },
-    { "name": "Personals", "icon": "heart" },
-    { "name": "Free", "icon": "circle"},
-    { "name": "Housing", "icon": "home" },
-    { "name": "Pets", "icon": "sticker mule" },
-    { "name": "Sporting Goods", "icon": "football ball" },
-    { "name": "Electronics", "icon": "computer" },
-    { "name": "Jobs", "icon": "money bill alternate" },
-    { "name": "Tutoring", "icon": "pencil alternate" },
-    { "name": "Community", "icon": "handshake" }
+    {
+      "name": "Books",
+      "icon": "book"
+    },
+    {
+      "name": "Furniture",
+      "icon": "bed"
+    },
+    {
+      "name": "Vehicles",
+      "icon": "truck"
+    },
+    {
+      "name": "Personals",
+      "icon": "heart"
+    },
+    {
+      "name": "Free",
+      "icon": "circle"
+    },
+    {
+      "name": "Housing",
+      "icon": "home"
+    },
+    {
+      "name": "Pets",
+      "icon": "sticker mule"
+    },
+    {
+      "name": "Sporting Goods",
+      "icon": "football ball"
+    },
+    {
+      "name": "Electronics",
+      "icon": "computer"
+    },
+    {
+      "name": "Jobs",
+      "icon": "money bill alternate"
+    },
+    {
+      "name": "Tutoring",
+      "icon": "pencil alternate"
+    },
+    {
+      "name": "Community",
+      "icon": "handshake"
+    }
   ],
-
   "defaultItems": [
     {
       "title": "Rosen Text Book",
@@ -108,7 +141,6 @@
       "price": "45",
       "description": "The one and only complete guide to the C Programming Language",
       "location": "Liliha",
-      "owner": "john@foo.com"
     },
     {
       "title": "89 Toyota Pickup",
