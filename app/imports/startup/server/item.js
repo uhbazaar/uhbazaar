@@ -10,7 +10,7 @@ function addData(data) {
   console.log(`  Adding: ${data.price}`);
   console.log(`  Adding: ${data.description}`);
   console.log(`  Adding: ${data.location}`);
-  console.log(`  Adding: ${data.uwner}`);
+  console.log(`  Adding: ${data.owner}`);
   Items.insert(data);
 }
 
