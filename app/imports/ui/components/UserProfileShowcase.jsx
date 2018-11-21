@@ -1,53 +1,29 @@
 import React from 'react';
-import { Grid, Card, Button, Icon, Feed } from 'semantic-ui-react';
+import { Grid, Card, Button, Icon, Item } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+import { withTracker } from 'meteor/react-meteor-data';
+import { Meteor } from 'meteor/meteor';
+import ShowcaseItem from './ShowcaseItem';
+import { Items } from '../../api/item/item';
 
-export default class UserShowCase extends React.Component {
+class UserShowCase extends React.Component {
   render() {
     const showcaseStyle = { marginTop: '8px', marginBottom: '128px' };
     const cardColor = { backgroundColor: '#feffff' };
     const cardFontStyle = { color: '#17252a' };
+    const buttonStyle = { marginTop: '16px' };
     return (
         <Grid container centered style={showcaseStyle}>
 
           <Card style={cardColor}>
             <Card.Content>
-              <Card.Header style={cardFontStyle}><Icon name='trophy' circular/>Showcase</Card.Header>
+              <Card.Header style={cardFontStyle}><Icon name='warehouse' circular/>My Stuff</Card.Header>
             </Card.Content>
             <Card.Content>
-              <Feed>
-                <Feed.Event>
-                  <Feed.Label image='/images/backpack.jpg'/>
-                  <Feed.Content>
-                    <Feed.Date content='1 day ago'/>
-                    <Feed.Summary style={cardFontStyle}>
-                      Backpack
-                      <Button floated='right'>View</Button>
-                    </Feed.Summary>
-                  </Feed.Content>
-                </Feed.Event>
-
-                <Feed.Event>
-                  <Feed.Label image='/images/scooter.jpeg'/>
-                  <Feed.Content>
-                    <Feed.Date content='3 days ago'/>
-                    <Feed.Summary style={cardFontStyle}>
-                      Razor Scooter
-                      <Button floated='right'>View</Button>
-                    </Feed.Summary>
-                  </Feed.Content>
-                </Feed.Event>
-
-                <Feed.Event>
-                  <Feed.Label image='/images/textbook.jpeg'/>
-                  <Feed.Content>
-                    <Feed.Date content='4 days ago'/>
-                    <Feed.Summary style={cardFontStyle}>
-                      CLRS Textbook
-                      <Button floated='right'>View</Button>
-                    </Feed.Summary>
-                  </Feed.Content>
-                </Feed.Event>
-              </Feed>
+              <Item.Group>
+                {this.props.item.map((item, index) => <ShowcaseItem key={index}
+                                                                 item={item}/>)}
+              </Item.Group>
             </Card.Content>
           </Card>
 
@@ -55,3 +31,18 @@ export default class UserShowCase extends React.Component {
     );
   }
 }
+
+UserShowCase.propTypes = {
+  item: PropTypes.array.isRequired,
+  ready: PropTypes.bool.isRequired,
+};
+
+/** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
+export default withTracker(() => {
+  // Get access to Stuff documents.
+  const subscription = Meteor.subscribe('Items');
+  return {
+    item: Items.find({}).fetch(),
+    ready: (subscription.ready()),
+  };
+})(UserShowCase);
