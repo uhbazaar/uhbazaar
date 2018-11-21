@@ -8,7 +8,6 @@ import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import ListItem from '../pages/ListItem';
 import UHBazaar from '../pages/UHBazaar';
-import ListStuff from '../pages/ListStuff';
 import ListStuffAdmin from '../pages/ListStuffAdmin';
 import AddStuff from '../pages/NotifyAdmin';
 import CreateItem from '../pages/CreateItem';
@@ -40,7 +39,6 @@ class App extends React.Component {
               <Route path="/showusers" component={ShowUsers}/>
               <ProtectedRoute path="/list" component={ListItem}/>
               <Route path="/categorypage/:name" component={CategoryPage}/>
-              <ProtectedRoute path="/list" component={ListStuff}/>
               <ProtectedRoute path="/add" component={AddStuff}/>
               <ProtectedRoute path="/createitem" component={CreateItem}/>
               <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
