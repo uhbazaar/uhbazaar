@@ -110,7 +110,7 @@
     {
       "title": "Rosen Text Book",
       "date": "10/28/2018",
-      "image": "rosen.jpeg",
+      "image": "images/rosen.jpeg",
       "category": "Books",
       "price": "30",
       "description": "A discrete mathematics text book for ics students, contains material for ICS 141/241",
@@ -120,7 +120,7 @@
     {
       "title": "CLRS Text Book",
       "date": "10/29/2018",
-      "image": "textbook.jpeg",
+      "image": "images/textbook.jpeg",
       "category": "Books",
       "price": "45",
       "description": "An algorithms text book for ics students, contains material for ICS 311. This book is the second most cited book in computer science. ",
@@ -130,7 +130,7 @@
     {
       "title": "Algorithms and Data Structures",
       "date": "10/03/2018",
-      "image": "dataStruct.jpeg",
+      "image": "images/dataStruct.jpeg",
       "category": "Books",
       "price": "20",
       "description": "An algorithms text book. Not sure what class this is for ",
@@ -140,7 +140,7 @@
     {
       "title": "The C Programming Language",
       "date": "10/20/2018",
-      "image": "Clan.jpeg",
+      "image": "images/Clan.jpeg",
       "category": "Books",
       "price": "45",
       "description": "The one and only complete guide to the C Programming Language",
@@ -150,7 +150,7 @@
     {
       "title": "89 Toyota Pickup",
       "date": "10/28/18",
-      "image": "hardbody.jpg",
+      "image": "images/hardbody.jpg",
       "category": "Vehicles",
       "price": "5000",
       "description": "Get rust, but still runs cherry",
@@ -160,7 +160,7 @@
     {
       "title": "Free Otter Pops",
       "date": "11/3/18",
-      "image": "pops.jpeg",
+      "image": "images/pops.jpeg",
       "category": "Free",
       "price": "0",
       "description": "I hate these things please take them",

@@ -17,6 +17,7 @@
     "semantic-ui-css": "^2.4.0",
     "semantic-ui-react": "^0.82.5",
     "simpl-schema": "^1.5.3",
+    "underscore": "^1.9.1",
     "uniforms": "^1.25.0",
     "uniforms-semantic": "^1.25.0"
   },

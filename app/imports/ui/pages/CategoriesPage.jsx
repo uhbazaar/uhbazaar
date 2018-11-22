@@ -3,11 +3,17 @@ import { Meteor } from 'meteor/meteor';
 import { Container, Grid, Card, Loader } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
+import { sortBy } from 'underscore';
 import { Categories } from '../../api/category/category';
 import CategoriesMenu from '../components/CategoriesMenu';
 
 /** A simple static component to render some text for the landing page. */
 class CategoriesPage extends React.Component {
+
+  sortByItem(categories) {
+    const stuff = sortBy(categories, 'name');
+    return stuff.map((category) => <CategoriesMenu key={category._id} category={category}/>);
+  }
 
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
@@ -27,7 +33,7 @@ class CategoriesPage extends React.Component {
               ' background-blend-mode: overlay;}'}
               </style>
               <Card.Group doubling itemsPerRow='4'>
-                {this.props.categories.map((category) => <CategoriesMenu key={category._id} category={category}/>)}
+                { this.sortByItem(this.props.categories) }
               </Card.Group>
             </Container>
           </Grid>

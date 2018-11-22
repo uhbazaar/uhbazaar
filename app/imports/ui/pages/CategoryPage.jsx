@@ -3,6 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { Checkbox, Menu, Search, Icon, Sidebar, Grid, Card } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
+import { sortBy } from 'underscore';
 import CategoryMenu from '../components/CategoryMenu';
 import { Categories } from '../../api/category/category';
 import { Items } from '../../api/item/item';
@@ -18,7 +19,7 @@ class CategoryPage extends React.Component {
   }
 
   sortByItem(items, cat, sortKey) {
-    const stuff = _.sortBy(items, sortKey);
+    const stuff = sortBy(items, sortKey);
     return stuff.filter(item => item.category === cat).map((item) => <CategoryMenu key={item._id} item={item}/>);
   }
 
