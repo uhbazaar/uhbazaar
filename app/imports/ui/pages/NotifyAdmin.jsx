@@ -1,15 +1,13 @@
 import React from 'react';
-import { Stuffs, StuffSchema } from '/imports/api/stuff/stuff';
+import { StuffSchema } from '/imports/api/stuff/stuff';
 import { Grid, Segment, Header } from 'semantic-ui-react';
 import AutoForm from 'uniforms-semantic/AutoForm';
 import TextField from 'uniforms-semantic/TextField';
 import LongTextField from 'uniforms-semantic/LongTextField';
 import SelectField from 'uniforms-semantic/SelectField';
 import SubmitField from 'uniforms-semantic/SubmitField';
-import HiddenField from 'uniforms-semantic/HiddenField';
 import ErrorsField from 'uniforms-semantic/ErrorsField';
 import { Bert } from 'meteor/themeteorchef:bert';
-import { Meteor } from 'meteor/meteor';
 
 /** Renders the Page for adding a document. */
 class NotifyAdmin extends React.Component {
@@ -33,7 +31,7 @@ class NotifyAdmin extends React.Component {
   }
 
   /** On submit, insert the data. */
-  submit(data) {
+  submit() {
     // const { name, quantity, condition } = data;
     // const owner = Meteor.user().username;
     // Stuffs.insert({ name, quantity, condition, owner }, this.insertCallback);

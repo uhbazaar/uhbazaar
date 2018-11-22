@@ -41,7 +41,7 @@ class CategoryPage extends React.Component {
     const mainContainerStyle = {
       paddingTop: '20px',
       paddingBottom: '20px',
-      marginBottom: '24vh',
+      marginBottom: '60vh',
     };
     const catSideMenu = {
       fontWeight: 'bold',
@@ -80,6 +80,7 @@ class CategoryPage extends React.Component {
                 as={Menu}
                 vertical
                 visible={visible}
+                style={mainContainerStyle}
                 width='wide'>
               <Menu.Item>
                 <Menu.Header style={titleStyle}>
