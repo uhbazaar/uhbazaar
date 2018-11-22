@@ -13,11 +13,13 @@ import CategoriesMenu from '../components/CategoriesMenu';
 class CategoryPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { visible: true,
-                   sorter: 'date',
-                   titleIsActive: false,
-                   dateIsActive: true,
-                   priceIsActive: false };
+    this.state = {
+      visible: true,
+      sorter: 'date',
+      titleIsActive: false,
+      dateIsActive: true,
+      priceIsActive: false,
+    };
   }
 
   sortByItem(items, cat, sortKey) {
@@ -44,6 +46,32 @@ class CategoryPage extends React.Component {
     const catSideMenu = {
       fontWeight: 'bold',
     };
+
+    const titleSort = (
+        <Checkbox checked={this.state.titleIsActive} onClick={() => this.setState({
+          sorter: 'title',
+          titleIsActive: true,
+          dateIsActive: false,
+          priceIsActive: false,
+        })} label='Title'/>
+    );
+    const dateSort = (
+        <Checkbox checked={this.state.dateIsActive} onClick={() => this.setState({
+          sorter: 'date',
+          titleIsActive: false,
+          dateIsActive: true,
+          priceIsActive: false,
+        })} label='Date'/>
+    );
+    const priceSort = (
+        <Checkbox checked={this.state.priceIsActive} onClick={() => this.setState({
+          sorter: 'price',
+          titleIsActive: false,
+          dateIsActive: false,
+          priceIsActive: true,
+        })} label='Price'/>
+    );
+
     return (
 
         <div>
@@ -62,16 +90,16 @@ class CategoryPage extends React.Component {
                 <Search/>
               </Menu.Item>
               <Menu.Item>
-                <Checkbox checked={this.state.titleIsActive} onClick={() => this.setState({ sorter: 'title', titleIsActive: true, dateIsActive: false, priceIsActive: false })} label='Title'/>
+                {titleSort}
               </Menu.Item>
               <Menu.Item>
-                <Checkbox checked={this.state.dateIsActive} onClick={() => this.setState({ sorter: 'date', titleIsActive: false, dateIsActive: true, priceIsActive: false })} label='Date'/>
+                {dateSort}
               </Menu.Item>
               <Menu.Item>
-                <Checkbox checked={this.state.priceIsActive} onClick={() => this.setState({ sorter: 'price', titleIsActive: false, dateIsActive: false, priceIsActive: true })} label='Price'/>
+                {priceSort}
               </Menu.Item>
               <Menu.Item style={catSideMenu}>
-                { this.sortByCategory(this.props.categories) }
+                {this.sortByCategory(this.props.categories)}
               </Menu.Item>
             </Sidebar>
             <Sidebar.Pusher>
