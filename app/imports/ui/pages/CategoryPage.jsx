@@ -12,12 +12,18 @@ import CategoriesMenu from '../components/CategoriesMenu';
 class CategoryPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { visible: true };
+    this.state = { visible: true,
+                   sorter: 'title' };
+    this.onClick = this.onClick.bind(this);
   }
 
-  sortByItem(items, cat) {
-    const stuff = _.sortBy(items, 'title');
+  sortByItem(items, cat, sortKey) {
+    const stuff = _.sortBy(items, sortKey);
     return stuff.filter(item => item.category === cat).map((item) => <CategoryMenu key={item._id} item={item}/>);
+  }
+
+  onClick() {
+    console.log('the click is happening');
   }
 
   render() {
@@ -49,16 +55,16 @@ class CategoryPage extends React.Component {
                   <Icon size='big' name={this.props.match.params.icon}/> {`${this.props.match.params.name}`}
                 </Menu.Header>
               </Menu.Item>
-              <Menu.Item as='a'>
+              <Menu.Item>
                 <Search/>
               </Menu.Item>
-              <Menu.Item as='a'>
-                <Checkbox label='Name'/>
+              <Menu.Item>
+                <Checkbox label='Title'/>
               </Menu.Item>
-              <Menu.Item as='a'>
+              <Menu.Item>
                 <Checkbox label='Date'/>
               </Menu.Item>
-              <Menu.Item as='a'>
+              <Menu.Item>
                 <Checkbox label='Price'/>
               </Menu.Item>
               <Menu.Item style={catSideMenu}>
@@ -69,7 +75,7 @@ class CategoryPage extends React.Component {
               <Grid container style={mainContainerStyle}>
                 <style>{'body {background-color: #def2f1;, color: }'}</style>
                 <Card.Group>
-                  {this.sortByItem(this.props.items, this.props.match.params.name)}
+                  {this.sortByItem(this.props.items, this.props.match.params.name, this.state.sorter)}
                 </Card.Group>
               </Grid>
             </Sidebar.Pusher>

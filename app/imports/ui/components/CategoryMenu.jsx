@@ -11,6 +11,7 @@ class CategoryMenu extends React.Component {
                   <Image src={`images/${this.props.item.image}`}/>
                   <Card.Content>
                     <Card.Header>{this.props.item.title}</Card.Header>
+                    <Card.Header>{this.props.item.date}</Card.Header>
                     <Card.Description>{this.props.item.description}</Card.Description>
                   </Card.Content>
                   <Card.Content extra>
