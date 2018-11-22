@@ -23,6 +23,11 @@ class CategoryPage extends React.Component {
     return stuff.filter(item => item.category === cat).map((item) => <CategoryMenu key={item._id} item={item}/>);
   }
 
+  sortByCategory(categories) {
+    const stuff = sortBy(categories, 'name');
+    return stuff.map((category) => <CategoriesMenu key={category._id} category={category}/>);
+  }
+
   onClick() {
     console.log('the click is happening');
   }
@@ -69,7 +74,7 @@ class CategoryPage extends React.Component {
                 <Checkbox label='Price'/>
               </Menu.Item>
               <Menu.Item style={catSideMenu}>
-                {this.props.categories.map((category) => <CategoriesMenu key={category._id} category={category}/>)}
+                { this.sortByCategory(this.props.categories) }
               </Menu.Item>
             </Sidebar>
             <Sidebar.Pusher>

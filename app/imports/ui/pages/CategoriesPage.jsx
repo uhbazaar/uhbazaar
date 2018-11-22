@@ -10,7 +10,7 @@ import CategoriesMenu from '../components/CategoriesMenu';
 /** A simple static component to render some text for the landing page. */
 class CategoriesPage extends React.Component {
 
-  sortByItem(categories) {
+  sortByCategory(categories) {
     const stuff = sortBy(categories, 'name');
     return stuff.map((category) => <CategoriesMenu key={category._id} category={category}/>);
   }
@@ -33,7 +33,7 @@ class CategoriesPage extends React.Component {
               ' background-blend-mode: overlay;}'}
               </style>
               <Card.Group doubling itemsPerRow='4'>
-                { this.sortByItem(this.props.categories) }
+                { this.sortByCategory(this.props.categories) }
               </Card.Group>
             </Container>
           </Grid>
