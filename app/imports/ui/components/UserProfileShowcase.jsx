@@ -5,6 +5,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import ShowcaseItem from './ShowcaseItem';
 import { Items } from '../../api/item/item';
+import { Users } from '/imports/api/user/user';
 
 class UserShowCase extends React.Component {
   render() {
