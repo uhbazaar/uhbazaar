@@ -36,7 +36,7 @@ class CreateItem extends React.Component {
   submit(data) {
     const { title, price, location, image, category, description } = data;
     const owner = Meteor.user().username;
-    const date = '11/09/1998'
+    const date = '11/09/1998';
     Items.insert({ title, price, location, image, category, description, owner, date }, this.insertCallback);
   }
 

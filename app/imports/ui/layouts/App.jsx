@@ -22,6 +22,7 @@ import UserProfile from '../pages/UserProfile';
 import EditUserProfile from '../pages/EditUserProfile';
 import ShowUsers from '../pages/ShowUsers';
 import UserProfileById from '../pages/UserProfileById';
+import CreateUserProfile from '../pages/CreateUserProfile';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -37,8 +38,9 @@ class App extends React.Component {
               <Route path="/signup" component={Signup}/>
               <Route exact path="/categoriespage" component={CategoriesPage}/>
               <Route path="/showusers" component={ShowUsers}/>
+              <Route path="/createuserprofile" component={CreateUserProfile}/>
               <ProtectedRoute path="/list" component={ListItem}/>
-              <Route path="/categorypage/:name" component={CategoryPage}/>
+              <Route path="/categorypage/:name/:icon" component={CategoryPage}/>
               <ProtectedRoute path="/add" component={AddStuff}/>
               <ProtectedRoute path="/createitem" component={CreateItem}/>
               <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
