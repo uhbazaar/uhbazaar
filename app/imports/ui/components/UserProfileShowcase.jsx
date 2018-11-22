@@ -1,18 +1,16 @@
 import React from 'react';
-import { Grid, Card, Button, Icon, Item } from 'semantic-ui-react';
+import { Grid, Card, Icon, Item } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import ShowcaseItem from './ShowcaseItem';
 import { Items } from '../../api/item/item';
-import { Users } from '/imports/api/user/user';
 
 class UserShowCase extends React.Component {
   render() {
     const showcaseStyle = { marginTop: '8px', marginBottom: '128px' };
     const cardColor = { backgroundColor: '#feffff' };
     const cardFontStyle = { color: '#17252a' };
-    const buttonStyle = { marginTop: '16px' };
     return (
         <Grid container centered style={showcaseStyle}>
 

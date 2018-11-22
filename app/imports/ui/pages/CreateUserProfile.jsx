@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Loader, Header, Segment, Button, Container } from 'semantic-ui-react';
+import { Grid, Header, Segment, Container } from 'semantic-ui-react';
 import { Users, UserSchema } from '/imports/api/user/user';
 import { Bert } from 'meteor/themeteorchef:bert';
 import { Meteor } from 'meteor/meteor';

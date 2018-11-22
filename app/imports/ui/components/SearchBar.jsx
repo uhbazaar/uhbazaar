@@ -56,7 +56,7 @@ class SearchBar extends Component {
 /** Require an array of Stuff documents in the props. */
 SearchBar.propTypes = {
   items: PropTypes.array.isRequired,
-  ready: PropTypes.bool.isRequired,
+  ready: PropTypes.string.isRequired,
 };
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
@@ -65,6 +65,6 @@ export default withTracker(() => {
   const subscription = Meteor.subscribe('Items');
   return {
     items: Items.find({}).fetch(),
-    ready: subscription.ready(),
+    ready: (subscription.ready()).toString(),
   };
 })(SearchBar);
