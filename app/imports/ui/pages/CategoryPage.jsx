@@ -3,6 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { Checkbox, Menu, Search, Icon, Sidebar, Grid, Card } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
+import { sortBy } from 'underscore';
 import CategoryMenu from '../components/CategoryMenu';
 import { Categories } from '../../api/category/category';
 import { Items } from '../../api/item/item';
@@ -12,12 +13,23 @@ import CategoriesMenu from '../components/CategoriesMenu';
 class CategoryPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { visible: true };
+    this.state = {
+      visible: true,
+      sorter: 'date',
+      titleIsActive: false,
+      dateIsActive: true,
+      priceIsActive: false,
+    };
   }
 
-  sortByItem(items, cat) {
-    const stuff = _.sortBy(items, 'name');
+  sortByItem(items, cat, sortKey) {
+    const stuff = sortBy(items, sortKey);
     return stuff.filter(item => item.category === cat).map((item) => <CategoryMenu key={item._id} item={item}/>);
+  }
+
+  sortByCategory(categories) {
+    const stuff = sortBy(categories, 'name');
+    return stuff.map((category) => <CategoriesMenu key={category._id} category={category}/>);
   }
 
   render() {
@@ -35,6 +47,31 @@ class CategoryPage extends React.Component {
       fontWeight: 'bold',
     };
 
+    const titleSort = (
+        <Checkbox checked={this.state.titleIsActive} onClick={() => this.setState({
+          sorter: 'title',
+          titleIsActive: true,
+          dateIsActive: false,
+          priceIsActive: false,
+        })} label='Title'/>
+    );
+    const dateSort = (
+        <Checkbox checked={this.state.dateIsActive} onClick={() => this.setState({
+          sorter: 'date',
+          titleIsActive: false,
+          dateIsActive: true,
+          priceIsActive: false,
+        })} label='Date'/>
+    );
+    const priceSort = (
+        <Checkbox checked={this.state.priceIsActive} onClick={() => this.setState({
+          sorter: 'price',
+          titleIsActive: false,
+          dateIsActive: false,
+          priceIsActive: true,
+        })} label='Price'/>
+    );
+
     return (
 
         <div>
@@ -50,27 +87,27 @@ class CategoryPage extends React.Component {
                   <Icon size='big' name={this.props.match.params.icon}/> {`${this.props.match.params.name}`}
                 </Menu.Header>
               </Menu.Item>
-              <Menu.Item as='a'>
+              <Menu.Item>
                 <Search/>
               </Menu.Item>
-              <Menu.Item as='a'>
-                <Checkbox label='Name'/>
+              <Menu.Item>
+                {titleSort}
               </Menu.Item>
-              <Menu.Item as='a'>
-                <Checkbox label='Date'/>
+              <Menu.Item>
+                {dateSort}
               </Menu.Item>
-              <Menu.Item as='a'>
-                <Checkbox label='Price'/>
+              <Menu.Item>
+                {priceSort}
               </Menu.Item>
               <Menu.Item style={catSideMenu}>
-                {this.props.categories.map((category) => <CategoriesMenu key={category._id} category={category}/>)}
+                {this.sortByCategory(this.props.categories)}
               </Menu.Item>
             </Sidebar>
             <Sidebar.Pusher>
               <Grid container style={mainContainerStyle}>
                 <style>{'body {background-color: #def2f1;, color: }'}</style>
                 <Card.Group>
-                  {this.sortByItem(this.props.items, this.props.match.params.name)}
+                  {this.sortByItem(this.props.items, this.props.match.params.name, this.state.sorter)}
                 </Card.Group>
               </Grid>
             </Sidebar.Pusher>

@@ -8,7 +8,7 @@ class CategoriesMenu extends React.Component {
   render() {
     const words = { fontFamily: 'Cinzel' };
     return (
-          <Card raised link as={NavLink} to={`/categorypage/${this.props.category.name}/${this.props.category.icon}`}>
+          <Card raised link as={NavLink} to={`/categorypage/${this.props.category.name}/${this.props.category.icon}/`}>
             <Card.Content>
               <Card.Header style={words}>
                 <Icon size='big' name={this.props.category.icon}/> {`  ${this.props.category.name}`}</Card.Header>

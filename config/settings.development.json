@@ -100,6 +100,10 @@
     {
       "name": "Community",
       "icon": "handshake"
+    },
+    {
+      "name": "School Supplies",
+      "icon": "pencil alternate"
     }
   ],
   "defaultItems": [
