@@ -14,8 +14,10 @@ class CategoryPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = { visible: true,
-                   sorter: 'title' };
-    this.onClick = this.onClick.bind(this);
+                   sorter: 'date',
+                   titleIsActive: false,
+                   dateIsActive: true,
+                   priceIsActive: false };
   }
 
   sortByItem(items, cat, sortKey) {
@@ -26,10 +28,6 @@ class CategoryPage extends React.Component {
   sortByCategory(categories) {
     const stuff = sortBy(categories, 'name');
     return stuff.map((category) => <CategoriesMenu key={category._id} category={category}/>);
-  }
-
-  onClick() {
-    console.log('the click is happening');
   }
 
   render() {
@@ -46,7 +44,6 @@ class CategoryPage extends React.Component {
     const catSideMenu = {
       fontWeight: 'bold',
     };
-
     return (
 
         <div>
@@ -65,13 +62,13 @@ class CategoryPage extends React.Component {
                 <Search/>
               </Menu.Item>
               <Menu.Item>
-                <Checkbox label='Title'/>
+                <Checkbox checked={this.state.titleIsActive} onClick={() => this.setState({ sorter: 'title', titleIsActive: true, dateIsActive: false, priceIsActive: false })} label='Title'/>
               </Menu.Item>
               <Menu.Item>
-                <Checkbox label='Date'/>
+                <Checkbox checked={this.state.dateIsActive} onClick={() => this.setState({ sorter: 'date', titleIsActive: false, dateIsActive: true, priceIsActive: false })} label='Date'/>
               </Menu.Item>
               <Menu.Item>
-                <Checkbox label='Price'/>
+                <Checkbox checked={this.state.priceIsActive} onClick={() => this.setState({ sorter: 'price', titleIsActive: false, dateIsActive: false, priceIsActive: true })} label='Price'/>
               </Menu.Item>
               <Menu.Item style={catSideMenu}>
                 { this.sortByCategory(this.props.categories) }
