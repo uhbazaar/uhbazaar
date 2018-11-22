@@ -16,9 +16,9 @@ class UserShowCase extends React.Component {
     return (
         <Grid container centered style={showcaseStyle}>
 
-          <Card style={cardColor}>
+          <Card fluid style={cardColor}>
             <Card.Content>
-              <Card.Header style={cardFontStyle}><Icon name='warehouse' circular/>My Stuff</Card.Header>
+              <Card.Header style={cardFontStyle}><Icon name='warehouse' circular/>The Goods</Card.Header>
             </Card.Content>
             <Card.Content>
               <Item.Group>

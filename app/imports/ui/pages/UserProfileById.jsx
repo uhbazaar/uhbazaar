@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Loader, Header, Container, Image, Icon, Card } from 'semantic-ui-react';
+import { Grid, Loader, Header, Container, Image, Icon, Card, Rating } from 'semantic-ui-react';
 import { Users } from '/imports/api/user/user';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
@@ -47,6 +47,9 @@ class UserProfileById extends React.Component {
                         10 Items for sale!
                       </a>
                     </Card.Content>
+                    <Card.Content>
+                      <Rating icon='star' defaultRating={4} maxRating={5} />
+                    </Card.Content>
                   </Card>
                 </Grid.Column>
               </Grid.Row>
@@ -67,7 +70,6 @@ class UserProfileById extends React.Component {
 /** Require the presence of a Stuff document in the props object. Uniforms adds 'model' to the props, which we use. */
 UserProfileById.propTypes = {
   doc: PropTypes.array,
-  model: PropTypes.object,
   ready: PropTypes.bool.isRequired,
 };
 

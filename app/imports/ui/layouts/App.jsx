@@ -38,7 +38,7 @@ class App extends React.Component {
               <Route exact path="/categoriespage" component={CategoriesPage}/>
               <Route path="/showusers" component={ShowUsers}/>
               <ProtectedRoute path="/list" component={ListItem}/>
-              <Route path="/categorypage/:name" component={CategoryPage}/>
+              <Route path="/categorypage/:name/:icon" component={CategoryPage}/>
               <ProtectedRoute path="/add" component={AddStuff}/>
               <ProtectedRoute path="/createitem" component={CreateItem}/>
               <ProtectedRoute path="/edit/:_id" component={EditStuff}/>

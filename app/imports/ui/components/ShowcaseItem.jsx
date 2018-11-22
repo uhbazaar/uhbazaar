@@ -3,22 +3,31 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 
-class ShowcaseItem extends React.Component{
+class ShowcaseItem extends React.Component {
   render() {
-    const cardFontStyle = { color: '#17252a' };
-    const buttonStyle = { marginTop: '16px' };
+    const cardFontStyle = {
+      color: '#17252a',
+      marginBottom: '8px',
+      fontWeight: 'bold',
+      fontSize: '16px',
+    };
+    const imageStyle = { marginLeft: '32px' };
     return (
         <Item.Group>
-        <Item>
-          <Item.Image src={this.props.item.image}/>
-          <Item.Content>
-            <Item.Description style={cardFontStyle}>
-              {this.props.item.title}
-            </Item.Description>
-            <Button style={buttonStyle} floated='right'>View</Button>
-          </Item.Content>
-        </Item>
-        <hr/>
+          <Item>
+            <Item.Image rounded size='medium' style={imageStyle} src={this.props.item.image}/>
+            <Item.Content verticalAlign='middle'>
+              <Item.Description style={cardFontStyle}>
+                {this.props.item.title}
+              </Item.Description>
+              <Button.Group size='large'>
+                <Button color='blue'>View</Button>
+                <Button.Or/>
+                <Button color='green'>Barter</Button>
+              </Button.Group>
+            </Item.Content>
+          </Item>
+          <hr/>
         </Item.Group>
     );
   }
