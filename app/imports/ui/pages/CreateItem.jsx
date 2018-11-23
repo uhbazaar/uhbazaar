@@ -21,6 +21,7 @@ class CreateItem extends React.Component {
     this.submit = this.submit.bind(this);
     this.insertCallback = this.insertCallback.bind(this);
     this.formRef = null;
+    this.date = new Date();
   }
 
   /** Notify the user of the results of the submit. If successful, clear the form. */
@@ -37,7 +38,7 @@ class CreateItem extends React.Component {
   submit(data) {
     const { title, price, location, image, category, description } = data;
     const owner = Meteor.user().username;
-    const date = '11/09/1998';
+    const date = this.date.toLocaleDateString('en-US');
     Items.insert({ title, price, location, image, category, description, owner, date }, this.insertCallback);
   }
 
