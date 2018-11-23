@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Link } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
-import { size, sortBy } from 'underscore';
+import { size } from 'underscore';
 import { Users } from '../../api/user/user';
 import { Items } from '../../api/item/item';
 

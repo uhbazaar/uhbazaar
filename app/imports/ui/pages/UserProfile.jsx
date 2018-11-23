@@ -1,9 +1,10 @@
 import React from 'react';
-import { Container, Grid, Icon, Loader, Card, Item } from 'semantic-ui-react';
+import { Container, Grid, Icon, Loader, Card, Item, Button } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
+import { Link } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
-import { sortBy } from 'underscore';
+import { size, sortBy } from 'underscore';
 import UserProfileCard from '../components/UserProfileCard';
 import { Users } from '../../api/user/user';
 import { Items } from '../../api/item/item';
@@ -12,8 +13,15 @@ import ShowcaseItem from '../components/ShowcaseItem';
 class UserProfile extends React.Component {
   getItems(items, owner) {
     const stuff = sortBy(items, 'owner');
-    console.log(stuff);
-    return stuff.filter(item => item.owner === owner).map((item) => <ShowcaseItem key={item._id} item={item}/>);
+    if (this.getItemAmount(owner, items) !== 0) {
+      return stuff.filter(item => item.owner === owner).map((item) => <ShowcaseItem key={item._id} item={item}/>);
+    }
+    return <Link to='/createitem'><Button>Add Something!</Button></Link>;
+  }
+
+  getItemAmount(owner, stuff) {
+    const total = stuff.filter(item => item.owner === owner);
+    return size(total);
   }
 
   render() {

@@ -13,7 +13,10 @@ class UserProfileById extends React.Component {
 
   getItems(items, owner) {
     const stuff = sortBy(items, 'owner');
-    return stuff.filter(item => item.owner === owner).map((item) => <ShowcaseItem key={item._id} item={item}/>);
+    if (this.getItemAmount(owner, items) !== 0) {
+      return stuff.filter(item => item.owner === owner).map((item) => <ShowcaseItem key={item._id} item={item}/>);
+    }
+    return 'This user doesn\'t have any items to get rid of!';
   }
 
   getItemAmount(owner, stuff) {

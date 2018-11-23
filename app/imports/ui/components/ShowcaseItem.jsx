@@ -1,4 +1,4 @@
-import { Button, Item } from 'semantic-ui-react';
+import { Button, Item, Icon } from 'semantic-ui-react';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
@@ -11,7 +11,7 @@ class ShowcaseItem extends React.Component {
       fontWeight: 'bold',
       fontSize: '16px',
     };
-    const button = { backgroundColor: '#3aafa9', color:'#feffff' };
+    const button = { backgroundColor: '#3aafa9', color: '#feffff' };
     const imageStyle = { marginLeft: '32px' };
     return (
         <Item.Group>
@@ -25,7 +25,12 @@ class ShowcaseItem extends React.Component {
               <Item.Description style={cardFontStyle}>
                 {this.props.item.description}
               </Item.Description>
-                <Button style={button} size='large'>Barter</Button>
+                <Button animated='vertical' style={button} size='large'>
+                  <Button.Content visible>Barter!</Button.Content>
+                  <Button.Content hidden>
+                    <Icon name='money bill alternate'/>
+                  </Button.Content>
+                </Button>
             </Item.Content>
           </Item>
           <hr/>
