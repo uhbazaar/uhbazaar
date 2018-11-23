@@ -16,3 +16,8 @@ html {
   top: 25%;
   left:30%
 }
+.background-bar {
+  background-size: cover;
+  background: #17252a no-repeat center center fixed;
+  height: 450px;
+}
