@@ -40,7 +40,7 @@ class UserProfileCard extends React.Component {
                     <Card.Content extra>
                       <a>
                         <Icon name='gem'/>
-                        {`${this.getItemAmount(this.props.user, this.props.items)} items to barter!`}
+                        {`${this.getItemAmount(this.props.user, this.props.items)} item(s) to barter!`}
                       </a>
                     </Card.Content>
                     <Card.Content extra>
