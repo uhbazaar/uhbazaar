@@ -22,7 +22,7 @@ class UserProfile extends React.Component {
 
   renderPage() {
     const cardFontStyle = { color: '#17252a' };
-    const cardColor = { backgroundColor: '#feffff' };
+    const cardStyle = { backgroundColor: '#feffff', width: '600px' };
     const showcaseRow = { marginTop: '64px' };
     const showcaseStyle = { marginTop: '8px', marginBottom: '128px' };
     return (
@@ -35,7 +35,7 @@ class UserProfile extends React.Component {
               <Grid.Row style={showcaseRow}>
                 <Grid container centered style={showcaseStyle}>
 
-                  <Card fluid style={cardColor}>
+                  <Card style={cardStyle}>
                     <Card.Content>
                       <Card.Header style={cardFontStyle}><Icon name='warehouse' circular/>The Goods</Card.Header>
                     </Card.Content>

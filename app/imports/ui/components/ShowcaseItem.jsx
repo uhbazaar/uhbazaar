@@ -11,20 +11,21 @@ class ShowcaseItem extends React.Component {
       fontWeight: 'bold',
       fontSize: '16px',
     };
+    const button = { backgroundColor: '#3aafa9', color:'#feffff' };
     const imageStyle = { marginLeft: '32px' };
     return (
         <Item.Group>
           <Item>
             <Item.Image rounded size='medium' style={imageStyle} src={this.props.item.image}/>
             <Item.Content verticalAlign='middle'>
+              <Item.Header>{this.props.item.title}</Item.Header>
+              <Item.Meta>
+                <span className='price'>{`$${this.props.item.price}`}</span>
+              </Item.Meta>
               <Item.Description style={cardFontStyle}>
-                {this.props.item.title}
+                {this.props.item.description}
               </Item.Description>
-              <Button.Group size='large'>
-                <Button color='blue'>View</Button>
-                <Button.Or/>
-                <Button color='green'>Barter</Button>
-              </Button.Group>
+                <Button style={button} size='large'>Barter</Button>
             </Item.Content>
           </Item>
           <hr/>

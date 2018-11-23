@@ -4,9 +4,15 @@ import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Link } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
+import { size, sortBy } from 'underscore';
 import { Users } from '../../api/user/user';
+import { Items } from '../../api/item/item';
 
 class UserProfileCard extends React.Component {
+  getItemAmount(user, stuff) {
+    const total = stuff.filter(item => item.owner === user.username);
+    return size(total);
+  }
 
   render() {
     const cardFontStyle = { color: '#17252a' };
@@ -34,12 +40,12 @@ class UserProfileCard extends React.Component {
                     <Card.Content extra>
                       <a>
                         <Icon name='gem'/>
-                        10 Items for sale!
+                        {`${this.getItemAmount(this.props.user, this.props.items)} items to barter!`}
                       </a>
                     </Card.Content>
                     <Card.Content extra>
                       <Link to={`/edituserprofile/${this.props.user._id}`}>
-                        <Button floated='right' color='black' size='tiny' >Edit Profile</Button>
+                        <Button floated='right' color='black' size='tiny'>Edit Profile</Button>
                       </Link>
                     </Card.Content>
                   </Card>
@@ -55,6 +61,7 @@ class UserProfileCard extends React.Component {
 
 UserProfileCard.propTypes = {
   user: PropTypes.object.isRequired,
+  items: PropTypes.array.isRequired,
 };
 
 export default withTracker(() => {
@@ -62,6 +69,7 @@ export default withTracker(() => {
   const subscription = Meteor.subscribe('Users');
   return {
     user: Users.findOne(),
+    items: Items.find({}).fetch(),
     ready: subscription.ready(),
   };
 })(UserProfileCard);

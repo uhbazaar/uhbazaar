@@ -4,7 +4,7 @@ import { Users } from '/imports/api/user/user';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import { sortBy } from 'underscore';
+import { size, sortBy } from 'underscore';
 import ShowcaseItem from '../components/ShowcaseItem';
 import { Items } from '../../api/item/item';
 
@@ -14,6 +14,11 @@ class UserProfileById extends React.Component {
   getItems(items, owner) {
     const stuff = sortBy(items, 'owner');
     return stuff.filter(item => item.owner === owner).map((item) => <ShowcaseItem key={item._id} item={item}/>);
+  }
+
+  getItemAmount(owner, stuff) {
+    const total = stuff.filter(item => item.owner === owner);
+    return size(total);
   }
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
@@ -27,6 +32,7 @@ class UserProfileById extends React.Component {
     const gridStyle = { marginTop: '128px', marginBottom: '128px' };
     const borderStyle = { border: 'solid 1px #feffff' };
     const cardColor = { backgroundColor: '#feffff' };
+    const cardStyle = { backgroundColor: '#feffff', width: '600px' };
     const showcaseRow = { marginTop: '64px' };
     const showcaseStyle = { marginTop: '8px', marginBottom: '128px' };
     return (
@@ -52,7 +58,7 @@ class UserProfileById extends React.Component {
                     <Card.Content extra>
                       <a>
                         <Icon name='gem'/>
-                        10 Items for sale!
+                        {`${this.getItemAmount(this.props.doc.username, this.props.item)} items to barter!`}
                       </a>
                     </Card.Content>
                     <Card.Content>
@@ -67,7 +73,7 @@ class UserProfileById extends React.Component {
               <Grid.Row style={showcaseRow}>
                 <Grid container centered style={showcaseStyle}>
 
-                  <Card fluid style={cardColor}>
+                  <Card fluid style={cardStyle}>
                     <Card.Content>
                       <Card.Header style={cardFontStyle}><Icon name='warehouse' circular/>The Goods</Card.Header>
                     </Card.Content>

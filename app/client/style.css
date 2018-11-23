@@ -1,7 +1,6 @@
 html {
   min-height: 100vh;
 }
-
 .user-profile-background {
   color: #2b7a78;
   padding: 0 40px 0 40px;
@@ -16,10 +15,4 @@ html {
   position: absolute;
   top: 25%;
   left:30%
-}
-
-.background-bar {
-  background-size: cover;
-  background: #17252a no-repeat center center fixed;
-  height: 450px;
 }
