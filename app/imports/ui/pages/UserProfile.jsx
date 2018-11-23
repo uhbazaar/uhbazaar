@@ -8,13 +8,15 @@ import { size, sortBy } from 'underscore';
 import UserProfileCard from '../components/UserProfileCard';
 import { Users } from '../../api/user/user';
 import { Items } from '../../api/item/item';
-import ShowcaseItem from '../components/ShowcaseItem';
+import OwnerShowcaseItem from '../components/OwnerShowcaseItem';
 
 class UserProfile extends React.Component {
+
   getItems(items, owner) {
     const stuff = sortBy(items, 'owner');
     if (this.getItemAmount(owner, items) !== 0) {
-      return stuff.filter(item => item.owner === owner).map((item) => <ShowcaseItem key={item._id} item={item}/>);
+      return stuff.filter(item => item.owner === owner).map((item) => <OwnerShowcaseItem key={item._id}
+                                                                                    item={item}/>);
     }
     return <Link to='/createitem'><Button>Add Something!</Button></Link>;
   }
@@ -52,6 +54,7 @@ class UserProfile extends React.Component {
                         {this.getItems(this.props.item, this.props.user.username)}
                       </Item.Group>
                     </Card.Content>
+
                   </Card>
 
                 </Grid>

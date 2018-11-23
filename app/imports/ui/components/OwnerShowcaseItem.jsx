@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { Items } from '../../api/item/item';
 
-class ShowcaseItem extends React.Component {
+class OwnerShowcaseItem extends React.Component {
   constructor(props) {
     super(props);
     this.onClick = this.onClick.bind(this);
@@ -46,12 +46,9 @@ class ShowcaseItem extends React.Component {
               <Item.Description style={cardFontStyle}>
                 {this.props.item.description}
               </Item.Description>
-              <Button animated='vertical' style={button} size='large'>
-                <Button.Content visible>Barter!</Button.Content>
-                <Button.Content hidden>
-                  <Icon name='money bill alternate'/>
-                </Button.Content>
-              </Button>
+              <Item.Content extra>
+                <Button color='red' onClick={this.onClick}>Remove</Button>
+              </Item.Content>
             </Item.Content>
           </Item>
           <hr/>
@@ -61,9 +58,9 @@ class ShowcaseItem extends React.Component {
 }
 
 /** Require a document to be passed to this component. */
-ShowcaseItem.propTypes = {
+OwnerShowcaseItem.propTypes = {
   item: PropTypes.object.isRequired,
 };
 
 /** Wrap this component in withRouter since we use the <Link> React Router element. */
-export default withRouter(ShowcaseItem);
+export default withRouter(OwnerShowcaseItem);
