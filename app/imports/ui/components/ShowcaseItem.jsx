@@ -1,29 +1,10 @@
 import { Button, Item, Icon } from 'semantic-ui-react';
 import React from 'react';
-import { Bert } from 'meteor/themeteorchef:bert';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-import { Items } from '../../api/item/item';
+
 
 class ShowcaseItem extends React.Component {
-  constructor(props) {
-    super(props);
-    this.onClick = this.onClick.bind(this);
-    this.deleteCallback = this.deleteCallback.bind(this);
-  }
-
-  deleteCallback(error) {
-    if (error) {
-      Bert.alert({ type: 'danger', message: `Delete failed: ${error.message}` });
-    } else {
-      Bert.alert({ type: 'success', message: 'Delete succeeded' });
-      this.formRef.reset();
-    }
-  }
-
-  onClick() {
-    Items.remove(this.props.item._id, this.deleteCallback);
-  }
 
   render() {
     const cardFontStyle = {

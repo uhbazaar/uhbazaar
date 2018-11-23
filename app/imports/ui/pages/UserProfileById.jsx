@@ -61,7 +61,7 @@ class UserProfileById extends React.Component {
                     <Card.Content extra>
                       <a>
                         <Icon name='gem'/>
-                        {`${this.getItemAmount(this.props.doc.username, this.props.item)} items to barter!`}
+                        {`${this.getItemAmount(this.props.doc.username, this.props.item)} item(s) to barter!`}
                       </a>
                     </Card.Content>
                     <Card.Content>
