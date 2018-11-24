@@ -25,15 +25,16 @@ class CategoriesPage extends React.Component {
       paddingBottom: '64px',
       marginBottom: '24vh',
     };
+
     return (
         <div>
           <Grid verticalAlign='middle' style={gridStyleCards}>
             <Container>
-              <style>{'body { background: rgba(222,242,241, 0.7) url(\'/images/merchendise.png\');' +
-              ' background-blend-mode: overlay;}'}
+              <style>{'body { background: rgba(222,242,241, 0.7) url(\'/images/uhsketch.png\') no-repeat center center fixed;' +
+              ' background-blend-mode: overlay; background-size: cover;}'}
               </style>
               <Card.Group doubling itemsPerRow='4'>
-                { this.sortByCategory(this.props.categories) }
+                {this.sortByCategory(this.props.categories)}
               </Card.Group>
             </Container>
           </Grid>
