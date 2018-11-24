@@ -3,6 +3,7 @@ import { Items, ItemSchema } from '/imports/api/item/item';
 import { Grid, Segment, Header, Container } from 'semantic-ui-react';
 import AutoForm from 'uniforms-semantic/AutoForm';
 import TextField from 'uniforms-semantic/TextField';
+import SelectField from 'uniforms-semantic/SelectField';
 import LongTextField from 'uniforms-semantic/LongTextField';
 import NumField from 'uniforms-semantic/NumField';
 import SubmitField from 'uniforms-semantic/SubmitField';
@@ -20,6 +21,7 @@ class CreateItem extends React.Component {
     this.submit = this.submit.bind(this);
     this.insertCallback = this.insertCallback.bind(this);
     this.formRef = null;
+    this.date = new Date();
   }
 
   /** Notify the user of the results of the submit. If successful, clear the form. */
@@ -36,7 +38,7 @@ class CreateItem extends React.Component {
   submit(data) {
     const { title, price, location, image, category, description } = data;
     const owner = Meteor.user().username;
-    const date = '11/09/1998';
+    const date = this.date.toLocaleDateString('en-US');
     Items.insert({ title, price, location, image, category, description, owner, date }, this.insertCallback);
   }
 
@@ -61,7 +63,7 @@ class CreateItem extends React.Component {
                   <TextField name='title'/>
                   <NumField name='price' decimal={false}/>
                   <TextField name='location'/>
-                  <TextField name='category'/>
+                  <SelectField name='category'/>
                   <TextField name='image'/>
                   <LongTextField name='description'/>
                   <SubmitField value='Post'/>
