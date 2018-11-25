@@ -20,7 +20,7 @@ class ShowItem extends React.Component {
             <Grid.Column width={8}>
               <Card style={cardStyle} fluid>
                 <Image style={imageStyle} src={this.props.item.image} size='medium' centered/>
-                <Card.Content>
+                <Card.Content textAlign='center'>
                   <Card.Header>{this.props.item.title}</Card.Header>
                   <Card.Meta>{`$${this.props.item.price}`}</Card.Meta>
                   <Card.Description>{this.props.item.description}</Card.Description>
