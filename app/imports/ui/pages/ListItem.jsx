@@ -5,7 +5,6 @@ import { Items } from '/imports/api/item/item';
 // import StuffItem from '/imports/ui/components/StuffItem';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import Item from '/imports/ui/components/Item';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ListItem extends React.Component {
