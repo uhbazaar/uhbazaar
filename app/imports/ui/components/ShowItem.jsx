@@ -1,10 +1,12 @@
 import React from 'react';
 import { Image, Header, Grid, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { withTracker } from 'meteor/react-meteor-data';
+import { Meteor } from 'meteor/meteor';
+import { Items } from '../../api/item/item';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-class Item extends React.Component {
+class ShowItem extends React.Component {
   render() {
     return (
         <Grid>
@@ -26,9 +28,19 @@ class Item extends React.Component {
 }
 
 /** Require a document to be passed to this component. */
-Item.propTypes = {
-  item: PropTypes.object.isRequired,
+ShowItem.propTypes = {
+  item: PropTypes.object,
+  ready: PropTypes.bool.isRequired,
 };
 
-/** Wrap this component in withRouter since we use the <Link> React Router element. */
-export default withRouter(Item);
+/** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
+export default withTracker(({ match }) => {
+  // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
+  const documentId = match.params._id;
+  // Get access to Stuff documents.
+  const subscription = Meteor.subscribe('Items');
+  return {
+    item: Items.findOne(documentId),
+    ready: subscription.ready(),
+  };
+})(ShowItem);

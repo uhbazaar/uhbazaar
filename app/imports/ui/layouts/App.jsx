@@ -23,6 +23,7 @@ import EditUserProfile from '../pages/EditUserProfile';
 import ShowUsers from '../pages/ShowUsers';
 import UserProfileById from '../pages/UserProfileById';
 import CreateUserProfile from '../pages/CreateUserProfile';
+import ShowItem from '../components/ShowItem';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -39,7 +40,7 @@ class App extends React.Component {
               <Route exact path="/categoriespage" component={CategoriesPage}/>
               <Route path="/showusers" component={ShowUsers}/>
               <Route path="/createuserprofile" component={CreateUserProfile}/>
-              <ProtectedRoute path="/list" component={ListItem}/>
+              <ProtectedRoute path="/item/:_id" component={ShowItem}/>
               <Route path="/categorypage/:name/:icon" component={CategoryPage}/>
               <ProtectedRoute path="/add" component={AddStuff}/>
               <ProtectedRoute path="/createitem" component={CreateItem}/>

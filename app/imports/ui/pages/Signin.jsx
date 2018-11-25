@@ -42,10 +42,11 @@ export default class Signin extends React.Component {
 
     const signInStyle = {
       fontFamily: 'PT Sans Caption',
+      marginBottom: '40vh',
     };
     const headerLoginStyle = {
       fontFamily: 'PT Sans Caption',
-      paddingTop: '10px',
+      paddingTop: '32px',
 
     };
     const { from } = this.props.location.state || { from: { pathname: '/' } };
