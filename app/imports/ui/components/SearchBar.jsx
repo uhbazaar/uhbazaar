@@ -3,9 +3,8 @@ import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
-import { Redirect, Route, withRouter } from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
 import { Search, Grid } from 'semantic-ui-react';
-import ShowItem from './ShowItem';
 import { Items } from '../../api/item/item';
 
 class SearchBar extends Component {
@@ -16,6 +15,7 @@ class SearchBar extends Component {
       redirect: false,
       isLoading: false,
       value: '',
+      searchFor: '',
       results: [],
     };
   }
@@ -24,15 +24,6 @@ class SearchBar extends Component {
     this.setState({
       redirect: true,
     });
-  }
-
-  renderRedirect = () => {
-    this.setRedirect();
-    if (this.state.redirect) {
-      return <Route exact path="/item" render={() => (
-          <Redirect to="/item"/>
-      )}/>;
-    }
   }
 
   componentWillMount() {
@@ -49,7 +40,10 @@ class SearchBar extends Component {
   resetComponent = () => this.setState({ isLoading: false, results: [], value: '' })
 
   handleResultSelect = (e, { result }) => {
-    this.setState({ value: result._id });
+    this.setState({
+      value: result.title,
+      searchFor: result._id,
+    });
     this.nextStep();
   }
 
@@ -92,11 +86,12 @@ class SearchBar extends Component {
             </Grid>
         );
       case 2:
+        this.setState({ step: 1 });
         return (
-            <Redirect to={`/item/${this.state.value}`}/>
+            <Redirect to={`/item/${this.state.searchFor}`}/>
         );
       default:
-        return false;
+        return true;
     }
 
   }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Header, Grid, Button } from 'semantic-ui-react';
+import { Image, Grid, Button, Icon, Card } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
@@ -8,20 +8,43 @@ import { Items } from '../../api/item/item';
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class ShowItem extends React.Component {
   render() {
+    const gridStyle = { marginBottom: '16vh', marginTop: '128px' };
+    const button = { backgroundColor: '#3aafa9', color: '#feffff' };
+    const button2 = { backgroundColor: '#af563a', color: '#feffff' };
+    const imageStyle = { marginTop: '16px', marginBottom: '16px' };
+    const cardStyle = { backgroundColor: '#feffff' };
     return (
-        <Grid>
-          <Grid.Row columns={2}>
-            <Grid.Column>
-              <Header as='h2' content={this.props.item.title}/>
-            </Grid.Column>
-            <Grid.Column>
-              <Header as='h2'>${this.props.item.price}</Header>
+        <Grid style={gridStyle} centered>
+          <style>{'body {background-color: #def2f1;, color: }'}</style>
+          <Grid.Row columns={4}>
+            <Grid.Column width={8}>
+              <Card style={cardStyle} fluid>
+                <Image style={imageStyle} src={this.props.item.image} size='medium' centered/>
+                <Card.Content>
+                  <Card.Header>{this.props.item.title}</Card.Header>
+                  <Card.Meta>{`$${this.props.item.price}`}</Card.Meta>
+                  <Card.Description>{this.props.item.description}</Card.Description>
+                </Card.Content>
+                <Card.Content textAlign='center' extra>
+                  <Button.Group textAlign='center'>
+                    <Button animated='vertical' style={button} size='medium'>
+                      <Button.Content visible>Barter!</Button.Content>
+                      <Button.Content hidden>
+                        <Icon name='money bill alternate'/>
+                      </Button.Content>
+                    </Button>
+                    <Button.Or/>
+                    <Button animated='fade' style={button2} size='medium'>
+                      <Button.Content visible>Report</Button.Content>
+                      <Button.Content hidden>
+                        <Icon name='ambulance'/>
+                      </Button.Content>
+                    </Button>
+                  </Button.Group>
+                </Card.Content>
+              </Card>
             </Grid.Column>
           </Grid.Row>
-          <Grid.Row>{this.props.item.location}</Grid.Row>
-          <Grid.Row><Image src={this.props.item.image} size='huge'/></Grid.Row>
-          <Grid.Row>{this.props.item.description}</Grid.Row>
-          <Grid.Row><Button>Buy Now</Button><Button>Make Offer</Button><Button>Report an Issue</Button></Grid.Row>
         </Grid>
     );
   }
