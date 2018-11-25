@@ -5,7 +5,6 @@ import { withRouter } from 'react-router-dom';
 
 
 class ShowcaseItem extends React.Component {
-
   render() {
     const cardFontStyle = {
       color: '#17252a',

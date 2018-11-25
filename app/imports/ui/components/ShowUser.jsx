@@ -2,12 +2,20 @@ import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 import React from 'react';
 import { Card, Icon, Button, Image } from 'semantic-ui-react';
+import { size } from 'underscore';
+import { Items } from '../../api/item/item';
 
 class ShowUser extends React.Component {
+  getItemAmount(owner, stuff) {
+    const total = stuff.filter(item => item.owner === owner);
+    return size(total);
+  }
 
   render() {
+    const items = Items.find({}).fetch();
     const cardFontStyle = { color: '#17252a' };
     const cardColor = { backgroundColor: '#feffff' };
+    const iconStyle = { marginRight: '8px', marginTop: '4px' };
     return (
         <Card style={cardColor}>
           <Card.Content>
@@ -15,17 +23,17 @@ class ShowUser extends React.Component {
             <Card.Header style={cardFontStyle}>{this.props.user.firstName} {this.props.user.lastName}</Card.Header>
             <Card.Meta style={cardFontStyle}>
               <a>
-                <Icon name='gem'/>
-                10 Items for sale!
+                <Icon style={iconStyle} name='gem'/>
+                {this.getItemAmount(this.props.user.username, items)} item(s)!
               </a></Card.Meta>
             <Card.Description style={cardFontStyle}>
               {this.props.user.description}
             </Card.Description>
           </Card.Content>
           <Card.Content centered extra>
-              <Link to={`/userprofilebyid/${this.props.user._id}`}>
-                <Button color='blue' size='tiny' >View</Button>
-              </Link>
+            <Link to={`/userprofilebyid/${this.props.user._id}`}>
+              <Button color='blue' size='tiny'>View</Button>
+            </Link>
           </Card.Content>
         </Card>
     );

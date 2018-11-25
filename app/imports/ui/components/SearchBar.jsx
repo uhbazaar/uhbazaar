@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
-import { Redirect, Route } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { Search, Grid } from 'semantic-ui-react';
 import { Items } from '../../api/item/item';
 
@@ -12,18 +12,11 @@ class SearchBar extends Component {
     super(props);
     this.state = {
       step: 1,
-      redirect: false,
       isLoading: false,
       value: '',
       searchFor: '',
       results: [],
     };
-  }
-
-  setRedirect = () => {
-    this.setState({
-      redirect: true,
-    });
   }
 
   componentWillMount() {
@@ -54,7 +47,9 @@ class SearchBar extends Component {
       if (this.state.value.length < 1) return this.resetComponent();
 
       const re = new RegExp(_.escapeRegExp(this.state.value), 'i');
-      const isMatch = result => re.test(result.title) || re.test(result.price) || re.test(result.location);
+      const isMatch = result => re.test(result.title)
+          || re.test(result.price) || re.test(result.location)
+          || re.test(result.category);
 
       this.setState({
         isLoading: false,
@@ -93,7 +88,6 @@ class SearchBar extends Component {
       default:
         return true;
     }
-
   }
 }
 
