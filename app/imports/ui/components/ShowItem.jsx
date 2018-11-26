@@ -7,6 +7,7 @@ import { Items } from '../../api/item/item';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class ShowItem extends React.Component {
+
   render() {
     const gridStyle = { marginBottom: '16vh', marginTop: '128px' };
     const button = { backgroundColor: '#3aafa9', color: '#feffff' };
@@ -27,7 +28,7 @@ class ShowItem extends React.Component {
                 </Card.Content>
                 <Card.Content textAlign='center' extra>
                   <Button.Group textAlign='center'>
-                    <Button animated='vertical' style={button} size='medium'>
+                    <Button href={`mailto:${this.props.item.owner}`} animated='vertical' style={button} size='medium'>
                       <Button.Content visible>Barter!</Button.Content>
                       <Button.Content hidden>
                         <Icon name='money bill alternate'/>

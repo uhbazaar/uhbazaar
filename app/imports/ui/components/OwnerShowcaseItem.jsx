@@ -22,7 +22,9 @@ class OwnerShowcaseItem extends React.Component {
   }
 
   onClick() {
-    Items.remove(this.props.item._id, this.deleteCallback);
+    if (confirm('The item will be gone for good!')) {
+      Items.remove(this.props.item._id, this.deleteCallback);
+    }
   }
 
   render() {
