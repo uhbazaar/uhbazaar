@@ -7,7 +7,7 @@ import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import UHBazaar from '../pages/UHBazaar';
-import ListStuffAdmin from '../pages/ListStuffAdmin';
+import AdminPage from '../pages/AdminPage';
 import AddStuff from '../pages/NotifyAdmin';
 import CreateItem from '../pages/CreateItem';
 import EditStuff from '../pages/EditStuff';
@@ -23,6 +23,10 @@ import ShowUsers from '../pages/ShowUsers';
 import UserProfileById from '../pages/UserProfileById';
 import CreateUserProfile from '../pages/CreateUserProfile';
 import ShowItem from '../components/ShowItem';
+import EditUserAdmin from '../pages/EditUserAdmin';
+import EditCategoryAdmin from '../pages/EditCategoryAdmin';
+import EditItemAdmin from '../pages/EditItemAdmin';
+import EditReportAdmin from '../pages/EditReportAdmin';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -46,7 +50,11 @@ class App extends React.Component {
               <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
               <ProtectedRoute path="/edituserprofile/:_id" component={EditUserProfile}/>
               <ProtectedRoute path="/userprofilebyid/:_id" component={UserProfileById}/>
-              <AdminProtectedRoute path="/admin" component={ListStuffAdmin}/>
+              <AdminProtectedRoute path="/admin" component={AdminPage}/>
+              <AdminProtectedRoute path="/edit-user" component={EditUserAdmin}/>
+              <AdminProtectedRoute path="/edit-category" component={EditCategoryAdmin}/>
+              <AdminProtectedRoute path="/edit-item" component={EditItemAdmin}/>
+              <AdminProtectedRoute path="/edit-report" component={EditReportAdmin}/>
               <ProtectedRoute path="/signout" component={Signout}/>
               <Route component={NotFound}/>
             </Switch>
