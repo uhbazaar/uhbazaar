@@ -51,10 +51,10 @@ class App extends React.Component {
               <ProtectedRoute path="/edituserprofile/:_id" component={EditUserProfile}/>
               <ProtectedRoute path="/userprofilebyid/:_id" component={UserProfileById}/>
               <AdminProtectedRoute path="/admin" component={AdminPage}/>
-              <AdminProtectedRoute path="/edit-user" component={EditUserAdmin}/>
-              <AdminProtectedRoute path="/edit-category" component={EditCategoryAdmin}/>
-              <AdminProtectedRoute path="/edit-item" component={EditItemAdmin}/>
-              <AdminProtectedRoute path="/edit-report" component={EditReportAdmin}/>
+              <AdminProtectedRoute path="/edit-user/:_id" component={EditUserAdmin}/>
+              <AdminProtectedRoute path="/edit-category/:_id" component={EditCategoryAdmin}/>
+              <AdminProtectedRoute path="/edit-item/:_id" component={EditItemAdmin}/>
+              <AdminProtectedRoute path="/edit-report/:_id" component={EditReportAdmin}/>
               <ProtectedRoute path="/signout" component={Signout}/>
               <Route component={NotFound}/>
             </Switch>

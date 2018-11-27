@@ -1,22 +1,25 @@
 import React from 'react';
-import { Grid, Loader, Header, Segment } from 'semantic-ui-react';
+import { Grid, Loader, Header, Segment, Button } from 'semantic-ui-react';
 import { Items, ItemSchema } from '/imports/api/item/item';
 import { Bert } from 'meteor/themeteorchef:bert';
 import AutoForm from 'uniforms-semantic/AutoForm';
 import TextField from 'uniforms-semantic/TextField';
+import LongTextField from 'uniforms-semantic/LongTextField';
+import SelectField from 'uniforms-semantic/SelectField';
 import SubmitField from 'uniforms-semantic/SubmitField';
 import ErrorsField from 'uniforms-semantic/ErrorsField';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 /** Renders the Page for editing a single document. */
 class EditItemAdmin extends React.Component {
 
   /** On successful submit, insert the data. */
   submit(data) {
-    const { name, icon, _id } = data;
-    Items.update(_id, { $set: { name, icon } }, (error) => (error ?
+    const { title, price, owner, description, image, category, _id } = data;
+    Items.update(_id, { $set: { title, price, owner, description, image, category } }, (error) => (error ?
         Bert.alert({ type: 'danger', message: `Update failed: ${error.message}` }) :
         Bert.alert({ type: 'success', message: 'Update succeeded' })));
   }
@@ -34,9 +37,16 @@ class EditItemAdmin extends React.Component {
             <Header as="h2" textAlign="center" inverted>Edit Contact</Header>
             <AutoForm schema={ItemSchema} onSubmit={this.submit} model={this.props.doc}>
               <Segment>
-                <TextField name='name'/>
-                <TextField name='icon'/>
+                <TextField name='title'/>
+                <TextField name='price'/>
+                <TextField name='owner'/>
+                <SelectField name='category'/>
+                <TextField name='image'/>
+                <LongTextField name='description'/>
                 <SubmitField value='Submit'/>
+                <Link to={'/admin/'}>
+                  <Button floated='right'>Back</Button>
+                </Link>
                 <ErrorsField/>
               </Segment>
             </AutoForm>

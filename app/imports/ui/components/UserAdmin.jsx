@@ -10,6 +10,11 @@ import { Users } from '/imports/api/user/user';
 /** Renders a single row in the List Stuff (Admin) table. See pages/ListStuffAdmin.jsx. */
 class UserAdmin extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
   handleClick() {
     confirmAlert({
       title: 'Confirm to submit',

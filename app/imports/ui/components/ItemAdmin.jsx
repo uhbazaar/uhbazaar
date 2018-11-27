@@ -10,6 +10,11 @@ import { Items } from '/imports/api/item/item';
 /** Renders a single row in the List Stuff (Admin) table. See pages/ListStuffAdmin.jsx. */
 class ItemAdmin extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
   handleClick() {
     confirmAlert({
       title: 'Confirm to submit',
