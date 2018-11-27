@@ -10,11 +10,11 @@ class Footer extends React.Component {
       width: '100%',
       height: '100px',
       fontFamily: 'PT Sans Caption',
-      // paddingTop: '16vh',
+      paddingTop: '16vh',
     };
     const darkify = {
       backgroundColor: '#17252a',
-      paddingTop: '16px',
+      paddingTop: '20px',
       paddingBottom: '32px',
     };
     const imageStyle = { opacity: '0.9' };
