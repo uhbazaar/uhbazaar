@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Loader, Header, Segment } from 'semantic-ui-react';
+import { Grid, Loader, Header, Segment, Button } from 'semantic-ui-react';
 import { Categories, CategorySchema } from '/imports/api/category/category';
 import { Bert } from 'meteor/themeteorchef:bert';
 import AutoForm from 'uniforms-semantic/AutoForm';
@@ -9,6 +9,7 @@ import ErrorsField from 'uniforms-semantic/ErrorsField';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 /** Renders the Page for editing a single document. */
 class EditCategoryAdmin extends React.Component {
@@ -31,12 +32,15 @@ class EditCategoryAdmin extends React.Component {
     return (
         <Grid container centered>
           <Grid.Column>
-            <Header as="h2" textAlign="center" inverted>Edit Contact</Header>
+            <Header as="h2" textAlign="center">Edit Category</Header>
             <AutoForm schema={CategorySchema} onSubmit={this.submit} model={this.props.doc}>
               <Segment>
                 <TextField name='name'/>
                 <TextField name='icon'/>
                 <SubmitField value='Submit'/>
+                <Link to={'/admin/'}>
+                  <Button floated='right'>Back</Button>
+                </Link>
                 <ErrorsField/>
               </Segment>
             </AutoForm>

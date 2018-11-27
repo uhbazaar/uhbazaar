@@ -11,6 +11,7 @@ import UserAdmin from '/imports/ui/components/UserAdmin';
 import CategoryAdmin from '/imports/ui/components/CategoryAdmin';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
+import AddCategory from '../components/AddCategory';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ListStuffAdmin extends React.Component {
@@ -69,6 +70,7 @@ class ListStuffAdmin extends React.Component {
               {this.props.categories.map((category) => <CategoryAdmin key={category._id} category={category} />)}
             </Table.Body>
           </Table>
+          <AddCategory/>
           <Header as="h3" textAlign="left">Users</Header>
           <Table celled>
             <Table.Header>

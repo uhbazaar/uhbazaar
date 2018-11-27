@@ -1,22 +1,24 @@
 import React from 'react';
-import { Grid, Loader, Header, Segment } from 'semantic-ui-react';
-import { Categories, CategorySchema } from '/imports/api/user/user';
+import { Grid, Loader, Header, Segment, Button } from 'semantic-ui-react';
+import { Users, UserSchema } from '/imports/api/user/user';
 import { Bert } from 'meteor/themeteorchef:bert';
 import AutoForm from 'uniforms-semantic/AutoForm';
 import TextField from 'uniforms-semantic/TextField';
+import LongTextField from 'uniforms-semantic/LongTextField';
 import SubmitField from 'uniforms-semantic/SubmitField';
 import ErrorsField from 'uniforms-semantic/ErrorsField';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 /** Renders the Page for editing a single document. */
-class EditCategoryAdmin extends React.Component {
+class EditUserAdmin extends React.Component {
 
   /** On successful submit, insert the data. */
   submit(data) {
-    const { name, icon, _id } = data;
-    Categories.update(_id, { $set: { name, icon } }, (error) => (error ?
+    const { firstName, lastName, description, image, _id } = data;
+    Users.update(_id, { $set: { firstName, lastName, description, image } }, (error) => (error ?
         Bert.alert({ type: 'danger', message: `Update failed: ${error.message}` }) :
         Bert.alert({ type: 'success', message: 'Update succeeded' })));
   }
@@ -32,11 +34,16 @@ class EditCategoryAdmin extends React.Component {
         <Grid container centered>
           <Grid.Column>
             <Header as="h2" textAlign="center" inverted>Edit Contact</Header>
-            <AutoForm schema={CategorySchema} onSubmit={this.submit} model={this.props.doc}>
+            <AutoForm schema={UserSchema} onSubmit={this.submit} model={this.props.doc}>
               <Segment>
-                <TextField name='name'/>
-                <TextField name='icon'/>
+                <TextField name='firstName'/>
+                <TextField name='lastName'/>
+                <TextField name='image'/>
+                <LongTextField name='description'/>
                 <SubmitField value='Submit'/>
+                <Link to={'/admin/'}>
+                  <Button floated='right'>Back</Button>
+                </Link>
                 <ErrorsField/>
               </Segment>
             </AutoForm>
@@ -47,7 +54,7 @@ class EditCategoryAdmin extends React.Component {
 }
 
 /** Require the presence of a Stuff document in the props object. Uniforms adds 'model' to the props, which we use. */
-EditCategoryAdmin.propTypes = {
+EditUserAdmin.propTypes = {
   doc: PropTypes.object,
   model: PropTypes.object,
   ready: PropTypes.bool.isRequired,
@@ -58,9 +65,9 @@ export default withTracker(({ match }) => {
   // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
   const documentId = match.params._id;
   // Get access to Stuff documents.
-  const subscription = Meteor.subscribe('Categories');
+  const subscription = Meteor.subscribe('Users');
   return {
-    doc: Categories.findOne(documentId),
+    doc: Users.findOne(documentId),
     ready: subscription.ready(),
   };
-})(EditCategoryAdmin);
+})(EditUserAdmin);
