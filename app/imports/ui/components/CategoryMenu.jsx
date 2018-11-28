@@ -8,10 +8,11 @@ class CategoryMenu extends React.Component {
   render() {
     return (
         <Card raised link>
-          <Image src={this.props.item.image}/>
+          <Image size='medium' centered src={this.props.item.image}/>
           <Card.Content>
             <Card.Header>{this.props.item.title}</Card.Header>
             <Card.Description>{this.props.item.description}</Card.Description>
+            <span>{this.props.item.date}</span>
           </Card.Content>
           <Card.Content extra>
             <Icon name='money'/>

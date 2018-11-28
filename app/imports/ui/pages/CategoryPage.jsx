@@ -53,6 +53,7 @@ class CategoryPage extends React.Component {
       paddingTop: '20px',
       paddingBottom: '20px',
       marginBottom: '40vh',
+      paddingRight: '64px',
     };
     const catSideMenu = {
       fontWeight: 'bold',
