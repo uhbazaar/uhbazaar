@@ -5,44 +5,53 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter, NavLink } from 'react-router-dom';
 import { Menu, Dropdown, Image } from 'semantic-ui-react';
 import { Roles } from 'meteor/alanning:roles';
+import SearchBar from './SearchBar';
 
 /** The NavBar appears at the top of every page. Rendered by the App Layout component. */
 class NavBar extends React.Component {
   render() {
-    const menuStyle = { /* marginBottom: '10px', */ backgroundColor: '#17252a', fontFamily: 'PT Sans Caption' };
+    const menuStyle = { backgroundColor: '#17252a', fontFamily: 'PT Sans Caption' };
+    const imageStyle = { height: '64px' };
+    const dropdownStyle = { marginRight: '32px' };
     return (
         <Menu stackable style={menuStyle} attached="top" borderless inverted>
+
           <Menu.Item as={NavLink} activeClassName="" exact to="/">
-            <Image size='medium' src='images/navbar-logo.png'/>
+            <Image style={imageStyle} src='images/navbar-logo.png'/>
           </Menu.Item>
+
           {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
               <Menu.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'>Admin</Menu.Item>
           ) : ''}
-          <Menu.Item position="right">
+
+          {this.props.currentUser !== '' ? (
+              [
+                <Menu.Item as={NavLink} className="" exact to="/categoriespage" key='cat'>Categories</Menu.Item>,
+                <Menu.Item as={NavLink} className="" exact to="/showusers" key='show'>Show Users</Menu.Item>,
+              ]
+          ) : ''}
+
+          <Menu.Item fitted position="right">
+            {this.props.currentUser !== '' ? (
+                <Menu.Item position='right'><SearchBar/></Menu.Item>
+            ) : ''}
+          </Menu.Item>
+          <Menu.Item>
             {this.props.currentUser === '' ? (
-                <Dropdown text="Login" pointing="top right" icon={'user'}>
+                <Dropdown text="Login" pointing="top right" icon={'sign-in'}>
                   <Dropdown.Menu>
-                    <Dropdown.Item icon="user" text="Sign In" as={NavLink} exact to="/signin"/>
-                    <Dropdown.Item icon="add user" text="Sign Up" as={NavLink} exact to="/signup"/>
+                    <Dropdown.Item icon="user circle" text="Sign In" as={NavLink} exact to="/signin"/>
+                    <Dropdown.Item icon="add" text="Sign Up" as={NavLink} exact to="/signup"/>
                   </Dropdown.Menu>
                 </Dropdown>
             ) : (
-                <Menu.Item>
-                  <Menu.Item position={'right'}>
-                    <Dropdown text='My Account' pointing="top right" icon={'dropdown'}>
-                      <Dropdown.Menu>
-                        <Dropdown.Item text="My Profile" as={NavLink} exact to="/userprofile" key='add'/>
-                        <Dropdown.Item text="Categories" as={NavLink} exact to="/categoriespage"
-                                       key='category'/>
-                        <Dropdown.Item text="Add New Item" as={NavLink} exact to="/createitem"
-                                       key='list'/>
-                        <Dropdown.Item text="Other Sellers" as={NavLink} exact to="/showusers"
-                                       key='show'/>
-                        <Dropdown.Item icon="sign out" text="Sign Out" as={NavLink} exact to="/signout"/>
-                      </Dropdown.Menu>
-                    </Dropdown>
-                  </Menu.Item>
-                </Menu.Item>
+                <Dropdown style={dropdownStyle} pointing="top right" icon={'large bars'}>
+                  <Dropdown.Menu>
+                    <Dropdown.Item text="My Account" as={NavLink} className="" exact to="/userprofile" key='add'/>
+                    <Dropdown.Item text="Add New Item" as={NavLink} className="" exact to="/createitem" key='list'/>
+                    <Dropdown.Item icon="sign-out alternate" text="Sign Out" as={NavLink} exact to="/signout"/>
+                  </Dropdown.Menu>
+                </Dropdown>
             )}
           </Menu.Item>
         </Menu>

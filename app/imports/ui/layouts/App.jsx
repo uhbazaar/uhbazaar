@@ -6,10 +6,8 @@ import { Roles } from 'meteor/alanning:roles';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
-import ListItems from '../pages/ListItems';
 import UHBazaar from '../pages/UHBazaar';
-import ListStuff from '../pages/ListStuff';
-import ListStuffAdmin from '../pages/ListStuffAdmin';
+import AdminPage from '../pages/AdminPage';
 import AddStuff from '../pages/NotifyAdmin';
 import CreateItem from '../pages/CreateItem';
 import EditStuff from '../pages/EditStuff';
@@ -23,6 +21,12 @@ import UserProfile from '../pages/UserProfile';
 import EditUserProfile from '../pages/EditUserProfile';
 import ShowUsers from '../pages/ShowUsers';
 import UserProfileById from '../pages/UserProfileById';
+import CreateUserProfile from '../pages/CreateUserProfile';
+import ShowItem from '../components/ShowItem';
+import EditUserAdmin from '../pages/EditUserAdmin';
+import EditCategoryAdmin from '../pages/EditCategoryAdmin';
+import EditItemAdmin from '../pages/EditItemAdmin';
+import EditReportAdmin from '../pages/EditReportAdmin';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -38,15 +42,19 @@ class App extends React.Component {
               <Route path="/signup" component={Signup}/>
               <Route exact path="/categoriespage" component={CategoriesPage}/>
               <Route path="/showusers" component={ShowUsers}/>
-              <ProtectedRoute path="/list" component={ListItems}/>
-              <Route path="/categorypage/:name" component={CategoryPage}/>
-              <ProtectedRoute path="/list" component={ListStuff}/>
+              <Route path="/createuserprofile" component={CreateUserProfile}/>
+              <ProtectedRoute path="/item/:_id" component={ShowItem}/>
+              <Route path="/categorypage/:name/:icon" component={CategoryPage}/>
               <ProtectedRoute path="/add" component={AddStuff}/>
               <ProtectedRoute path="/createitem" component={CreateItem}/>
               <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
               <ProtectedRoute path="/edituserprofile/:_id" component={EditUserProfile}/>
               <ProtectedRoute path="/userprofilebyid/:_id" component={UserProfileById}/>
-              <AdminProtectedRoute path="/admin" component={ListStuffAdmin}/>
+              <AdminProtectedRoute path="/admin" component={AdminPage}/>
+              <AdminProtectedRoute path="/edit-user/:_id" component={EditUserAdmin}/>
+              <AdminProtectedRoute path="/edit-category/:_id" component={EditCategoryAdmin}/>
+              <AdminProtectedRoute path="/edit-item/:_id" component={EditItemAdmin}/>
+              <AdminProtectedRoute path="/edit-report/:_id" component={EditReportAdmin}/>
               <ProtectedRoute path="/signout" component={Signout}/>
               <Route component={NotFound}/>
             </Switch>
@@ -64,16 +72,16 @@ class App extends React.Component {
  */
 
 const ProtectedRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={(props) => {
-      const isLogged = Meteor.userId() !== null;
-      return isLogged ?
-          (<Component {...props} />) :
-          (<Redirect to={{ pathname: '/signin', state: { from: props.location } }}/>
-      );
-    }}
-  />
+    <Route
+        {...rest}
+        render={(props) => {
+          const isLogged = Meteor.userId() !== null;
+          return isLogged ?
+              (<Component {...props} />) :
+              (<Redirect to={{ pathname: '/signin', state: { from: props.location } }}/>
+              );
+        }}
+    />
 );
 
 /**
@@ -107,6 +115,5 @@ AdminProtectedRoute.propTypes = {
   component: PropTypes.func.isRequired,
   location: PropTypes.object,
 };
-
 
 export default App;

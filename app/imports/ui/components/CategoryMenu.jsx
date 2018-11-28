@@ -1,121 +1,35 @@
 import React from 'react';
-import { Card, Icon, Image, Grid } from 'semantic-ui-react';
+import { Card, Icon, Image } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
 class CategoryMenu extends React.Component {
 
   render() {
     return (
-          <Grid className='ui link cards' verticalAlign='middle'>
-              <Card.Group centered itemsPerRow={4}>
-                <Card>
-                  <Image src='images/backpack.jpg'/>
-                  <Card.Content>
-                    <Card.Header>Lawn Mower</Card.Header>
-                    <Card.Description>After some years of mowing dem lawns for you fine folks,
-                      its about time I retired.</Card.Description>
-                  </Card.Content>
-                  <Card.Content extra>
-                    <Icon name='money'/>
-                    <span className='price'>300</span>
-                  </Card.Content>
-                  <Card.Content extra>
-                    <span className='location'>1234 Oak ln Greenbow, AL 98475</span>
-                  </Card.Content>
-                </Card>
-                <Card>
-                  <Image src='images/lawn-mower.jpeg'/>
-                  <Card.Content>
-                    <Card.Header>Lawn Mower</Card.Header>
-                    <Card.Description>After some years of mowing dem lawns for you fine folks,
-                      its about time I retired.</Card.Description>
-                  </Card.Content>
-                  <Card.Content extra>
-                    <Icon name='money'/>
-                    <span className='price'>300</span>
-                  </Card.Content>
-                  <Card.Content extra>
-                    <span className='location'>1234 Oak ln Greenbow, AL 98475</span>
-                  </Card.Content>
-                </Card>
-                <Card>
-                  <Image src='images/lawn-mower.jpeg'/>
-                  <Card.Content>
-                    <Card.Header>Lawn Mower</Card.Header>
-                    <Card.Description>After some years of mowing dem lawns for you fine folks,
-                      its about time I retired.</Card.Description>
-                  </Card.Content>
-                  <Card.Content extra>
-                    <Icon name='money'/>
-                    <span className='price'>300</span>
-                  </Card.Content>
-                  <Card.Content extra>
-                    <span className='location'>1234 Oak ln Greenbow, AL 98475</span>
-                  </Card.Content>
-                </Card>
-                <Card>
-                  <Image src='images/lawn-mower.jpeg'/>
-                  <Card.Content>
-                    <Card.Header>Lawn Mower</Card.Header>
-                    <Card.Description>After some years of mowing dem lawns for you fine folks,
-                      its about time I retired.</Card.Description>
-                  </Card.Content>
-                  <Card.Content extra>
-                    <Icon name='money'/>
-                    <span className='price'>300</span>
-                  </Card.Content>
-                  <Card.Content extra>
-                    <span className='location'>1234 Oak ln Greenbow, AL 98475</span>
-                  </Card.Content>
-                </Card>
-                <Card>
-                  <Image src='images/lawn-mower.jpeg'/>
-                  <Card.Content>
-                    <Card.Header>Lawn Mower</Card.Header>
-                    <Card.Description>After some years of mowing dem lawns for you fine folks,
-                      its about time I retired.</Card.Description>
-                  </Card.Content>
-                  <Card.Content extra>
-                    <Icon name='money'/>
-                    <span className='price'>300</span>
-                  </Card.Content>
-                  <Card.Content extra>
-                    <span className='location'>1234 Oak ln Greenbow, AL 98475</span>
-                  </Card.Content>
-                </Card>
-                <Card>
-                  <Image src='images/lawn-mower.jpeg'/>
-                  <Card.Content>
-                    <Card.Header>Lawn Mower</Card.Header>
-                    <Card.Description>After some years of mowing dem lawns for you fine folks,
-                      its about time I retired.</Card.Description>
-                  </Card.Content>
-                  <Card.Content extra>
-                    <Icon name='money'/>
-                    <span className='price'>300</span>
-                  </Card.Content>
-                  <Card.Content extra>
-                    <span className='location'>1234 Oak ln Greenbow, AL 98475</span>
-                  </Card.Content>
-                </Card>
-                <Card>
-                  <Image src='images/lawn-mower.jpeg'/>
-                  <Card.Content>
-                    <Card.Header>Lawn Mower</Card.Header>
-                    <Card.Description>After some years of mowing dem lawns for you fine folks,
-                      its about time I retired.</Card.Description>
-                  </Card.Content>
-                  <Card.Content extra>
-                    <Icon name='money'/>
-                    <span className='price'>300</span>
-                  </Card.Content>
-                  <Card.Content extra>
-                    <span className='location'>1234 Oak ln Greenbow, AL 98475</span>
-                  </Card.Content>
-                </Card>
-              </Card.Group>
-          </Grid>
+        <Card raised link>
+          <Image src={this.props.item.image}/>
+          <Card.Content>
+            <Card.Header>{this.props.item.name}</Card.Header>
+            <Card.Description>{this.props.item.description}</Card.Description>
+          </Card.Content>
+          <Card.Content extra>
+            <Icon name='money'/>
+            <span className='price'>{`$${this.props.item.price}`}</span>
+          </Card.Content>
+          <Card.Content extra>
+            <span className='location'>{this.props.item.location}</span>
+          </Card.Content>
+          <Card.Content extra>
+            <span className='seller'>{this.props.item.owner}</span>
+          </Card.Content>
+        </Card>
     );
   }
 }
+
+CategoryMenu.propTypes = {
+  item: PropTypes.object.isRequired,
+};
+
 export default withRouter(CategoryMenu);

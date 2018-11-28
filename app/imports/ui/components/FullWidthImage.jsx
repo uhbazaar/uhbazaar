@@ -3,7 +3,6 @@ import { Header, Container, Grid, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import LandingBar from './LandingBar';
 
-
 export default class FullWidthImage extends React.Component {
   render() {
     const mainContainerStyle = {
@@ -29,13 +28,6 @@ export default class FullWidthImage extends React.Component {
       paddingRight: '16px',
       fontSize: '80px',
     };
-
-    const headerTwoStyle = {
-      fontFamily: 'PT Sans Caption',
-      marginLeft: '150px',
-      fontSize: '80px',
-      color: '#084543',
-    };
     const buttonOneStyle = {
       fontFamily: 'PT Sans Caption',
       // color: '#084543',
@@ -44,7 +36,6 @@ export default class FullWidthImage extends React.Component {
       fontSize: '20px',
 
     };
-
     const buttonTwoStyle = {
       fontFamily: 'PT Sans Caption',
       fontSize: '20px',
@@ -55,23 +46,23 @@ export default class FullWidthImage extends React.Component {
         <Container fluid style={mainContainerStyle}>
           <Grid verticalAlign='middle'>
 
-            <Container style={logoContainerStyle} fixed>
-              <Header style={headerOneStyle} textAlign='center' size='70px'>
+            <Container style={logoContainerStyle}>
+              <Header style={headerOneStyle} textAlign='center'>
                 CLASSIFIED ADS AND COMMUNITY NOTICES FOR THE UHM OHANA
               </Header>
 
-            <Grid centered>
-              <Link to={'/signup'}>
-              <Button basic color={'black'} style={buttonOneStyle}>
-                BECOME A MEMBER
-              </Button>
-              </Link>
-               <Link to={'/signin'}>
-              <Button color={'black'} style={buttonTwoStyle} >
-                LOGIN
-              </Button>
-               </Link>
-            </Grid>
+              <Grid centered>
+                <Link to={'/signup'}>
+                  <Button basic color={'black'} style={buttonOneStyle}>
+                    BECOME A MEMBER
+                  </Button>
+                </Link>
+                <Link to={'/signin'}>
+                  <Button color={'black'} style={buttonTwoStyle}>
+                    LOGIN
+                  </Button>
+                </Link>
+              </Grid>
             </Container>
           </Grid>
           <LandingBar/>

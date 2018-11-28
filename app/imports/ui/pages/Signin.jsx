@@ -42,6 +42,7 @@ export default class Signin extends React.Component {
 
     const signInStyle = {
       fontFamily: 'PT Sans Caption',
+      marginBottom: '40vh',
     };
     const headerLoginStyle = {
       fontFamily: 'PT Sans Caption',
