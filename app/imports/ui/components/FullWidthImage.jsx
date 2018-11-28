@@ -1,9 +1,14 @@
 import React from 'react';
-import { Header, Container, Grid, Button } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { Header, Container, Grid, Button, Menu } from 'semantic-ui-react';
+import { Meteor } from 'meteor/meteor';
+import { withTracker } from 'meteor/react-meteor-data';
+import { withRouter, Link, NavLink } from 'react-router-dom';
 import LandingBar from './LandingBar';
+import { Roles } from 'meteor/alanning:roles';
 
-export default class FullWidthImage extends React.Component {
+
+class FullWidthImage extends React.Component {
   render() {
     const mainContainerStyle = {
       marginTop: '300px',
@@ -44,6 +49,7 @@ export default class FullWidthImage extends React.Component {
 
     return (
         <Container fluid style={mainContainerStyle}>
+          {this.props.currentUser === '' ? (
           <Grid verticalAlign='middle'>
 
             <Container style={logoContainerStyle}>
@@ -65,8 +71,32 @@ export default class FullWidthImage extends React.Component {
               </Grid>
             </Container>
           </Grid>
+          ) : ''}
+
+          {this.props.currentUser !== '' ? (
+          <Grid verticalAlign='middle'>
+            <Container style={logoContainerStyle}>
+              <Header style={headerOneStyle} textAlign='center'>
+                CLASSIFIED ADS AND COMMUNITY NOTICES FOR THE UHM OHANA
+              </Header>
+            </Container>
+          </Grid>
+          ) : ''}
           <LandingBar/>
         </Container>
     );
   }
 }
+
+/** Declare the types of all properties. */
+FullWidthImage.propTypes = {
+  currentUser: PropTypes.string,
+};
+
+/** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
+const FullWidthImageContainer = withTracker(() => ({
+  currentUser: Meteor.user() ? Meteor.user().username : '',
+}))(FullWidthImage);
+
+/** Enable ReactRouter for this component. https://reacttraining.com/react-router/web/api/withRouter */
+export default withRouter(FullWidthImageContainer);
