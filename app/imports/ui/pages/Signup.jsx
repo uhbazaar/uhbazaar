@@ -37,17 +37,30 @@ export default class Signup extends React.Component {
 
   /** Display the signup form. */
   render() {
+    const headerLogoutStyle = {
+      fontFamily: 'PT Sans Caption',
+      paddingTop: '10vh',
+    };
+    const signUpStyle = {
+      fontFamily: 'PT Sans Caption',
+    };
     const { from } = this.props.location.state || { from: { pathname: '/createuserprofile' } };
     // if correct authentication, redirect to page instead of login screen
     if (this.state.redirectToReferer) {
       return <Redirect to={from}/>;
     }
     return (
-        <Container>
+        <div>
+          {/* eslint-disable-next-line max-len */}
+          <style>{'body { background: rgba(222,242,241, 0.7)  url(\'/images/uhsketch.png\') no-repeat center center fixed; background-blend-mode: overlay; }'}
+          </style>
+          <style>{'body { background-size: cover; }'}
+          </style>
+        <Container style={signUpStyle}>
           <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
             <Grid.Column>
-              <Header as="h2" textAlign="center">
-                Register Your Account </Header>
+              <Header style={headerLogoutStyle} as="h2" textAlign="center">
+                REGISTER YOUR ACCOUNT </Header>
               <Form onSubmit={this.handleSubmit}>
                 <Segment stacked>
                   <Form.Input
@@ -71,8 +84,8 @@ export default class Signup extends React.Component {
                   <Form.Button content="Submit"/>
                 </Segment>
               </Form>
-              <Message>
-                Already have an account? Login <Link to="/signin">here</Link>
+              <Message style={signUpStyle}>
+                Already a member? <Link to="/signin">Sign in.</Link>
               </Message>
               {this.state.error === '' ? (
                   ''
@@ -86,6 +99,7 @@ export default class Signup extends React.Component {
             </Grid.Column>
           </Grid>
         </Container>
+        </div>
     );
   }
 }
