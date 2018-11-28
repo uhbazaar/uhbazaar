@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Checkbox, Menu, Icon, Sidebar, Grid, Card, List, Button, Segment } from 'semantic-ui-react';
+import { Checkbox, Menu, Icon, Sidebar, Grid, Card, List, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { sortBy } from 'underscore';
@@ -60,9 +60,9 @@ class CategoryPage extends React.Component {
     };
     const mainContainerStyle = {
       paddingTop: '20px',
-      paddingBottom: '20px',
+      paddingBottom: '64px',
       paddingRight: '64px',
-      margin: '0',
+      paddingLeft: '64px',
     };
     const sideBarStyle = {
       paddingTop: '20px',
@@ -173,7 +173,7 @@ class CategoryPage extends React.Component {
               </Menu.Item>
             </Sidebar>
             <Sidebar.Pusher>
-              <Grid container style={mainContainerStyle}>
+              <Grid stackable style={mainContainerStyle}>
                 <style>{'body {background-color: #def2f1; }'}</style>
                 {itemsComponent}
               </Grid>
