@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Checkbox, Menu, Icon, Sidebar, Grid, Card, List } from 'semantic-ui-react';
+import { Checkbox, Menu, Icon, Sidebar, Grid, Card, List, Button, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { sortBy } from 'underscore';
@@ -15,7 +15,7 @@ class CategoryPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      visible: true,
+      visible: false,
       sorter: 'date',
       titleIsActive: false,
       dateIsActive: true,
@@ -24,6 +24,12 @@ class CategoryPage extends React.Component {
       cardMode: true,
     };
   }
+
+  handleHideClick = () => this.setState({ visible: false });
+
+  handleShowClick = () => this.setState({ visible: true });
+
+  handleSidebarHide = () => this.setState({ visible: false });
 
   sortByItem(items, cat, sortKey, Component) {
     const stuff = sortBy(items, sortKey);
@@ -41,6 +47,9 @@ class CategoryPage extends React.Component {
     const titleStyle = {
       fontSize: '32px',
       fontFamily: 'Cinzel',
+      paddingTop: '20px',
+      paddingBottom: '20px',
+      fontWeight: 'bold',
     };
     const subCat = {
       fontSize: '22px',
@@ -52,8 +61,12 @@ class CategoryPage extends React.Component {
     const mainContainerStyle = {
       paddingTop: '20px',
       paddingBottom: '20px',
-      marginBottom: '40vh',
       paddingRight: '64px',
+      margin: '0',
+    };
+    const sideBarStyle = {
+      paddingTop: '20px',
+      paddingBottom: '20px',
     };
     const catSideMenu = {
       fontWeight: 'bold',
@@ -109,18 +122,23 @@ class CategoryPage extends React.Component {
     return (
 
         <div>
+          <Menu.Header style={titleStyle}>
+            <Icon size='big' name={this.props.match.params.icon}/> {`${this.props.match.params.name}`}
+          </Menu.Header>
+          <Button.Group>
+            <Button disabled={visible} onClick={this.handleShowClick}>
+              Show Options
+            </Button>
+          </Button.Group>
           <Sidebar.Pushable>
             <Sidebar
                 as={Menu}
                 vertical
                 visible={visible}
-                style={mainContainerStyle}
-                width='wide'>
-              <Menu.Item>
-                <Menu.Header style={titleStyle}>
-                  <Icon size='big' name={this.props.match.params.icon}/> {`${this.props.match.params.name}`}
-                </Menu.Header>
-              </Menu.Item>
+                style={sideBarStyle}
+                animation='push'
+                width='wide'
+                onHide={this.handleSidebarHide}>
               <Menu.Menu>
                 <Menu.Header style={subCat}>
                   Display Mode
@@ -156,7 +174,7 @@ class CategoryPage extends React.Component {
             </Sidebar>
             <Sidebar.Pusher>
               <Grid container style={mainContainerStyle}>
-                <style>{'body {background-color: #def2f1;, color: }'}</style>
+                <style>{'body {background-color: #def2f1; }'}</style>
                 {itemsComponent}
               </Grid>
             </Sidebar.Pusher>
