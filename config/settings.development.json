@@ -50,6 +50,13 @@
       "description": "I am an actor of sorts",
       "image": "/images/user.png",
       "username": "admin@foo.com"
+    },
+    {
+      "firstName": "Philip",
+      "lastName": "Johnson",
+      "description": "I am a Professor of Information and Computer Sciences at the University of Hawaii, Director of the Collaborative Software Development Laboratory, and the CEO of OpenPowerQuality.com.",
+      "image": "/images/phil.jpg",
+      "username": "johnson@hawaii.edu"
     }
   ],
   "defaultCategories": [
@@ -107,6 +114,36 @@
     }
   ],
   "defaultItems": [
+    {
+      "title": "Moby Dick",
+      "date": "09/10/2018",
+      "image": "images/moby.jpg",
+      "category": "Books",
+      "price": "100",
+      "description": "The greatest story ever",
+      "location": "North Shore",
+      "owner": "admin@foo.com"
+    },
+    {
+      "title": "Propeller Aerodynamics",
+      "date": "11/01/2018",
+      "image": "images/prop.jpg",
+      "category": "Books",
+      "price": "65.33",
+      "description": "The History of propellering stuff",
+      "location": "Kaimuki",
+      "owner": "johnson@hawaii.edu"
+    },
+    {
+      "title": "Frankenstien",
+      "date": "11/10/2018",
+      "image": "images/frank.jpg",
+      "category": "Books",
+      "price": "700",
+      "description": "The first sci-fi ever",
+      "location": "Manoa",
+      "owner": "john@foo.edu"
+    },
     {
       "title": "Rosen Text Book",
       "date": "10/28/2018",
