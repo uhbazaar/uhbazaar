@@ -7,7 +7,7 @@ class CategoryMenu extends React.Component {
 
   render() {
     return (
-        <Card raised link>
+        <Card raised link href={`/#/item/${this.props.item._id}`}>
           <Card.Content as={Image}>
           <Image fluid label={this.props.item.date} src={this.props.item.image}/>
           </Card.Content>

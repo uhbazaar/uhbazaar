@@ -8,7 +8,6 @@ import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import UHBazaar from '../pages/UHBazaar';
 import AdminPage from '../pages/AdminPage';
-import AddStuff from '../pages/NotifyAdmin';
 import CreateItem from '../pages/CreateItem';
 import EditStuff from '../pages/EditStuff';
 import NotFound from '../pages/NotFound';
@@ -27,6 +26,7 @@ import EditUserAdmin from '../pages/EditUserAdmin';
 import EditCategoryAdmin from '../pages/EditCategoryAdmin';
 import EditItemAdmin from '../pages/EditItemAdmin';
 import EditReportAdmin from '../pages/EditReportAdmin';
+import CreateReport from '../pages/CreateReport';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -45,8 +45,8 @@ class App extends React.Component {
               <Route path="/createuserprofile" component={CreateUserProfile}/>
               <ProtectedRoute path="/item/:_id" component={ShowItem}/>
               <Route path="/categorypage/:name/:icon" component={CategoryPage}/>
-              <ProtectedRoute path="/add" component={AddStuff}/>
               <ProtectedRoute path="/createitem" component={CreateItem}/>
+              <ProtectedRoute path="/createReport" component={CreateReport}/>
               <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
               <ProtectedRoute path="/edituserprofile/:_id" component={EditUserProfile}/>
               <ProtectedRoute path="/userprofilebyid/:_id" component={UserProfileById}/>

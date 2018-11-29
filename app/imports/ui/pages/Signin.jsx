@@ -42,13 +42,12 @@ export default class Signin extends React.Component {
 
     const signInStyle = {
       fontFamily: 'PT Sans Caption',
-      marginBottom: '40vh',
     };
     const headerLoginStyle = {
       fontFamily: 'PT Sans Caption',
-      paddingTop: '32px',
-
+      paddingTop: '10vh',
     };
+
     const { from } = this.props.location.state || { from: { pathname: '/' } };
     // if correct authentication, redirect to page instead of login screen
     if (this.state.redirectToReferer) {
@@ -56,6 +55,12 @@ export default class Signin extends React.Component {
     }
     // Otherwise return the Login form.
     return (
+        <div>
+          {/* eslint-disable-next-line max-len */}
+          <style>{'body { background: rgba(222,242,241, 0.7)  url(\'/images/uhsketch.png\') no-repeat center center fixed; background-blend-mode: overlay; }'}
+          </style>
+          <style>{'body { background-size: cover; }'}
+          </style>
         <Container style={signInStyle}>
           <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
             <Grid.Column>
@@ -85,7 +90,7 @@ export default class Signin extends React.Component {
                 </Segment>
               </Form>
               <Message>
-                <Link to="/signup">CLICK HERE TO REGISTER</Link>
+                Not a member? <Link to="/signup">Join now.</Link>
               </Message>
               {this.state.error === '' ? (
                   ''
@@ -99,6 +104,7 @@ export default class Signin extends React.Component {
             </Grid.Column>
           </Grid>
         </Container>
+        </div>
     );
   }
 }

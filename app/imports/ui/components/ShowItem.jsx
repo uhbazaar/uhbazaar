@@ -3,6 +3,7 @@ import { Image, Grid, Button, Icon, Card } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
+import { Link } from 'react-router-dom';
 import { Items } from '../../api/item/item';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
@@ -35,12 +36,14 @@ class ShowItem extends React.Component {
                       </Button.Content>
                     </Button>
                     <Button.Or/>
-                    <Button animated='fade' style={button2} size='medium'>
-                      <Button.Content visible>Report</Button.Content>
-                      <Button.Content hidden>
-                        <Icon name='ambulance'/>
-                      </Button.Content>
-                    </Button>
+                    <Link to={`/createReport/${this.props.item._id}`}>
+                      <Button animated='fade' style={button2} size='medium'>
+                        <Button.Content visible>Report</Button.Content>
+                        <Button.Content hidden>
+                          <Icon name='ambulance'/>
+                        </Button.Content>
+                      </Button>
+                    </Link>
                   </Button.Group>
                 </Card.Content>
               </Card>
