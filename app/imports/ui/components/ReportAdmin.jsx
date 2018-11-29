@@ -46,7 +46,8 @@ class ReportAdmin extends React.Component {
           <Table.Cell>{this.props.report.name}</Table.Cell>
           <Table.Cell>{this.props.report.issue}</Table.Cell>
           <Table.Cell>{this.props.report._id}</Table.Cell>
-          <Table.Cell>{this.props.report.owner}</Table.Cell>
+          <Table.Cell>{this.props.report.progress}</Table.Cell>
+          <Table.Cell>{this.props.report.description}</Table.Cell>
           <Table.Cell>
             <Button><Link to={`/edit-report/${this.props.report._id}`}>Edit</Link></Button>
             <Button color='red' basic onClick={this.handleClick}>Delete</Button>

@@ -34,6 +34,7 @@ class ListStuffAdmin extends React.Component {
                 <Table.HeaderCell>Issue</Table.HeaderCell>
                 <Table.HeaderCell>ID</Table.HeaderCell>
                 <Table.HeaderCell>Progress</Table.HeaderCell>
+                <Table.HeaderCell>Description</Table.HeaderCell>
                 <Table.HeaderCell>Edit/Delete</Table.HeaderCell>
               </Table.Row>
             </Table.Header>

@@ -24,7 +24,7 @@ class CategoryMenuList extends React.Component {
             <List.Header style={dateStyle}>
               {this.props.item.date}
             </List.Header>
-            <List.Description as='a' style={titleStyle}>
+            <List.Description as='a' style={titleStyle} href={`/#/item/${this.props.item._id}`}>
               {this.props.item.title}
             </List.Description>
             <List.Description>
