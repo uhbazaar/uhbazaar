@@ -35,11 +35,15 @@ class UserProfile extends React.Component {
     const cardStyle = { backgroundColor: '#feffff', width: '600px' };
     const showcaseRow = { marginTop: '64px' };
     const showcaseStyle = { marginTop: '8px', marginBottom: '128px' };
+    const background = (
+        <style>{'body { background: rgba(222,242,241, 0.7) url(\'/images/mat.jpg\') no-repeat fixed;' +
+        ' background-blend-mode: overlay; background-size: cover;}'}
+        </style>
+    );
     return (
         <div>
           <Container>
-            <style>{'body { background: url(images/uh-logo.png) no-repeat center fixed; }'}</style>
-            <style>{'body { background-color: #def2f1; }'}</style>
+            {background}
             <UserProfileCard/>
             <Grid>
               <Grid.Row style={showcaseRow}>
