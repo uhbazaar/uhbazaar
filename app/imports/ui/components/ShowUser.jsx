@@ -14,10 +14,15 @@ class ShowUser extends React.Component {
   render() {
     const items = Items.find({}).fetch();
     const cardFontStyle = { color: '#17252a' };
-    const cardColor = { backgroundColor: '#feffff' };
+    const background = (
+        <style>{'body { background: rgba(222,242,241, 0.7) url(\'/images/canoe.jpg\') no-repeat fixed;' +
+        ' background-blend-mode: overlay; background-size: cover;}'}
+        </style>
+    );
     const iconStyle = { marginRight: '8px', marginTop: '4px' };
     return (
-        <Card style={cardColor}>
+        <Card>
+          {background}
           <Card.Content>
             <Image floated='right' size='mini' src={this.props.user.image}/>
             <Card.Header style={cardFontStyle}>{this.props.user.firstName} {this.props.user.lastName}</Card.Header>

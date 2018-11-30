@@ -108,6 +108,11 @@ class CategoryPage extends React.Component {
           cardMode: true,
         })} label='Gallery'/>
     );
+    const background = (
+        <style>{'body { background: rgba(222,242,241, 0.7) url(\'/images/mat.jpg\') no-repeat fixed;' +
+        ' background-blend-mode: overlay; background-size: cover;}'}
+        </style>
+    );
 
     if (this.state.listMode) {
       itemsComponent = <List>
@@ -174,7 +179,7 @@ class CategoryPage extends React.Component {
             </Sidebar>
             <Sidebar.Pusher>
               <Grid stackable style={mainContainerStyle}>
-                <style>{'body {background-color: #def2f1; }'}</style>
+                {background}
                 {itemsComponent}
               </Grid>
             </Sidebar.Pusher>
