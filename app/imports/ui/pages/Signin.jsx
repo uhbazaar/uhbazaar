@@ -70,7 +70,7 @@ export default class Signin extends React.Component {
                 <Segment stacked>
                   <Form.Input
                       label="Email"
-                      icon="user"
+                      icon="mail"
                       iconPosition="left"
                       name="email"
                       type="email"
@@ -86,12 +86,14 @@ export default class Signin extends React.Component {
                       type="password"
                       onChange={this.handleChange}
                   />
-                  <Form.Button content="Submit"/>
+                  <Form.Button fluid large color={'teal'} content="Submit"/>
                 </Segment>
               </Form>
+              <Container textAlign="center">
               <Message>
                 Not a member? <Link to="/signup">Join now.</Link>
               </Message>
+              </Container>
               {this.state.error === '' ? (
                   ''
               ) : (
