@@ -1,11 +1,20 @@
 import React from 'react';
 import { Card, Icon, Image } from 'semantic-ui-react';
+import { first } from 'underscore';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
 class CategoryMenu extends React.Component {
 
   render() {
+    let description = '';
+    const n = 80;
+    if (this.props.item.description.length > n) {
+          description = first(this.props.item.description, n);
+          description = description.concat('.', '.', '.');
+    } else {
+      description = this.props.item.description;
+    }
     return (
         <Card raised link href={`/#/item/${this.props.item._id}`}>
           <Card.Content as={Image}>
@@ -13,7 +22,7 @@ class CategoryMenu extends React.Component {
           </Card.Content>
           <Card.Content extra>
             <Card.Header>{this.props.item.title}</Card.Header>
-            <Card.Description>{this.props.item.description}</Card.Description>
+            <Card.Description>{description}</Card.Description>
           </Card.Content>
           <Card.Content extra>
             <Icon name='money'/>

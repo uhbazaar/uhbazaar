@@ -48,8 +48,9 @@ class CategoryPage extends React.Component {
     const stuff = sortBy(categories, 'name');
     return stuff.map((category) => <CategoriesMenu key={category._id} category={category}/>);
   }
+
   isOn(bool) {
-    if(bool) {
+    if (bool) {
       return true;
     }
     return false;
@@ -58,7 +59,6 @@ class CategoryPage extends React.Component {
   render() {
     const { visible } = this.state;
     let itemsComponent;
-    let date, title, price;
     const titleStyle = {
       fontSize: '32px',
       fontFamily: 'Cinzel',
@@ -119,19 +119,22 @@ class CategoryPage extends React.Component {
     );
     const priceToggle = (
         <Checkbox checked={this.state.priceToggle} disabled={!this.state.priceIsActive}
-                  onClick={() => this.setState({ priceToggle: !this.state.priceToggle, reverse: !this.state.reverse })} toggle
+                  onClick={() => this.setState({ priceToggle: !this.state.priceToggle, reverse: !this.state.reverse })}
+                  toggle
                   label='Highest Lowest'/>
 
     );
     const dateToggle = (
         <Checkbox checked={this.state.dateToggle} disabled={!this.state.dateIsActive}
-                  onClick={() => this.setState({ dateToggle: !this.state.dateToggle, reverse: !this.state.reverse })} toggle
+                  onClick={() => this.setState({ dateToggle: !this.state.dateToggle, reverse: !this.state.reverse })}
+                  toggle
                   label='Highest Lowest'/>
 
     );
     const titleToggle = (
         <Checkbox checked={this.state.titleToggle} disabled={!this.state.titleIsActive}
-                  onClick={() => this.setState({ titleToggle: !this.state.titleToggle, reverse: !this.state.reverse })} toggle
+                  onClick={() => this.setState({ titleToggle: !this.state.titleToggle, reverse: !this.state.reverse })}
+                  toggle
                   label='Highest Lowest'/>
 
     );
