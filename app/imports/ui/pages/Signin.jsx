@@ -45,7 +45,7 @@ export default class Signin extends React.Component {
     };
     const headerLoginStyle = {
       fontFamily: 'PT Sans Caption',
-      paddingTop: '10vh',
+      paddingTop: '30vh',
     };
 
     const { from } = this.props.location.state || { from: { pathname: '/' } };

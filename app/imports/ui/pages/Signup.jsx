@@ -39,7 +39,7 @@ export default class Signup extends React.Component {
   render() {
     const headerLogoutStyle = {
       fontFamily: 'PT Sans Caption',
-      paddingTop: '10vh',
+      paddingTop: '30vh',
     };
     const signUpStyle = {
       fontFamily: 'PT Sans Caption',

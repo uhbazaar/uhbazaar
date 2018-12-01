@@ -8,8 +8,8 @@ export default class Signout extends React.Component {
   render() {
     const signedOutStyle = {
       fontFamily: 'PT Sans Caption',
-      paddingTop: '23vh',
-      paddingBottom: '15vh',
+      paddingTop: '40vh',
+      fontSize: '50px',
     };
     Meteor.logout();
     return (
@@ -22,7 +22,7 @@ export default class Signout extends React.Component {
           <Header as="h2" textAlign="center" style={signedOutStyle}>
             <p>YOU ARE SIGNED OUT.</p>
             <Link to={'/'}>
-            <h3>GO BACK TO HOME PAGE</h3>
+            <h2>GO BACK TO HOME PAGE</h2>
             </Link>
           </Header>
         </div>
