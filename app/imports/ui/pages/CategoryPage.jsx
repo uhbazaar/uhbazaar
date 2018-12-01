@@ -22,6 +22,10 @@ class CategoryPage extends React.Component {
       priceIsActive: false,
       listMode: false,
       cardMode: true,
+      priceToggle: false,
+      dateToggle: false,
+      titleToggle: false,
+      reverse: false,
     };
   }
 
@@ -31,8 +35,12 @@ class CategoryPage extends React.Component {
 
   handleSidebarHide = () => this.setState({ visible: false });
 
-  sortByItem(items, cat, sortKey, Component) {
+  sortByItem(items, cat, sortKey, Component, reverse) {
     const stuff = sortBy(items, sortKey);
+    if (reverse) {
+      stuff.reverse();
+      this.setState.reverse = false;
+    }
     return stuff.filter(item => item.category === cat).map((item) => <Component key={item._id} item={item}/>);
   }
 
@@ -40,10 +48,17 @@ class CategoryPage extends React.Component {
     const stuff = sortBy(categories, 'name');
     return stuff.map((category) => <CategoriesMenu key={category._id} category={category}/>);
   }
+  isOn(bool) {
+    if(bool) {
+      return true;
+    }
+    return false;
+  }
 
   render() {
     const { visible } = this.state;
     let itemsComponent;
+    let date, title, price;
     const titleStyle = {
       fontSize: '32px',
       fontFamily: 'Cinzel',
@@ -76,6 +91,8 @@ class CategoryPage extends React.Component {
         <Checkbox checked={this.state.titleIsActive} onClick={() => this.setState({
           sorter: 'title',
           titleIsActive: true,
+          dateToggle: false,
+          priceToggle: false,
           dateIsActive: false,
           priceIsActive: false,
         })} label='Title'/>
@@ -85,6 +102,8 @@ class CategoryPage extends React.Component {
           sorter: 'date',
           titleIsActive: false,
           dateIsActive: true,
+          titleToggle: false,
+          priceToggle: false,
           priceIsActive: false,
         })} label='Date'/>
     );
@@ -94,7 +113,27 @@ class CategoryPage extends React.Component {
           titleIsActive: false,
           dateIsActive: false,
           priceIsActive: true,
+          titleToggle: false,
+          dateToggle: false,
         })} label='Price'/>
+    );
+    const priceToggle = (
+        <Checkbox checked={this.state.priceToggle} disabled={!this.state.priceIsActive}
+                  onClick={() => this.setState({ priceToggle: !this.state.priceToggle, reverse: !this.state.reverse })} toggle
+                  label='Highest Lowest'/>
+
+    );
+    const dateToggle = (
+        <Checkbox checked={this.state.dateToggle} disabled={!this.state.dateIsActive}
+                  onClick={() => this.setState({ dateToggle: !this.state.dateToggle, reverse: !this.state.reverse })} toggle
+                  label='Highest Lowest'/>
+
+    );
+    const titleToggle = (
+        <Checkbox checked={this.state.titleToggle} disabled={!this.state.titleIsActive}
+                  onClick={() => this.setState({ titleToggle: !this.state.titleToggle, reverse: !this.state.reverse })} toggle
+                  label='Highest Lowest'/>
+
     );
     const listCheckbox = (
         <Checkbox checked={this.state.listMode} onClick={() => this.setState({
@@ -116,11 +155,11 @@ class CategoryPage extends React.Component {
 
     if (this.state.listMode) {
       itemsComponent = <List>
-        {this.sortByItem(this.props.items, this.props.match.params.name, this.state.sorter, CategoryMenuList)}
+        {this.sortByItem(this.props.items, this.props.match.params.name, this.state.sorter, CategoryMenuList, this.state.reverse)}
       </List>;
     } else {
       itemsComponent = <Card.Group>
-        {this.sortByItem(this.props.items, this.props.match.params.name, this.state.sorter, CategoryMenu)}
+        {this.sortByItem(this.props.items, this.props.match.params.name, this.state.sorter, CategoryMenu, this.state.reverse)}
       </Card.Group>;
     }
 
@@ -164,13 +203,34 @@ class CategoryPage extends React.Component {
                   Sort By
                 </Menu.Header>
                 <Menu.Item>
-                  {titleCheckbox}
+                  <Grid columns='2'>
+                    <Grid.Column>
+                      {titleCheckbox}
+                    </Grid.Column>
+                    <Grid.Column>
+                      {titleToggle}
+                    </Grid.Column>
+                  </Grid>
                 </Menu.Item>
                 <Menu.Item>
-                  {dateCheckbox}
+                  <Grid columns='2'>
+                    <Grid.Column>
+                      {dateCheckbox}
+                    </Grid.Column>
+                    <Grid.Column>
+                      {dateToggle}
+                    </Grid.Column>
+                  </Grid>
                 </Menu.Item>
                 <Menu.Item>
-                  {priceCheckbox}
+                  <Grid columns='2'>
+                    <Grid.Column>
+                      {priceCheckbox}
+                    </Grid.Column>
+                    <Grid.Column>
+                      {priceToggle}
+                    </Grid.Column>
+                  </Grid>
                 </Menu.Item>
               </Menu.Menu>
               <Menu.Item style={catSideMenu}>
