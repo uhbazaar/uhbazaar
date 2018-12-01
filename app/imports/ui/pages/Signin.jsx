@@ -57,7 +57,7 @@ export default class Signin extends React.Component {
     return (
         <div>
           {/* eslint-disable-next-line max-len */}
-          <style>{'body { background: rgba(222,242,241, 0.7)  url(\'/images/uhsketch.png\') no-repeat center center fixed; background-blend-mode: overlay; }'}
+          <style>{'body { background: rgba(222,242,241, 0.7)  url(\'/images/valley.jpg\') no-repeat center center fixed; background-blend-mode: overlay; }'}
           </style>
           <style>{'body { background-size: cover; }'}
           </style>
