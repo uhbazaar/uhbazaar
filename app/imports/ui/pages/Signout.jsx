@@ -8,14 +8,14 @@ export default class Signout extends React.Component {
   render() {
     const signedOutStyle = {
       fontFamily: 'PT Sans Caption',
-      paddingTop: '20vh',
+      paddingTop: '23vh',
       paddingBottom: '15vh',
     };
     Meteor.logout();
     return (
         <div>
           {/* eslint-disable-next-line max-len */}
-          <style>{'body { background: rgba(222,242,241, 0.7)  url(\'/images/valley.jpg\') no-repeat center center fixed; background-blend-mode: overlay; }'}
+          <style>{'body { background: rgba(222,242,241, 0.7)}'}
           </style>
           <style>{'body { background-size: cover; }'}
           </style>
