@@ -18,6 +18,7 @@ export default class Uploader extends React.Component {
     });
   }
 
+
   upload() {
     const userId = Meteor.user()._id;
     const metaContext = { avatarId: userId };
