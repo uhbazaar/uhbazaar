@@ -49,13 +49,6 @@ class CategoryPage extends React.Component {
     return stuff.map((category) => <CategoriesMenu key={category._id} category={category}/>);
   }
 
-  isOn(bool) {
-    if (bool) {
-      return true;
-    }
-    return false;
-  }
-
   render() {
     const { visible } = this.state;
     let itemsComponent;
@@ -75,13 +68,9 @@ class CategoryPage extends React.Component {
     };
     const mainContainerStyle = {
       paddingTop: '20px',
-      paddingBottom: '64px',
+      paddingBottom: '64vh',
       paddingRight: '64px',
       paddingLeft: '64px',
-    };
-    const sideBarStyle = {
-      paddingTop: '20px',
-      paddingBottom: '20px',
     };
     const catSideMenu = {
       fontWeight: 'bold',
@@ -158,10 +147,12 @@ class CategoryPage extends React.Component {
 
     if (this.state.listMode) {
       itemsComponent = <List>
+        {/* eslint-disable-next-line max-len */}
         {this.sortByItem(this.props.items, this.props.match.params.name, this.state.sorter, CategoryMenuList, this.state.reverse)}
       </List>;
     } else {
       itemsComponent = <Card.Group>
+        {/* eslint-disable-next-line max-len */}
         {this.sortByItem(this.props.items, this.props.match.params.name, this.state.sorter, CategoryMenu, this.state.reverse)}
       </Card.Group>;
     }
@@ -177,12 +168,11 @@ class CategoryPage extends React.Component {
               Show Options
             </Button>
           </Button.Group>
-          <Sidebar.Pushable>
+          <Sidebar.Pushable >
             <Sidebar
                 as={Menu}
                 vertical
                 visible={visible}
-                style={sideBarStyle}
                 animation='push'
                 width='wide'
                 onHide={this.handleSidebarHide}>
