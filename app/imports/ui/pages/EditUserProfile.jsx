@@ -12,6 +12,7 @@ import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import Uploader from '../components/Uploader';
 
 /** Renders the Page for editing a single document. */
 class EditUserProfile extends React.Component {
@@ -49,6 +50,7 @@ class EditUserProfile extends React.Component {
                   <TextField name='lastName'/>
                   <LongTextField name='description'/>
                   <TextField name='image'/>
+                  <Uploader/>
                   <SubmitField value='Submit'/>
                   <Link to={'/userprofile/'}>
                     <Button floated='right'>Back to Profile</Button>
