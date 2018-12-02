@@ -1,29 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Header, Container, Grid, Button, Menu } from 'semantic-ui-react';
+import { Header, Container, Grid, Button } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
-import { withRouter, Link, NavLink } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import LandingBar from './LandingBar';
-import { Roles } from 'meteor/alanning:roles';
 
 
 class FullWidthImage extends React.Component {
   render() {
     const mainContainerStyle = {
-      marginTop: '300px',
-      paddingBottom: '128px',
-      marginBottom: '64vh',
+      paddingTop: '300px',
     };
-    const logoContainerStyle = {
-      // backgroundColor: '#2b7a78',
-      // opacity: '0.8',
+    const logoContainerStyleOne = {
+      width: '200%',
+      bottom: '0',
+      borderRadius: '20px',
+      paddingTop: '16px',
+    };
+    const logoContainerStyleTwo = {
       width: '200%',
       bottom: '0',
       borderRadius: '20px',
       paddingBottom: '16px',
       paddingTop: '16px',
-      marginBottom: '360px',
+      marginBottom: '300px',
     };
     const headerOneStyle = {
       fontFamily: 'PT Sans Caption',
@@ -52,7 +53,7 @@ class FullWidthImage extends React.Component {
           {this.props.currentUser === '' ? (
           <Grid verticalAlign='middle'>
 
-            <Container style={logoContainerStyle}>
+            <Container style={logoContainerStyleOne}>
               <Header style={headerOneStyle} textAlign='center'>
                 CLASSIFIED ADS AND COMMUNITY NOTICES FOR THE UHM OHANA
               </Header>
@@ -74,15 +75,17 @@ class FullWidthImage extends React.Component {
           ) : ''}
 
           {this.props.currentUser !== '' ? (
+              <div>
           <Grid verticalAlign='middle'>
-            <Container style={logoContainerStyle}>
+            <Container style={logoContainerStyleTwo}>
               <Header style={headerOneStyle} textAlign='center'>
                 CLASSIFIED ADS AND COMMUNITY NOTICES FOR THE UHM OHANA
               </Header>
             </Container>
           </Grid>
-          ) : ''}
           <LandingBar/>
+              </div>
+          ) : ''}
         </Container>
     );
   }
