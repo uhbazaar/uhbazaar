@@ -7,6 +7,21 @@ import { NavLink } from 'react-router-dom';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Users } from '../../api/user/user';
 
+/** **********************************************************************
+ *
+ *        NAME:           Zachary Gilbert
+ *
+ *        PROJECT:        UH Bazaar
+ *
+ *        CLASS:          ICS 314
+ *
+ *        INSTRUCTOR:     Philip Johnson
+ *
+ *        FILE:           CategoryMenu.jsx
+ *
+ *        DESCRIPTION:
+ ********************************************************************** */
+
 class CategoryMenu extends React.Component {
   getUserImage(users) {
     let use = find(users, (user) => user.username === this.props.item.owner);

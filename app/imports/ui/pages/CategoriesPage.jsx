@@ -7,7 +7,21 @@ import { sortBy } from 'underscore';
 import { Categories } from '../../api/category/category';
 import CategoriesMenu from '../components/CategoriesMenu';
 
-/** A simple static component to render some text for the landing page. */
+/** **********************************************************************
+ *
+ *        NAME:           Zachary Gilbert
+ *
+ *        PROJECT:        UH Bazaar
+ *
+ *        CLASS:          ICS 314
+ *
+ *        INSTRUCTOR:     Philip Johnson
+ *
+ *        FILE:           CategoriesPage.jsx
+ *
+ *        DESCRIPTION:
+ ********************************************************************** */
+
 class CategoriesPage extends React.Component {
 
   sortByCategory(categories) {

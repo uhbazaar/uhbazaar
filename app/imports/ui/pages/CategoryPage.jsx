@@ -8,10 +8,22 @@ import CategoryMenu from '../components/CategoryMenu';
 import CategoryMenuList from '../components/CategoryMenuList';
 import { Categories } from '../../api/category/category';
 import { Items } from '../../api/item/item';
-import { Users } from '../../api/user/user';
 import CategoriesMenu from '../components/CategoriesMenu';
 
-/** A simple static component to render some text for the landing page. */
+/** **********************************************************************
+ *
+ *        NAME:           Zachary Gilbert
+ *
+ *        PROJECT:        UH Bazaar
+ *
+ *        CLASS:          ICS 314
+ *
+ *        INSTRUCTOR:     Philip Johnson
+ *
+ *        FILE:           CategoryPage.jsx
+ *
+ *        DESCRIPTION:
+ ********************************************************************** */
 class CategoryPage extends React.Component {
   constructor(props) {
     super(props);
@@ -53,6 +65,15 @@ class CategoryPage extends React.Component {
   render() {
     const { visible } = this.state;
     let itemsComponent;
+    const toggleName = (toggle, message) => {
+      let str = '';
+      if (toggle) {
+        str = message;
+      } else {
+        str = message.split('-').reverse().join(' - ');
+      }
+      return str;
+    };
     const titleStyle = {
       fontSize: '32px',
       fontFamily: 'Cinzel',
@@ -85,6 +106,7 @@ class CategoryPage extends React.Component {
           priceToggle: false,
           dateIsActive: false,
           priceIsActive: false,
+          reverse: false,
         })} label='Title'/>
     );
     const dateCheckbox = (
@@ -95,6 +117,7 @@ class CategoryPage extends React.Component {
           titleToggle: false,
           priceToggle: false,
           priceIsActive: false,
+          reverse: false,
         })} label='Date'/>
     );
     const priceCheckbox = (
@@ -105,27 +128,28 @@ class CategoryPage extends React.Component {
           priceIsActive: true,
           titleToggle: false,
           dateToggle: false,
+          reverse: false,
         })} label='Price'/>
     );
     const priceToggle = (
         <Checkbox checked={this.state.priceToggle} disabled={!this.state.priceIsActive}
                   onClick={() => this.setState({ priceToggle: !this.state.priceToggle, reverse: !this.state.reverse })}
                   toggle
-                  label='Highest Lowest'/>
+                  label={toggleName(this.state.priceToggle, 'Min - Max')}/>
 
     );
     const dateToggle = (
         <Checkbox checked={this.state.dateToggle} disabled={!this.state.dateIsActive}
                   onClick={() => this.setState({ dateToggle: !this.state.dateToggle, reverse: !this.state.reverse })}
                   toggle
-                  label='Highest Lowest'/>
+                  label={toggleName(this.state.dateToggle, 'New - Old')}/>
 
     );
     const titleToggle = (
         <Checkbox checked={this.state.titleToggle} disabled={!this.state.titleIsActive}
                   onClick={() => this.setState({ titleToggle: !this.state.titleToggle, reverse: !this.state.reverse })}
                   toggle
-                  label='Highest Lowest'/>
+                  label={toggleName(this.state.titleToggle, 'A - Z')}/>
 
     );
     const listCheckbox = (
@@ -254,11 +278,9 @@ CategoryPage.propTypes = {
 export default withTracker(() => {
   const subscription = Meteor.subscribe('Categories');
   const itemSubscription = Meteor.subscribe('Items');
-  const userSubscription = Meteor.subscribe('UserSearch');
   return {
     categories: Categories.find({}).fetch(),
     items: Items.find({}).fetch(),
-    users: Users.find({}).fetch(),
-    ready: itemSubscription.ready() && subscription.ready() && userSubscription.ready(),
+    ready: itemSubscription.ready() && subscription.ready(),
   };
 })(CategoryPage);

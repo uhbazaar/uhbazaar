@@ -6,6 +6,21 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { NavLink } from 'react-router-dom';
 import { Items } from '../../api/item/item';
 
+/** **********************************************************************
+ *
+ *        NAME:           Zachary Gilbert
+ *
+ *        PROJECT:        UH Bazaar
+ *
+ *        CLASS:          ICS 314
+ *
+ *        INSTRUCTOR:     Philip Johnson
+ *
+ *        FILE:           CategoriesMenu.jsx
+ *
+ *        DESCRIPTION:
+ ********************************************************************** */
+
 class CategoriesMenu extends React.Component {
 
   numOfItems(items, cat) {
