@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Header, Container, Grid, Button, Menu } from 'semantic-ui-react';
+import { Header, Container, Grid, Button, Image } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter, Link, NavLink } from 'react-router-dom';
@@ -13,7 +13,6 @@ class FullWidthImage extends React.Component {
     const mainContainerStyle = {
       marginTop: '300px',
       paddingBottom: '128px',
-      marginBottom: '64vh',
     };
     const logoContainerStyle = {
       // backgroundColor: '#2b7a78',
@@ -83,6 +82,7 @@ class FullWidthImage extends React.Component {
           </Grid>
           ) : ''}
           <LandingBar/>
+          <Image fluid centered src='images/uh-logo.png'/>
         </Container>
     );
   }
