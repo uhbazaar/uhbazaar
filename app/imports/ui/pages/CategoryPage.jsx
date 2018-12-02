@@ -38,7 +38,7 @@ class CategoryPage extends React.Component {
       priceToggle: false,
       dateToggle: false,
       titleToggle: false,
-      reverse: false,
+      reverse: true,
     };
   }
 
