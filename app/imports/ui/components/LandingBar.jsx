@@ -9,13 +9,13 @@ export default class LandingBar extends React.Component {
       color: '#feffff',
     };
 
+    const landingBarStyle = {
+      paddingTop: '75px',
+    };
+
     return (
         <div className='background-bar'>
-          <Grid container textAlign='center' verticalAlign='middle'>
-            <Grid.Row>
-            </Grid.Row>
-            <Grid.Row>
-            </Grid.Row>
+          <Grid container textAlign='center' verticalAlign='middle' style={landingBarStyle}>
             <Grid.Row>
               <Header style={headerStyle2} as='h2' icon textAlign='center'>
                 <Icon name='users' circular color='grey' inverted/>
