@@ -19,7 +19,6 @@ class CategoryMenu extends React.Component {
   }
 
   render() {
-    console.log(this.getUserImage(this.props.users));
     let description = '';
     const n = 80;
     if (this.props.item.description.length > n) {
