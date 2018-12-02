@@ -39,7 +39,7 @@ export default class Signup extends React.Component {
   render() {
     const headerLogoutStyle = {
       fontFamily: 'PT Sans Caption',
-      paddingTop: '10vh',
+      paddingTop: '30vh',
     };
     const signUpStyle = {
       fontFamily: 'PT Sans Caption',
@@ -52,7 +52,7 @@ export default class Signup extends React.Component {
     return (
         <div>
           {/* eslint-disable-next-line max-len */}
-          <style>{'body { background: rgba(222,242,241, 0.7)  url(\'/images/uhsketch.png\') no-repeat center center fixed; background-blend-mode: overlay; }'}
+          <style>{'body { background: rgba(222,242,241, 0.7)  url(\'/images/valley.jpg\') no-repeat center center fixed; background-blend-mode: overlay; }'}
           </style>
           <style>{'body { background-size: cover; }'}
           </style>
@@ -65,7 +65,7 @@ export default class Signup extends React.Component {
                 <Segment stacked>
                   <Form.Input
                       label="Email"
-                      icon="user"
+                      icon="mail"
                       iconPosition="left"
                       name="email"
                       type="email"
@@ -81,12 +81,14 @@ export default class Signup extends React.Component {
                       type="password"
                       onChange={this.handleChange}
                   />
-                  <Form.Button content="Submit"/>
+                  <Form.Button fluid large color={'teal'} content="Submit"/>
                 </Segment>
               </Form>
+              <Container textAlign="center">
               <Message style={signUpStyle}>
                 Already a member? <Link to="/signin">Sign in.</Link>
               </Message>
+              </Container>
               {this.state.error === '' ? (
                   ''
               ) : (

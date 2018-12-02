@@ -14,40 +14,45 @@ class NavBar extends React.Component {
     const imageStyle = { height: '64px' };
     const dropdownStyle = { marginRight: '32px' };
     return (
-        <Menu stackable style={menuStyle} attached="top" borderless inverted>
-
-          <Menu.Item as={NavLink} activeClassName="" exact to="/">
-            <Image style={imageStyle} src='images/navbar-logo.png'/>
-          </Menu.Item>
-
-          {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
-              <Menu.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'>Admin</Menu.Item>
-          ) : ''}
-
+        <div>
           {this.props.currentUser !== '' ? (
-              [
-                <Menu.Item as={NavLink} className="" exact to="/categoriespage" key='cat'>Categories</Menu.Item>,
-                <Menu.Item as={NavLink} className="" exact to="/showusers" key='show'>Show Users</Menu.Item>,
-              ]
-          ) : ''}
+              <Menu stackable style={menuStyle} attached="top" borderless inverted>
 
-          <Menu.Item fitted position="right">
-            {this.props.currentUser !== '' ? (
-                <Menu.Item position='right'><SearchBar/></Menu.Item>
-            ) : ''}
-          </Menu.Item>
-          <Menu.Item>
-            {this.props.currentUser !== '' ? (
-                <Dropdown style={dropdownStyle} pointing="top right" icon={'large bars'}>
-                  <Dropdown.Menu>
-                    <Dropdown.Item text="My Account" as={NavLink} className="" exact to="/userprofile" key='add'/>
-                    <Dropdown.Item text="Add New Item" as={NavLink} className="" exact to="/createitem" key='list'/>
-                    <Dropdown.Item icon="sign-out alternate" text="Sign Out" as={NavLink} exact to="/signout"/>
-                  </Dropdown.Menu>
-                </Dropdown>
-            ) : ''}
-          </Menu.Item>
-        </Menu>
+                <Menu.Item as={NavLink} activeClassName="" exact to="/">
+                  <Image style={imageStyle} src='images/navbar-logo.png'/>
+                </Menu.Item>
+
+                {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
+                    <Menu.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'>Admin</Menu.Item>
+                ) : ''}
+
+                {this.props.currentUser !== '' ? (
+                    [
+                      <Menu.Item as={NavLink} className="" exact to="/categoriespage" key='cat'>Categories</Menu.Item>,
+                      <Menu.Item as={NavLink} className="" exact to="/showusers" key='show'>Show Users</Menu.Item>,
+                    ]
+                ) : ''}
+
+                <Menu.Item fitted position="right">
+                  {this.props.currentUser !== '' ? (
+                      <Menu.Item position='right'><SearchBar/></Menu.Item>
+                  ) : ''}
+                </Menu.Item>
+                <Menu.Item>
+                  {this.props.currentUser !== '' ? (
+                      <Dropdown style={dropdownStyle} pointing="top right" icon={'large bars'}>
+                        <Dropdown.Menu>
+                          <Dropdown.Item text="My Account" as={NavLink} className="" exact to="/userprofile" key='add'/>
+                          <Dropdown.Item text="Add New Item" as={NavLink} className="" exact to="/createitem"
+                                         key='list'/>
+                          <Dropdown.Item icon="sign-out alternate" text="Sign Out" as={NavLink} exact to="/signout"/>
+                        </Dropdown.Menu>
+                      </Dropdown>
+                  ) : ''}
+                </Menu.Item>
+              </Menu>
+          ) : ''}
+        </div>
     );
   }
 }
