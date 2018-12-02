@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Loader, Header, Segment, Button, Container, Input } from 'semantic-ui-react';
+import { Grid, Loader, Header, Segment, Button, Container, Input, Image } from 'semantic-ui-react';
 import { Users, UserSchema } from '/imports/api/user/user';
 import { Bert } from 'meteor/themeteorchef:bert';
 import AutoForm from 'uniforms-semantic/AutoForm';
@@ -20,6 +20,8 @@ class EditUserProfile extends React.Component {
     super(props);
     this.state = {
       image: this.props.doc,
+      file: null,
+      imagePreviewUrl: null,
     };
   }
 
@@ -75,6 +77,8 @@ class EditUserProfile extends React.Component {
       marginBottom: '64px',
       paddingBottom: '16vh',
     };
+    const thumbStyle = { paddingTop: '8px', paddingBottom: '8px' };
+    const user = Users.findOne({ owner: Meteor.username });
     return (
         <Container>
           <style>{'body { background: url(images/uh-logo.png) no-repeat center fixed; }'}</style>
@@ -82,12 +86,16 @@ class EditUserProfile extends React.Component {
           <Grid style={formStyle} container centered>
             <Grid.Column>
               <Header as="h2" textAlign="center">Edit Profile</Header>
-              <AutoForm schema={UserSchema} onSubmit={this.submit} model={this.props.doc}>
+              <AutoForm schema={UserSchema} onSubmit={this.submit.bind(this)} model={this.props.doc}>
                 <Segment>
                   <TextField name='firstName'/>
                   <TextField name='lastName'/>
                   <LongTextField name='description'/>
-                  <Input type="file" id="input" onChange={this.upload}/>
+                  <Header as='h3'>Upload an image</Header>
+                  <Input type="file" id="input" onChange={this.upload.bind(this)}/>
+                  <Container style={thumbStyle}>
+                    <Image size='small' rounded src={this.state.image ? this.state.image : user.image} />
+                  </Container>
                   <SubmitField value='Submit'/>
                   <Link to={'/userprofile/'}>
                     <Button floated='right'>Back to Profile</Button>
@@ -102,6 +110,7 @@ class EditUserProfile extends React.Component {
     );
   }
 }
+
 EditUserProfile.propTypes = {
   doc: PropTypes.object,
   model: PropTypes.object,
