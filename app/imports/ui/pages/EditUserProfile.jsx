@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Loader, Header, Segment, Button, Container } from 'semantic-ui-react';
+import { Grid, Loader, Header, Segment, Button, Container, Input } from 'semantic-ui-react';
 import { Users, UserSchema } from '/imports/api/user/user';
 import { Bert } from 'meteor/themeteorchef:bert';
 import AutoForm from 'uniforms-semantic/AutoForm';
@@ -12,14 +12,49 @@ import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import Uploader from '../components/Uploader';
+import { Slingshot } from 'meteor/edgee:slingshot';
 
 /** Renders the Page for editing a single document. */
 class EditUserProfile extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      image: '',
+    };
+  }
+
+  componentWillMount() {
+    // we create this rule both on client and server
+    Slingshot.fileRestrictions('image', {
+      allowedFileTypes: ['image/png', 'image/jpeg', 'image/gif'],
+      maxSize: 2 * 500 * 500,
+    });
+  }
+
+  upload() {
+    const userId = Meteor.userId();
+    const metaContext = { imageId: userId };
+    const uploader = new Slingshot.Upload('fileUploads', metaContext);
+
+    uploader.send(document.getElementById('input').files[0], function (error, downloadUrl) {
+      if (error) {
+        // Log service detailed response
+        console.error('Error uploading', uploader.xhr.response);
+        Bert.alert(error);
+      } else {
+        Users.update(Meteor.userId(), { $set: { image: downloadUrl } });
+      }
+      this.setState({ image: downloadUrl });
+    }.bind(this));
+  }
 
   /** On successful submit, insert the data. */
   submit(data) {
     const { firstName, lastName, description, image, _id } = data;
+    const imageUrl = this.state.image;
+    Users.update(Meteor.userId(), {
+      $set: { image: imageUrl },
+    });
     Users.update(_id, { $set: { firstName, lastName, description, image } }, (error) => (error ?
         Bert.alert({ type: 'danger', message: `Update failed: ${error.message}` }) :
         Bert.alert({ type: 'success', message: 'Update succeeded' })));
@@ -49,8 +84,7 @@ class EditUserProfile extends React.Component {
                   <TextField name='firstName'/>
                   <TextField name='lastName'/>
                   <LongTextField name='description'/>
-                  <TextField name='image'/>
-                  <Uploader/>
+                  <Input type="file" id="input" onChange={this.upload}/>
                   <SubmitField value='Submit'/>
                   <Link to={'/userprofile/'}>
                     <Button floated='right'>Back to Profile</Button>
@@ -65,8 +99,6 @@ class EditUserProfile extends React.Component {
     );
   }
 }
-
-/** Require the presence of a Stuff document in the props object. Uniforms adds 'model' to the props, which we use. */
 EditUserProfile.propTypes = {
   doc: PropTypes.object,
   model: PropTypes.object,
@@ -84,3 +116,6 @@ export default withTracker(({ match }) => {
     ready: subscription.ready(),
   };
 })(EditUserProfile);
+
+/** Require the presence of a Stuff document in the props object. Uniforms adds 'model' to the props, which we use. */
+

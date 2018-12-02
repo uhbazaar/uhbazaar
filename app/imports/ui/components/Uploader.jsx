@@ -1,8 +1,9 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Bert } from 'meteor/themeteorchef:bert';
-import { Input, Button, Form } from 'semantic-ui-react';
+import { Input, Button } from 'semantic-ui-react';
 import { Slingshot } from 'meteor/edgee:slingshot';
+import { Users } from '../../api/user/user';
 
 export default class Uploader extends React.Component {
   constructor(props) {
@@ -11,23 +12,16 @@ export default class Uploader extends React.Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  componentDidMount() {
-    Slingshot.fileRestrictions('fileUploads', {
-      allowedFileTypes: ['image/png', 'image/jpeg', 'image/jpg'],
-      maxSize: 2 * 500 * 500,
-    });
-  }
-
-
   upload() {
-    const userId = Meteor.user()._id;
-    const metaContext = { avatarId: userId };
+    const userId = Meteor.user().username;
+    const user = Users.find({ owner: userId });
+    const metaContext = user.image;
     const uploader = new Slingshot.Upload('fileUploads', metaContext);
     uploader.send(document.getElementById('input').files[0], function (error, downloadUrl) {
       if (error) {
         Bert.alert(error);
       } else {
-        Meteor.users.update(Meteor.userId(), { $set: { 'profile.avatar': downloadUrl } });
+        user.image = downloadUrl;
       }
     });
   }
@@ -41,11 +35,9 @@ export default class Uploader extends React.Component {
 
   render() {
     return (
-        <div className="container">
-          <Form>
+        <div>
             <Input type="file" id="input" onChange={this.upload}/>
             <Button type="submit" onClick={this.onSubmit}>Upload</Button>
-          </Form>
         </div>
     );
   }
