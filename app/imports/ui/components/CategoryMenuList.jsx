@@ -1,7 +1,8 @@
 import React from 'react';
-import { List, Image } from 'semantic-ui-react';
+import { List, Image, Card } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
+import { first } from 'underscore';
 
 class CategoryMenuList extends React.Component {
 
@@ -17,18 +18,27 @@ class CategoryMenuList extends React.Component {
       marginTop: '15px',
     };
 
+    let description = '';
+    const n = 80;
+    if (this.props.item.description.length > n) {
+      description = first(this.props.item.description, n);
+      description = description.concat('.', '.', '.');
+    } else {
+      description = this.props.item.description;
+    }
+
     return (
-        <List.Item>
+        <List.Item as={NavLink} to={`/item/${this.props.item._id}`}>
             <Image size='tiny' avatar src={this.props.item.image} />
           <List.Content style={contentStyle}>
             <List.Header style={dateStyle}>
-              {this.props.item.date}
+              {`${this.props.item.date}     ${this.props.item.location}`}
             </List.Header>
-            <List.Description as='a' style={titleStyle} href={`/#/item/${this.props.item._id}`}>
+            <List.Description as='a' style={titleStyle}>
               {this.props.item.title}
             </List.Description>
             <List.Description>
-              {this.props.item.description}
+              {description}
             </List.Description>
             <List.Item>
               <span className='price'>{`$${this.props.item.price}`}</span>

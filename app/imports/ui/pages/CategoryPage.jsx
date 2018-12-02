@@ -8,6 +8,7 @@ import CategoryMenu from '../components/CategoryMenu';
 import CategoryMenuList from '../components/CategoryMenuList';
 import { Categories } from '../../api/category/category';
 import { Items } from '../../api/item/item';
+import { Users } from '../../api/user/user';
 import CategoriesMenu from '../components/CategoriesMenu';
 
 /** A simple static component to render some text for the landing page. */
@@ -246,17 +247,18 @@ CategoryPage.propTypes = {
   match: PropTypes.object,
   categories: PropTypes.array.isRequired,
   items: PropTypes.array.isRequired,
+  users: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
-  ready2: PropTypes.bool.isRequired,
 };
 
 export default withTracker(() => {
   const subscription = Meteor.subscribe('Categories');
   const itemSubscription = Meteor.subscribe('Items');
+  const userSubscription = Meteor.subscribe('UserSearch');
   return {
     categories: Categories.find({}).fetch(),
     items: Items.find({}).fetch(),
-    ready: itemSubscription.ready(),
-    ready2: subscription.ready(),
+    users: Users.find({}).fetch(),
+    ready: itemSubscription.ready() && subscription.ready() && userSubscription.ready(),
   };
 })(CategoryPage);

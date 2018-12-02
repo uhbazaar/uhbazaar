@@ -16,6 +16,7 @@ class ShowUsers extends React.Component {
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
+    console.log(this.props.users)
     const styleCards = {
       marginTop: '180px',
       paddingBottom: '64px',
