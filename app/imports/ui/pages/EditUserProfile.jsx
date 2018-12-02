@@ -19,7 +19,7 @@ class EditUserProfile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      image: '',
+      image: this.props.doc,
     };
   }
 
@@ -32,7 +32,9 @@ class EditUserProfile extends React.Component {
   }
 
   upload() {
-    const userId = Meteor.userId();
+    const user = Users.findOne({ owner: Meteor.username });
+    const userId = user.username;
+    console.log(userId);
     const metaContext = { imageId: userId };
     const uploader = new Slingshot.Upload('fileUploads', metaContext);
 
@@ -42,7 +44,7 @@ class EditUserProfile extends React.Component {
         console.error('Error uploading', uploader.xhr.response);
         Bert.alert(error);
       } else {
-        Users.update(Meteor.userId(), { $set: { image: downloadUrl } });
+        Users.update(user._id, { $set: { image: downloadUrl } });
       }
       this.setState({ image: downloadUrl });
     }.bind(this));
@@ -50,9 +52,10 @@ class EditUserProfile extends React.Component {
 
   /** On successful submit, insert the data. */
   submit(data) {
+    const user = Users.findOne({ owner: Meteor.username });
     const { firstName, lastName, description, image, _id } = data;
     const imageUrl = this.state.image;
-    Users.update(Meteor.userId(), {
+    Users.update(user._id, {
       $set: { image: imageUrl },
     });
     Users.update(_id, { $set: { firstName, lastName, description, image } }, (error) => (error ?
@@ -118,4 +121,3 @@ export default withTracker(({ match }) => {
 })(EditUserProfile);
 
 /** Require the presence of a Stuff document in the props object. Uniforms adds 'model' to the props, which we use. */
-
