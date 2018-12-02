@@ -9,6 +9,7 @@ import LongTextField from 'uniforms-semantic/LongTextField';
 import SubmitField from 'uniforms-semantic/SubmitField';
 import HiddenField from 'uniforms-semantic/HiddenField';
 import ErrorsField from 'uniforms-semantic/ErrorsField';
+import ImageUpload from '../components/ImageUpload';
 
 /** Renders the Page for editing a single document. */
 class CreateUserProfile extends React.Component {
@@ -56,10 +57,11 @@ class CreateUserProfile extends React.Component {
                   <TextField name='firstName'/>
                   <TextField name='lastName'/>
                   <LongTextField name='description'/>
-                  <TextField name='image'/>
+                  <Header as='h3'>Add an image in your "my account" section!</Header>
                   <SubmitField value='Submit'/>
                   <ErrorsField/>
                   <HiddenField name='username' value='fakeuser@foo.com'/>
+                  <HiddenField name='image' value='images/user.png'/>
                 </Segment>
               </AutoForm>
             </Grid.Column>

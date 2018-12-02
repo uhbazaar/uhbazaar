@@ -94,7 +94,7 @@ class EditUserProfile extends React.Component {
                   <Header as='h3'>Upload an image</Header>
                   <Input type="file" id="input" onChange={this.upload.bind(this)}/>
                   <Container style={thumbStyle}>
-                    <Image size='small' rounded src={this.state.image ? this.state.image : user.image} />
+                    <Image size='small' rounded src={user.image} />
                   </Container>
                   <SubmitField value='Submit'/>
                   <Link to={'/userprofile/'}>

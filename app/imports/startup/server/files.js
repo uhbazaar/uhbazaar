@@ -3,7 +3,7 @@ import { Slingshot } from 'meteor/edgee:slingshot';
 
 Slingshot.fileRestrictions('image', {
   allowedFileTypes: ['image/png', 'image/jpeg', 'image/gif'],
-  maxSize: 2 * 500 * 500,
+  maxSize: 1 * 500 * 500,
 });
 
 Slingshot.createDirective('fileUploads', Slingshot.S3Storage, {
