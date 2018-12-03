@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Header, Segment, Container } from 'semantic-ui-react';
+import { Grid, Header, Segment, Container, Input, Image } from 'semantic-ui-react';
 import { Users, UserSchema } from '/imports/api/user/user';
 import { Bert } from 'meteor/themeteorchef:bert';
 import { Meteor } from 'meteor/meteor';
@@ -9,7 +9,7 @@ import LongTextField from 'uniforms-semantic/LongTextField';
 import SubmitField from 'uniforms-semantic/SubmitField';
 import HiddenField from 'uniforms-semantic/HiddenField';
 import ErrorsField from 'uniforms-semantic/ErrorsField';
-import ImageUpload from '../components/ImageUpload';
+import { Slingshot } from 'meteor/edgee:slingshot';
 
 /** Renders the Page for editing a single document. */
 class CreateUserProfile extends React.Component {
@@ -18,6 +18,32 @@ class CreateUserProfile extends React.Component {
     this.submit = this.submit.bind(this);
     this.insertCallback = this.insertCallback.bind(this);
     this.formRef = null;
+    this.state = {
+      image: null,
+      file: null,
+      imagePreviewUrl: null,
+    };
+  }
+
+  componentWillMount() {
+    // we create this rule both on client and server
+    Slingshot.fileRestrictions('image', {
+      allowedFileTypes: ['image/png', 'image/jpeg', 'image/gif'],
+      maxSize: 2 * 500 * 500,
+    });
+  }
+
+  upload() {
+    const uploader = new Slingshot.Upload('fileUploads');
+
+    uploader.send(document.getElementById('input').files[0], function (error, downloadUrl) {
+      if (error) {
+        // Log service detailed response
+        console.error('Error uploading', uploader.xhr.response);
+        Bert.alert(error);
+      }
+      this.setState({ image: downloadUrl });
+    }.bind(this));
   }
 
   insertCallback(error) {
@@ -31,7 +57,8 @@ class CreateUserProfile extends React.Component {
 
   /** On successful submit, insert the data. */
   submit(data) {
-    const { firstName, lastName, description, image } = data;
+    const { firstName, lastName, description } = data;
+    const image = this.state.image;
     const username = Meteor.user().username;
     Users.insert({ firstName, lastName, description, image, username }, this.insertCallback);
   }
@@ -45,6 +72,7 @@ class CreateUserProfile extends React.Component {
       marginBottom: '64px',
       paddingBottom: '16vh',
     };
+    const thumbStyle = { paddingTop: '8px', paddingBottom: '8px' };
     return (
         <Container>
           <style>{'body { background: url(images/uh-logo.png) no-repeat center fixed; }'}</style>
@@ -57,7 +85,11 @@ class CreateUserProfile extends React.Component {
                   <TextField name='firstName'/>
                   <TextField name='lastName'/>
                   <LongTextField name='description'/>
-                  <Header as='h3'>Add an image in your "my account" section!</Header>
+                  <Header as='h3'>Upload an image</Header>
+                  <Input type="file" id="input" onChange={this.upload.bind(this)}/>
+                  <Container style={thumbStyle}>
+                    <Image size='small' rounded src={this.state.image ? this.state.image : 'images/user.png'}/>
+                  </Container>
                   <SubmitField value='Submit'/>
                   <ErrorsField/>
                   <HiddenField name='username' value='fakeuser@foo.com'/>

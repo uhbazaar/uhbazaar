@@ -56,12 +56,10 @@ class CreateItem extends React.Component {
         // Log service detailed response
         console.error('Error uploading', uploader.xhr.response);
         Bert.alert(error);
-      } else {
       }
       this.setState({ image: downloadUrl });
     }.bind(this));
   }
-
 
   /** On submit, insert the data. */
   submit(data) {
@@ -70,6 +68,7 @@ class CreateItem extends React.Component {
     const { title, price, location, category, description } = data;
     const owner = Meteor.user().username;
     const date = this.date.toLocaleDateString('en-US');
+
     Items.insert({ title, price, location, image, category, description, owner, date }, this.insertCallback);
     const item = Items.findOne({ owner: Meteor.user().username });
     Items.update(item._id, {

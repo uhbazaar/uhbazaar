@@ -102,9 +102,9 @@ class UserProfileById extends React.Component {
 
 /** Require the presence of a Stuff document in the props object. Uniforms adds 'model' to the props, which we use. */
 UserProfileById.propTypes = {
-  doc: PropTypes.array,
+  doc: PropTypes.object,
   ready: PropTypes.bool.isRequired,
-  item: PropTypes.object.isRequired,
+  item: PropTypes.array.isRequired,
 };
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */

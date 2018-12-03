@@ -45,8 +45,6 @@ class EditUserProfile extends React.Component {
         // Log service detailed response
         console.error('Error uploading', uploader.xhr.response);
         Bert.alert(error);
-      } else {
-        Users.update(user._id, { $set: { image: downloadUrl } });
       }
       this.setState({ image: downloadUrl });
     }.bind(this));
@@ -54,12 +52,9 @@ class EditUserProfile extends React.Component {
 
   /** On successful submit, insert the data. */
   submit(data) {
-    const user = Users.findOne({ owner: Meteor.username });
-    const { firstName, lastName, description, image, _id } = data;
-    const imageUrl = this.state.image;
-    Users.update(user._id, {
-      $set: { image: imageUrl },
-    });
+    const { firstName, lastName, description, _id } = data;
+    const image = this.state.image;
+
     Users.update(_id, { $set: { firstName, lastName, description, image } }, (error) => (error ?
         Bert.alert({ type: 'danger', message: `Update failed: ${error.message}` }) :
         Bert.alert({ type: 'success', message: 'Update succeeded' })));
@@ -94,7 +89,7 @@ class EditUserProfile extends React.Component {
                   <Header as='h3'>Upload an image</Header>
                   <Input type="file" id="input" onChange={this.upload.bind(this)}/>
                   <Container style={thumbStyle}>
-                    <Image size='small' rounded src={user.image} />
+                    <Image size='small' rounded src={this.state.image ? this.state.image : user.image}/>
                   </Container>
                   <SubmitField value='Submit'/>
                   <Link to={'/userprofile/'}>
