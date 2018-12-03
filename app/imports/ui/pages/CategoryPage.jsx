@@ -10,7 +10,20 @@ import { Categories } from '../../api/category/category';
 import { Items } from '../../api/item/item';
 import CategoriesMenu from '../components/CategoriesMenu';
 
-/** A simple static component to render some text for the landing page. */
+/** **********************************************************************
+ *
+ *        NAME:           Zachary Gilbert
+ *
+ *        PROJECT:        UH Bazaar
+ *
+ *        CLASS:          ICS 314
+ *
+ *        INSTRUCTOR:     Philip Johnson
+ *
+ *        FILE:           CategoryPage.jsx
+ *
+ *        DESCRIPTION:
+ ********************************************************************** */
 class CategoryPage extends React.Component {
   constructor(props) {
     super(props);
@@ -22,6 +35,10 @@ class CategoryPage extends React.Component {
       priceIsActive: false,
       listMode: false,
       cardMode: true,
+      priceToggle: false,
+      dateToggle: false,
+      titleToggle: false,
+      reverse: true,
     };
   }
 
@@ -31,8 +48,12 @@ class CategoryPage extends React.Component {
 
   handleSidebarHide = () => this.setState({ visible: false });
 
-  sortByItem(items, cat, sortKey, Component) {
+  sortByItem(items, cat, sortKey, Component, reverse) {
     const stuff = sortBy(items, sortKey);
+    if (reverse) {
+      stuff.reverse();
+      this.setState.reverse = false;
+    }
     return stuff.filter(item => item.category === cat).map((item) => <Component key={item._id} item={item}/>);
   }
 
@@ -44,6 +65,15 @@ class CategoryPage extends React.Component {
   render() {
     const { visible } = this.state;
     let itemsComponent;
+    const toggleName = (toggle, message) => {
+      let str = '';
+      if (toggle) {
+        str = message;
+      } else {
+        str = message.split('-').reverse().join(' - ');
+      }
+      return str;
+    };
     const titleStyle = {
       fontSize: '32px',
       fontFamily: 'Cinzel',
@@ -60,13 +90,9 @@ class CategoryPage extends React.Component {
     };
     const mainContainerStyle = {
       paddingTop: '20px',
-      paddingBottom: '64px',
+      paddingBottom: '64vh',
       paddingRight: '64px',
       paddingLeft: '64px',
-    };
-    const sideBarStyle = {
-      paddingTop: '20px',
-      paddingBottom: '20px',
     };
     const catSideMenu = {
       fontWeight: 'bold',
@@ -76,8 +102,11 @@ class CategoryPage extends React.Component {
         <Checkbox checked={this.state.titleIsActive} onClick={() => this.setState({
           sorter: 'title',
           titleIsActive: true,
+          dateToggle: false,
+          priceToggle: false,
           dateIsActive: false,
           priceIsActive: false,
+          reverse: false,
         })} label='Title'/>
     );
     const dateCheckbox = (
@@ -85,7 +114,10 @@ class CategoryPage extends React.Component {
           sorter: 'date',
           titleIsActive: false,
           dateIsActive: true,
+          titleToggle: false,
+          priceToggle: false,
           priceIsActive: false,
+          reverse: false,
         })} label='Date'/>
     );
     const priceCheckbox = (
@@ -94,7 +126,31 @@ class CategoryPage extends React.Component {
           titleIsActive: false,
           dateIsActive: false,
           priceIsActive: true,
+          titleToggle: false,
+          dateToggle: false,
+          reverse: false,
         })} label='Price'/>
+    );
+    const priceToggle = (
+        <Checkbox checked={this.state.priceToggle} disabled={!this.state.priceIsActive}
+                  onClick={() => this.setState({ priceToggle: !this.state.priceToggle, reverse: !this.state.reverse })}
+                  toggle
+                  label={toggleName(this.state.priceToggle, 'Min - Max')}/>
+
+    );
+    const dateToggle = (
+        <Checkbox checked={this.state.dateToggle} disabled={!this.state.dateIsActive}
+                  onClick={() => this.setState({ dateToggle: !this.state.dateToggle, reverse: !this.state.reverse })}
+                  toggle
+                  label={toggleName(this.state.dateToggle, 'New - Old')}/>
+
+    );
+    const titleToggle = (
+        <Checkbox checked={this.state.titleToggle} disabled={!this.state.titleIsActive}
+                  onClick={() => this.setState({ titleToggle: !this.state.titleToggle, reverse: !this.state.reverse })}
+                  toggle
+                  label={toggleName(this.state.titleToggle, 'A - Z')}/>
+
     );
     const listCheckbox = (
         <Checkbox checked={this.state.listMode} onClick={() => this.setState({
@@ -116,11 +172,13 @@ class CategoryPage extends React.Component {
 
     if (this.state.listMode) {
       itemsComponent = <List>
-        {this.sortByItem(this.props.items, this.props.match.params.name, this.state.sorter, CategoryMenuList)}
+        {/* eslint-disable-next-line max-len */}
+        {this.sortByItem(this.props.items, this.props.match.params.name, this.state.sorter, CategoryMenuList, this.state.reverse)}
       </List>;
     } else {
       itemsComponent = <Card.Group>
-        {this.sortByItem(this.props.items, this.props.match.params.name, this.state.sorter, CategoryMenu)}
+        {/* eslint-disable-next-line max-len */}
+        {this.sortByItem(this.props.items, this.props.match.params.name, this.state.sorter, CategoryMenu, this.state.reverse)}
       </Card.Group>;
     }
 
@@ -135,12 +193,11 @@ class CategoryPage extends React.Component {
               Show Options
             </Button>
           </Button.Group>
-          <Sidebar.Pushable>
+          <Sidebar.Pushable >
             <Sidebar
                 as={Menu}
                 vertical
                 visible={visible}
-                style={sideBarStyle}
                 animation='push'
                 width='wide'
                 onHide={this.handleSidebarHide}>
@@ -164,13 +221,34 @@ class CategoryPage extends React.Component {
                   Sort By
                 </Menu.Header>
                 <Menu.Item>
-                  {titleCheckbox}
+                  <Grid columns='2'>
+                    <Grid.Column>
+                      {titleCheckbox}
+                    </Grid.Column>
+                    <Grid.Column>
+                      {titleToggle}
+                    </Grid.Column>
+                  </Grid>
                 </Menu.Item>
                 <Menu.Item>
-                  {dateCheckbox}
+                  <Grid columns='2'>
+                    <Grid.Column>
+                      {dateCheckbox}
+                    </Grid.Column>
+                    <Grid.Column>
+                      {dateToggle}
+                    </Grid.Column>
+                  </Grid>
                 </Menu.Item>
                 <Menu.Item>
-                  {priceCheckbox}
+                  <Grid columns='2'>
+                    <Grid.Column>
+                      {priceCheckbox}
+                    </Grid.Column>
+                    <Grid.Column>
+                      {priceToggle}
+                    </Grid.Column>
+                  </Grid>
                 </Menu.Item>
               </Menu.Menu>
               <Menu.Item style={catSideMenu}>
@@ -193,8 +271,8 @@ CategoryPage.propTypes = {
   match: PropTypes.object,
   categories: PropTypes.array.isRequired,
   items: PropTypes.array.isRequired,
+  users: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
-  ready2: PropTypes.bool.isRequired,
 };
 
 export default withTracker(() => {
@@ -203,7 +281,6 @@ export default withTracker(() => {
   return {
     categories: Categories.find({}).fetch(),
     items: Items.find({}).fetch(),
-    ready: itemSubscription.ready(),
-    ready2: subscription.ready(),
+    ready: itemSubscription.ready() && subscription.ready(),
   };
 })(CategoryPage);
