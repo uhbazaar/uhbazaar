@@ -1,6 +1,6 @@
 import React from 'react';
 import { Items, ItemSchema } from '/imports/api/item/item';
-import { Grid, Segment, Header, Container, Button, Input, Image } from 'semantic-ui-react';
+import { Grid, Segment, Header, Container, Input, Image } from 'semantic-ui-react';
 import AutoForm from 'uniforms-semantic/AutoForm';
 import TextField from 'uniforms-semantic/TextField';
 import SelectField from 'uniforms-semantic/SelectField';
@@ -24,7 +24,7 @@ class CreateItem extends React.Component {
     this.formRef = null;
     this.date = new Date();
     this.state = {
-      image: null,
+      image: 'images/uhbazaarlogo.png',
       file: null,
       imagePreviewUrl: null,
     };
@@ -44,13 +44,14 @@ class CreateItem extends React.Component {
     // we create this rule both on client and server
     Slingshot.fileRestrictions('image', {
       allowedFileTypes: ['image/png', 'image/jpeg', 'image/gif'],
-      maxSize: 2 * 500 * 500,
+      maxSize: 1 * 512 * 512,
     });
   }
 
   upload() {
     const uploader = new Slingshot.Upload('fileUploads');
 
+    /* eslint-disable-next-line no-undef */
     uploader.send(document.getElementById('input').files[0], function (error, downloadUrl) {
       if (error) {
         // Log service detailed response

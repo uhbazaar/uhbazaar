@@ -29,7 +29,7 @@ class EditUserProfile extends React.Component {
     // we create this rule both on client and server
     Slingshot.fileRestrictions('image', {
       allowedFileTypes: ['image/png', 'image/jpeg', 'image/gif'],
-      maxSize: 2 * 500 * 500,
+      maxSize: 1 * 512 * 512,
     });
   }
 
@@ -40,6 +40,7 @@ class EditUserProfile extends React.Component {
     const metaContext = { imageId: userId };
     const uploader = new Slingshot.Upload('fileUploads', metaContext);
 
+    /* eslint-disable-next-line no-undef */
     uploader.send(document.getElementById('input').files[0], function (error, downloadUrl) {
       if (error) {
         // Log service detailed response
@@ -89,7 +90,7 @@ class EditUserProfile extends React.Component {
                   <Header as='h3'>Upload an image</Header>
                   <Input type="file" id="input" onChange={this.upload.bind(this)}/>
                   <Container style={thumbStyle}>
-                    <Image size='small' rounded src={this.state.image ? this.state.image : user.image}/>
+                    <Image size='small' rounded src={user.image !== null ? user.image : this.state.image}/>
                   </Container>
                   <SubmitField value='Submit'/>
                   <Link to={'/userprofile/'}>

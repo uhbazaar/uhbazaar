@@ -19,7 +19,7 @@ class CreateUserProfile extends React.Component {
     this.insertCallback = this.insertCallback.bind(this);
     this.formRef = null;
     this.state = {
-      image: null,
+      image: 'images/user.png',
       file: null,
       imagePreviewUrl: null,
     };
@@ -29,13 +29,14 @@ class CreateUserProfile extends React.Component {
     // we create this rule both on client and server
     Slingshot.fileRestrictions('image', {
       allowedFileTypes: ['image/png', 'image/jpeg', 'image/gif'],
-      maxSize: 2 * 500 * 500,
+      maxSize: 1 * 512 * 512,
     });
   }
 
   upload() {
     const uploader = new Slingshot.Upload('fileUploads');
 
+    /* eslint-disable-next-line no-undef */
     uploader.send(document.getElementById('input').files[0], function (error, downloadUrl) {
       if (error) {
         // Log service detailed response
@@ -88,7 +89,7 @@ class CreateUserProfile extends React.Component {
                   <Header as='h3'>Upload an image</Header>
                   <Input type="file" id="input" onChange={this.upload.bind(this)}/>
                   <Container style={thumbStyle}>
-                    <Image size='small' rounded src={this.state.image ? this.state.image : 'images/user.png'}/>
+                    <Image size='small' rounded src={this.state.image}/>
                   </Container>
                   <SubmitField value='Submit'/>
                   <ErrorsField/>

@@ -3,12 +3,12 @@ import { Slingshot } from 'meteor/edgee:slingshot';
 
 Slingshot.fileRestrictions('image', {
   allowedFileTypes: ['image/png', 'image/jpeg', 'image/gif'],
-  maxSize: 1 * 500 * 500,
+  maxSize: 1 * 512 * 512,
 });
 
 Slingshot.createDirective('fileUploads', Slingshot.S3Storage, {
   bucket: 'uhmbazaar',
-  maxSize: 1 * 1024 * 1024,
+  maxSize: 1 * 512 * 512,
   acl: 'public-read',
   allowedFileTypes: ['image/png', 'image/jpeg', 'image/gif'],
   AWSAccessKeyId: Meteor.settings.AwsData.AWSAccessKeyId,
