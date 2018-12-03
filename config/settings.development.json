@@ -207,8 +207,8 @@
   ],
   "AwsData":
   {
-    "AWSAccessKeyId": "AKIAJDXGEDYNWCAMZ3MA",
-    "AWSSecretAccessKey": "gdEFj8+X2HCB+hd7T1U/crAxhTKfzf9jk1+BXhH0",
+    "AWSAccessKeyId": "YourKey",
+    "AWSSecretAccessKey": "YourSecretKey",
     "AWSRegion": "us-west-1"
   }
 }
