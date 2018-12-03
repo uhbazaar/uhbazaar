@@ -27,6 +27,7 @@ import EditCategoryAdmin from '../pages/EditCategoryAdmin';
 import EditItemAdmin from '../pages/EditItemAdmin';
 import EditReportAdmin from '../pages/EditReportAdmin';
 import CreateReport from '../pages/CreateReport';
+import ItemImage from '../pages/ItemImage';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -46,6 +47,7 @@ class App extends React.Component {
               <ProtectedRoute path="/item/:_id" component={ShowItem}/>
               <Route path="/categorypage/:name/:icon" component={CategoryPage}/>
               <ProtectedRoute path="/createitem" component={CreateItem}/>
+              <ProtectedRoute path="/itemimage/:_id" component={ItemImage}/>
               <ProtectedRoute path="/createReport" component={CreateReport}/>
               <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
               <ProtectedRoute path="/edituserprofile/:_id" component={EditUserProfile}/>
