@@ -69,12 +69,7 @@ class CreateItem extends React.Component {
     const { title, price, location, category, description } = data;
     const owner = Meteor.user().username;
     const date = this.date.toLocaleDateString('en-US');
-
     Items.insert({ title, price, location, image, category, description, owner, date }, this.insertCallback);
-    const item = Items.findOne({ owner: Meteor.user().username });
-    Items.update(item._id, {
-      $set: { image: imageUrl },
-    });
   }
 
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
