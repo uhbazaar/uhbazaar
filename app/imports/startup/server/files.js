@@ -11,8 +11,8 @@ Slingshot.createDirective('fileUploads', Slingshot.S3Storage, {
   maxSize: 1 * 512 * 512,
   acl: 'public-read',
   allowedFileTypes: ['image/png', 'image/jpeg', 'image/gif'],
-  AWSAccessKeyId: Meteor.settings.AwsData.AWSAccessKeyId,
-  AWSSecretAccessKey: Meteor.settings.AwsData.AWSSecretAccessKey,
+  AWSAccessKeyId: 'AKIAJDXGEDYNWCAMZ3MA',
+  AWSSecretAccessKey: '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',
   region: 'us-west-1',
 
   authorize: function () {
@@ -25,7 +25,6 @@ Slingshot.createDirective('fileUploads', Slingshot.S3Storage, {
     return true;
 
   },
-
   key: function (file) {
 
     const user = Meteor.users.findOne(this.userId);
