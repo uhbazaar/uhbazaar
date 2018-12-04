@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import React from 'react';
-import { Card, Icon, Image } from 'semantic-ui-react';
-import { first, find } from 'underscore';
+import { Card, Icon, Image, Loader } from 'semantic-ui-react';
+import { first } from 'underscore';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { withTracker } from 'meteor/react-meteor-data';
@@ -23,7 +23,7 @@ import { Users } from '../../api/user/user';
  ********************************************************************** */
 
 class CategoryMenu extends React.Component {
-  getUserImage(users) {
+  /* getUserImage(users) {
     let use = find(users, (user) => user.username === this.props.item.owner);
     if (use === undefined) {
       use = 'images/user.png';
@@ -31,7 +31,7 @@ class CategoryMenu extends React.Component {
       use = use.image;
     }
     return use;
-  }
+  } */
 
   finishWord(array, n) {
     let result = n;
@@ -42,6 +42,10 @@ class CategoryMenu extends React.Component {
   }
 
   render() {
+    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
+  }
+
+  renderPage() {
     let description = '';
     const n = 80;
     if (this.props.item.description.length > n) {
@@ -67,7 +71,7 @@ class CategoryMenu extends React.Component {
             <span className='location'>{this.props.item.location}</span>
           </Card.Content>
           <Card.Content extra>
-            <Image avatar src={this.getUserImage(this.props.users)}/>
+            <Image avatar src={this.props.item.image}/>
             <span className='seller'>{this.props.item.owner}</span>
           </Card.Content>
         </Card>
