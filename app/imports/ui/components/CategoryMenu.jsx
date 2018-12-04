@@ -33,11 +33,19 @@ class CategoryMenu extends React.Component {
     return use;
   }
 
+  finishWord(array, n) {
+    let result = n;
+    while (array[result].match(/[a-z]/i)) {
+      result++;
+    }
+    return result;
+  }
+
   render() {
     let description = '';
     const n = 80;
     if (this.props.item.description.length > n) {
-          description = first(this.props.item.description, n);
+          description = first(this.props.item.description, this.finishWord(this.props.item.description, n));
           description = description.concat('.', '.', '.');
     } else {
       description = this.props.item.description;

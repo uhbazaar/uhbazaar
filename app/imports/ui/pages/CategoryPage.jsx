@@ -271,7 +271,6 @@ CategoryPage.propTypes = {
   match: PropTypes.object,
   categories: PropTypes.array.isRequired,
   items: PropTypes.array.isRequired,
-  users: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
