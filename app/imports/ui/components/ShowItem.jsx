@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Grid, Button, Icon, Card } from 'semantic-ui-react';
+import { Image, Grid, Button, Icon, Card, Loader } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
@@ -8,8 +8,11 @@ import { Items } from '../../api/item/item';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class ShowItem extends React.Component {
-
   render() {
+    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
+  }
+
+  renderPage() {
     const gridStyle = { marginBottom: '16vh', marginTop: '128px' };
     const button = { backgroundColor: '#3aafa9', color: '#feffff' };
     const button2 = { backgroundColor: '#af563a', color: '#feffff' };
