@@ -11,6 +11,13 @@ class ShowUser extends React.Component {
     return size(total);
   }
 
+  getUserDescription(descrip) {
+    if (descrip.length > 80) {
+      return `${descrip.substring(0, 79)}...`;
+    }
+    return descrip;
+  }
+
   render() {
     const items = Items.find({}).fetch();
     const cardFontStyle = { color: '#17252a' };
@@ -32,7 +39,7 @@ class ShowUser extends React.Component {
                 {this.getItemAmount(this.props.user.username, items)} item(s)!
               </a></Card.Meta>
             <Card.Description style={cardFontStyle}>
-              {this.props.user.description}
+              {this.getUserDescription(this.props.user.description)}
             </Card.Description>
           </Card.Content>
           <Card.Content centered extra>
