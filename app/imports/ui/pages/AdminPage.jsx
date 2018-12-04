@@ -108,7 +108,7 @@ export default withTracker(() => {
   const subscription = Meteor.subscribe('Items');
   const subscription2 = Meteor.subscribe('Reports');
   const subscription3 = Meteor.subscribe('Categories');
-  const subscription4 = Meteor.subscribe('Users');
+  const subscription4 = Meteor.subscribe('UserSearch');
   return {
     items: Items.find({}).fetch(),
     reports: Reports.find({}).fetch(),
