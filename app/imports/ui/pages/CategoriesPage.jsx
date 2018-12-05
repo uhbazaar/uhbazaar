@@ -29,7 +29,7 @@ class CategoriesPage extends React.Component {
    * sortByCategory Maps the categories card data from CategoriesMenu.jsx
    * and sorts them alphabetically.
    * @param categories: List of categories.
-   * @return {}: List of cards mapped through CategoriesMenu.jsx
+   * @return {array}: List of cards mapped through CategoriesMenu.jsx
    */
   sortByCategory(categories) {
     const stuff = sortBy(categories, 'name');
