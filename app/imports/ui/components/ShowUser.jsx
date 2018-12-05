@@ -2,13 +2,21 @@ import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 import React from 'react';
 import { Card, Icon, Button, Image } from 'semantic-ui-react';
-import { size } from 'underscore';
+import { first, size } from 'underscore';
 import { Items } from '../../api/item/item';
 
 class ShowUser extends React.Component {
   getItemAmount(owner, stuff) {
     const total = stuff.filter(item => item.owner === owner);
     return size(total);
+  }
+
+  finishWord(array, n) {
+    let result = n;
+    while (array[result].match(/[a-z]/i)) {
+      result++;
+    }
+    return result;
   }
 
   render() {
@@ -20,6 +28,14 @@ class ShowUser extends React.Component {
         </style>
     );
     const iconStyle = { marginRight: '8px', marginTop: '4px' };
+    let description = '';
+    const n = 30;
+    if (this.props.user.description.length > n) {
+      description = first(this.props.user.description, this.finishWord(this.props.user.description, n));
+      description = description.concat('.', '.', '.');
+    } else {
+      description = this.props.user.description;
+    }
     return (
         <Card>
           {background}
@@ -32,10 +48,10 @@ class ShowUser extends React.Component {
                 {this.getItemAmount(this.props.user.username, items)} item(s)!
               </a></Card.Meta>
             <Card.Description style={cardFontStyle}>
-              {this.props.user.description}
+              {description}
             </Card.Description>
           </Card.Content>
-          <Card.Content centered extra>
+          <Card.Content extra>
             <Link to={`/userprofilebyid/${this.props.user._id}`}>
               <Button color='blue' size='tiny'>View</Button>
             </Link>

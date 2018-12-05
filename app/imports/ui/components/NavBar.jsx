@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter, NavLink } from 'react-router-dom';
-import { Menu, Dropdown, Image } from 'semantic-ui-react';
+import { Menu, Dropdown, Image, Icon } from 'semantic-ui-react';
 import { Roles } from 'meteor/alanning:roles';
 import SearchBar from './SearchBar';
 
@@ -13,6 +13,9 @@ class NavBar extends React.Component {
     const menuStyle = { backgroundColor: '#17252a', fontFamily: 'PT Sans Caption' };
     const imageStyle = { height: '64px' };
     const dropdownStyle = { marginRight: '32px' };
+    const dropDownIcon = (
+        <Icon name='bars' size='large'/>
+    );
     return (
         <div>
           {this.props.currentUser !== '' ? (
@@ -40,7 +43,7 @@ class NavBar extends React.Component {
                 </Menu.Item>
                 <Menu.Item>
                   {this.props.currentUser !== '' ? (
-                      <Dropdown style={dropdownStyle} pointing="top right" icon={'large bars'}>
+                      <Dropdown style={dropdownStyle} pointing="top right" icon={dropDownIcon}>
                         <Dropdown.Menu>
                           <Dropdown.Item text="My Account" as={NavLink} className="" exact to="/userprofile" key='add'/>
                           <Dropdown.Item text="Add New Item" as={NavLink} className="" exact to="/createitem"

@@ -86,7 +86,7 @@ export default class Signin extends React.Component {
                       type="password"
                       onChange={this.handleChange}
                   />
-                  <Form.Button fluid large color={'teal'} content="Submit"/>
+                  <Form.Button fluid color={'teal'} content="Submit"/>
                 </Segment>
               </Form>
               <Container textAlign="center">
