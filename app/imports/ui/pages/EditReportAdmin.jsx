@@ -41,7 +41,7 @@ class EditReportAdmin extends React.Component {
                 <LongTextField name='description'/>
                 <TextField name='owner'/>
                 <SelectField name='issue'/>
-                <TextField name='progress'/>
+                <SelectField name='progress'/>
                 <SubmitField value='Submit'/>
                 <Link to={'/admin/'}>
                   <Button floated='right'>Back</Button>

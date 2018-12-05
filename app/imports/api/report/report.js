@@ -10,11 +10,13 @@ const ReportSchema = new SimpleSchema({
   name: String,
   description: String,
   owner: String,
-  progress: String,
+  progress: {
+    type: String,
+    allowedValues: ['open', 'in progress', 'closed'],
+  },
   issue: {
     type: String,
     allowedValues: ['Misuse of website', 'Inappropriate post or image', 'Report a bug', 'Other'],
-    defaultValue: '--',
   },
 }, { tracker: Tracker });
 

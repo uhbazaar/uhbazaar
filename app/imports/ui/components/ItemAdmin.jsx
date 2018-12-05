@@ -43,7 +43,7 @@ class ItemAdmin extends React.Component {
   render() {
     return (
         <Table.Row>
-          <Table.Cell>{this.props.item.title}</Table.Cell>
+          <Table.Cell><Link to={`/item/${this.props.item._id}`}>{this.props.item.title}</Link></Table.Cell>
           <Table.Cell>{this.props.item.price}</Table.Cell>
           <Table.Cell>{this.props.item._id}</Table.Cell>
           <Table.Cell>{this.props.item.owner}</Table.Cell>
