@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, Image } from 'semantic-ui-react';
+import { List, Image, Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { NavLink, withRouter } from 'react-router-dom';
 import { first } from 'underscore';
@@ -39,6 +39,13 @@ class CategoryMenuList extends React.Component {
       marginTop: '15px',
     };
 
+    const dateIcon = (
+        <Icon name='calendar alternate outline'/>
+    );
+    const mapIcon = (
+        <Icon name='compass outline'/>
+    );
+
     let description = '';
     const n = 80;
     /**
@@ -53,19 +60,32 @@ class CategoryMenuList extends React.Component {
 
     return (
         <List.Item as={NavLink} to={`/item/${this.props.item._id}`}>
-          <Image size='tiny' avatar src={this.props.item.image}/>
+          <Image size='tiny' src={this.props.item.image}/>
           <List.Content style={contentStyle}>
             <List.Header style={dateStyle}>
-              {`${this.props.item.date}     ${this.props.item.location}`}
+              <List horizontal>
+                <List.Item>
+                <List.Content>
+                  {dateIcon}
+                  {this.props.item.date}
+                </List.Content>
+                </List.Item>
+                <List.Item>
+                  <List.Content>
+                    {mapIcon}
+                    {this.props.item.location}
+                </List.Content>
+                </List.Item>
+              </List>
             </List.Header>
-            <List.Description as='a' style={titleStyle}>
+            <List.Description style={titleStyle}>
               {this.props.item.title}
             </List.Description>
             <List.Description>
               {description}
             </List.Description>
             <List.Item>
-              <span className='price'>{`$${this.props.item.price}`}</span>
+              <span>{`$${this.props.item.price}`}</span>
             </List.Item>
           </List.Content>
         </List.Item>
