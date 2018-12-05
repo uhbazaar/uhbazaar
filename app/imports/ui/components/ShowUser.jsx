@@ -11,6 +11,14 @@ class ShowUser extends React.Component {
     return size(total);
   }
 
+  finishWord(array, n) {
+    let result = n;
+    while (array[result].match(/[a-z]/i)) {
+      result++;
+    }
+    return result;
+  }
+
   render() {
     const items = Items.find({}).fetch();
     const cardFontStyle = { color: '#17252a' };
@@ -22,7 +30,12 @@ class ShowUser extends React.Component {
     const iconStyle = { marginRight: '8px', marginTop: '4px' };
     let description = '';
     const n = 30;
-
+    if (this.props.user.description.length > n) {
+      description = first(this.props.user.description, this.finishWord(this.props.user.description, n));
+      description = description.concat('.', '.', '.');
+    } else {
+      description = this.props.user.description;
+    }
     return (
         <Card>
           {background}
