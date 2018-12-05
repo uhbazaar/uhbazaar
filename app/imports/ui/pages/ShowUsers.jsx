@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Card, Header, Loader, Menu } from 'semantic-ui-react';
+import { Container, Card, Header, Loader, Menu, Icon } from 'semantic-ui-react';
 import { Users } from '/imports/api/user/user';
 import { withTracker } from 'meteor/react-meteor-data';
 import { sortBy } from 'underscore';
@@ -13,10 +13,12 @@ class ShowUsers extends React.Component {
     super(props);
     this.state = {
       activeItem: 'rating',
+      activeView: 'big',
     };
   }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+  handleViewClick = (e, { name }) => this.setState({ activeView: name })
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
@@ -37,6 +39,7 @@ class ShowUsers extends React.Component {
       marginBottom: '64vh',
     };
     const { activeItem } = this.state.activeItem;
+    const { activeView } = this.state.activeView;
     if (!Users.findOne()) {
       return (
           <Container style={styleCards}>
@@ -48,6 +51,20 @@ class ShowUsers extends React.Component {
     }
     return (
         <Container style={styleCards}>
+          <Menu text>
+            <Menu.Item header>View</Menu.Item>
+            <Menu.Item
+                name='big'
+                active={activeView === 'big'}
+                onClick={this.handleViewClick}
+            />
+            <Menu.Item
+                name='small'
+                active={activeView === 'small'}
+                onClick={this.handleViewClick}
+            />
+          </Menu>
+
           <Menu text>
             <Menu.Item header>Sort By</Menu.Item>
             <Menu.Item
@@ -66,10 +83,14 @@ class ShowUsers extends React.Component {
                 onClick={this.handleItemClick}
             />
           </Menu>
+
           <style>{'body { background: url(images/uh-logo.png) no-repeat center fixed; }'}</style>
           <style>{'body { background-color: #def2f1; }'}</style>
-          <Header as="h2" textAlign="center">Current Users</Header>
-          <Card.Group centered>
+          <Header as='h1' icon textAlign='center'>
+            <Icon name='law' circular/>
+            <Header.Content>Merchants and Craftsman</Header.Content>
+          </Header>
+          <Card.Group centered itemsPerRow={this.state.activeView === 'big' ? '' : 7}>
             {this.getUsers(this.props.users)}
           </Card.Group>
         </Container>
