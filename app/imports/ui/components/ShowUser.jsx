@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 import React from 'react';
 import { Card, Icon, Button, Image } from 'semantic-ui-react';
-import { size } from 'underscore';
+import { first, size } from 'underscore';
 import { Items } from '../../api/item/item';
 
 class ShowUser extends React.Component {
@@ -11,11 +11,13 @@ class ShowUser extends React.Component {
     return size(total);
   }
 
+
   getUserDescription(descrip) {
     if (descrip.length > 80) {
       return `${descrip.substring(0, 79)}...`;
     }
     return descrip;
+
   }
 
   render() {
@@ -27,6 +29,14 @@ class ShowUser extends React.Component {
         </style>
     );
     const iconStyle = { marginRight: '8px', marginTop: '4px' };
+    let description = '';
+    const n = 30;
+    if (this.props.user.description.length > n) {
+      description = first(this.props.user.description, this.finishWord(this.props.user.description, n));
+      description = description.concat('.', '.', '.');
+    } else {
+      description = this.props.user.description;
+    }
     return (
         <Card>
           {background}
@@ -42,7 +52,7 @@ class ShowUser extends React.Component {
               {this.getUserDescription(this.props.user.description)}
             </Card.Description>
           </Card.Content>
-          <Card.Content centered extra>
+          <Card.Content extra>
             <Link to={`/userprofilebyid/${this.props.user._id}`}>
               <Button color='blue' size='tiny'>View</Button>
             </Link>
