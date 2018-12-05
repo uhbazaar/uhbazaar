@@ -6,6 +6,7 @@ import { withRouter, NavLink } from 'react-router-dom';
 import { Menu, Dropdown, Image } from 'semantic-ui-react';
 import { Roles } from 'meteor/alanning:roles';
 import SearchBar from './SearchBar';
+import TopMenu from './TopMenu';
 
 /** The NavBar appears at the top of every page. Rendered by the App Layout component. */
 class NavBar extends React.Component {
@@ -13,10 +14,14 @@ class NavBar extends React.Component {
     const menuStyle = { backgroundColor: '#17252a', fontFamily: 'PT Sans Caption' };
     const imageStyle = { height: '64px' };
     const dropdownStyle = { marginRight: '32px' };
+    const topMenu = { marginBottom: '30px' };
     return (
-        <div>
-          {this.props.currentUser !== '' ? (
-              <Menu stackable style={menuStyle} attached="top" borderless inverted>
+            <div>
+              <div style={topMenu}>
+              <TopMenu/>
+              </div>
+              {this.props.currentUser !== '' ? (
+              <Menu stackable style={menuStyle} attached="top" borderless inverted lighten>
 
                 <Menu.Item as={NavLink} activeClassName="" exact to="/">
                   <Image style={imageStyle} src='images/navbar-logo.png'/>
@@ -52,7 +57,7 @@ class NavBar extends React.Component {
                 </Menu.Item>
               </Menu>
           ) : ''}
-        </div>
+            </div>
     );
   }
 }

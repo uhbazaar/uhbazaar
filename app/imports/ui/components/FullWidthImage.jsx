@@ -10,7 +10,7 @@ import LandingBar from './LandingBar';
 class FullWidthImage extends React.Component {
   render() {
     const mainContainerStyle = {
-      paddingTop: '300px',
+      paddingTop: '280px',
     };
     const logoContainerStyleOne = {
       width: '200%',
