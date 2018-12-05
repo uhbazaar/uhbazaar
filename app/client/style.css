@@ -5,7 +5,6 @@ html {
   color: #2b7a78;
   padding: 0 40px 0 40px;
   border-radius: 10px;
-  border: solid 2px #feffff;
 }
 
 .landing-welcome{
@@ -20,4 +19,5 @@ html {
   background-size: cover;
   background: #17252a no-repeat center center fixed;
   height: 450px;
+  margin-bottom: 128px;
 }

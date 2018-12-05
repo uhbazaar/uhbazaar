@@ -11,12 +11,13 @@ class ShowUser extends React.Component {
     return size(total);
   }
 
-  finishWord(array, n) {
-    let result = n;
-    while (array[result].match(/[a-z]/i)) {
-      result++;
+
+  getUserDescription(descrip) {
+    if (descrip.length > 80) {
+      return `${descrip.substring(0, 79)}...`;
     }
-    return result;
+    return descrip;
+
   }
 
   render() {
@@ -48,7 +49,7 @@ class ShowUser extends React.Component {
                 {this.getItemAmount(this.props.user.username, items)} item(s)!
               </a></Card.Meta>
             <Card.Description style={cardFontStyle}>
-              {description}
+              {this.getUserDescription(this.props.user.description)}
             </Card.Description>
           </Card.Content>
           <Card.Content extra>

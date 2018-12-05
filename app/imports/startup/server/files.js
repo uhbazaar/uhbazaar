@@ -3,16 +3,16 @@ import { Slingshot } from 'meteor/edgee:slingshot';
 
 Slingshot.fileRestrictions('image', {
   allowedFileTypes: ['image/png', 'image/jpeg', 'image/gif'],
-  maxSize: 1 * 512 * 512,
+  maxSize: 1 * 1024 * 1024,
 });
 
 Slingshot.createDirective('fileUploads', Slingshot.S3Storage, {
   bucket: 'uhmbazaar',
-  maxSize: 1 * 512 * 512,
+  maxSize: 1 * 1024 * 1024,
   acl: 'public-read',
   allowedFileTypes: ['image/png', 'image/jpeg', 'image/gif'],
-  AWSAccessKeyId: 'YourAccessKey',
-  AWSSecretAccessKey: 'YourSecretAccessKey',
+  AWSAccessKeyId: 'Accesskey',
+  AWSSecretAccessKey: 'Secretkey',
   region: 'us-west-1',
 
   authorize: function () {

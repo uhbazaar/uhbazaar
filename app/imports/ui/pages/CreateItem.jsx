@@ -1,6 +1,6 @@
 import React from 'react';
 import { Items, ItemSchema } from '/imports/api/item/item';
-import { Grid, Segment, Header, Container, Input, Image } from 'semantic-ui-react';
+import { Grid, Segment, Header, Container, Input, Image, Icon } from 'semantic-ui-react';
 import AutoForm from 'uniforms-semantic/AutoForm';
 import TextField from 'uniforms-semantic/TextField';
 import SelectField from 'uniforms-semantic/SelectField';
@@ -27,6 +27,7 @@ class CreateItem extends React.Component {
       image: 'images/uhbazaarlogo.png',
       file: null,
       imagePreviewUrl: null,
+      percent: 0,
     };
   }
 
@@ -44,7 +45,7 @@ class CreateItem extends React.Component {
     // we create this rule both on client and server
     Slingshot.fileRestrictions('image', {
       allowedFileTypes: ['image/png', 'image/jpeg', 'image/gif'],
-      maxSize: 1 * 512 * 512,
+      maxSize: 1 * 1024 * 1024,
     });
   }
 
@@ -79,7 +80,7 @@ class CreateItem extends React.Component {
       paddingBottom: '128px',
       marginBottom: '24vh',
     };
-    const thumbStyle = { paddingTop: '8px', paddingBottom: '8px' };
+    const thumbStyle = { paddingTop: '8px', marginBottom: '32px' };
     return (
         <Container>
           <style>{'body { background: url(images/uh-logo.png) no-repeat center fixed; }'}</style>
@@ -96,11 +97,17 @@ class CreateItem extends React.Component {
                   <TextField name='location'/>
                   <SelectField name='category'/>
                   <LongTextField name='description'/>
-                  <Header as='h3'>Upload an image</Header>
-                  <Input type="file" id="input" onChange={this.upload.bind(this)}/>
-                  <Container style={thumbStyle}>
-                    <Image size='small' rounded src={this.state.image}/>
-                  </Container>
+                  <Segment placeholder>
+                    <Header textAlign='center' icon><Icon name='image outline'/>
+                      Upload an image, under 1 mb
+                    </Header>
+                    <Container style={thumbStyle}>
+                      <Image centered size='small' rounded src={this.state.image}/>;
+                    </Container>
+                    <Container>
+                      <Input fluid type="file" id="input" onChange={this.upload.bind(this)}/>
+                    </Container>
+                  </Segment>
                   <SubmitField value='submit'/>
                   <ErrorsField/>
                   <HiddenField name='owner' value='john@foo.com'/>

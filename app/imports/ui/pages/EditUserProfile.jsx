@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Loader, Header, Segment, Button, Container, Input, Image } from 'semantic-ui-react';
+import { Grid, Loader, Header, Segment, Button, Container, Input, Image, Icon } from 'semantic-ui-react';
 import { Users, UserSchema } from '/imports/api/user/user';
 import { Bert } from 'meteor/themeteorchef:bert';
 import AutoForm from 'uniforms-semantic/AutoForm';
@@ -18,18 +18,35 @@ import { Slingshot } from 'meteor/edgee:slingshot';
 class EditUserProfile extends React.Component {
   constructor(props) {
     super(props);
+    this.onClick = this.onClick.bind(this);
+    this.deleteCallback = this.deleteCallback.bind(this);
     this.state = {
-      image: this.props.doc,
+      image: 'images/user.png',
       file: null,
       imagePreviewUrl: null,
     };
+  }
+
+  deleteCallback(error) {
+    if (error) {
+      Bert.alert({ type: 'danger', message: `Delete failed: ${error.message}` });
+    } else {
+      Bert.alert({ type: 'success', message: 'Delete succeeded' });
+      this.formRef.reset();
+    }
+  }
+
+  onClick() {
+    if (confirm('The will permanently delete your account!')) {
+      Users.remove(this.props.doc._id, this.deleteCallback);
+    }
   }
 
   componentWillMount() {
     // we create this rule both on client and server
     Slingshot.fileRestrictions('image', {
       allowedFileTypes: ['image/png', 'image/jpeg', 'image/gif'],
-      maxSize: 1 * 512 * 512,
+      maxSize: 1 * 1024 * 1024,
     });
   }
 
@@ -87,15 +104,32 @@ class EditUserProfile extends React.Component {
                   <TextField name='firstName'/>
                   <TextField name='lastName'/>
                   <LongTextField name='description'/>
-                  <Header as='h3'>Upload an image</Header>
-                  <Input type="file" id="input" onChange={this.upload.bind(this)}/>
-                  <Container style={thumbStyle}>
-                    <Image size='small' rounded src={user.image !== null ? user.image : this.state.image}/>
-                  </Container>
+                  <Segment placeholder>
+                    <Header textAlign='center' icon><Icon name='image'/>
+                      Upload an image, under 1 mb
+                    </Header>
+                    <Container style={thumbStyle}>
+                      <Image centered size='small'
+                             rounded src={user.image !== 'images/user.png' ? user.image : this.state.image}
+                      />
+                    </Container>
+                    <Input fluid type="file" id="input" onChange={this.upload.bind(this)}/>
+                  </Segment>
                   <SubmitField value='Submit'/>
                   <Link to={'/userprofile/'}>
                     <Button floated='right'>Back to Profile</Button>
                   </Link>
+                  <Segment placeholder>
+                    <Header textAlign='center' icon>
+                      <Icon name='warning sign'/>
+                      Danger!
+                    </Header>
+                    <Container textAlign='center'>
+                      <Link to={'/userprofile/'}>
+                        <Button inverted color='red' onClick={this.onClick}>Delete my account</Button>
+                      </Link>
+                    </Container>
+                  </Segment>
                   <ErrorsField/>
                   <HiddenField name='username'/>
                 </Segment>
