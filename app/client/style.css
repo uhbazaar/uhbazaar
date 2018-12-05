@@ -20,4 +20,5 @@ html {
   background-size: cover;
   background: #17252a no-repeat center center fixed;
   height: 450px;
+  margin-bottom: 128px;
 }

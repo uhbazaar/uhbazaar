@@ -12,7 +12,7 @@ class FullWidthImage extends React.Component {
   render() {
     const mainContainerStyle = {
       marginTop: '300px',
-      paddingBottom: '128px',
+      paddingBottom: '16px',
     };
     const logoContainerStyle = {
       // backgroundColor: '#2b7a78',
