@@ -18,6 +18,7 @@ class ShowUsers extends React.Component {
   }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+
   handleViewClick = (e, { name }) => this.setState({ activeView: name })
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
@@ -90,7 +91,7 @@ class ShowUsers extends React.Component {
             <Icon name='law' circular/>
             <Header.Content>Merchants and Craftsman</Header.Content>
           </Header>
-          <Card.Group centered itemsPerRow={this.state.activeView === 'big' ? '' : 7}>
+          <Card.Group centered itemsPerRow={this.state.activeView === 'big' ? 3 : 7}>
             {this.getUsers(this.props.users)}
           </Card.Group>
         </Container>

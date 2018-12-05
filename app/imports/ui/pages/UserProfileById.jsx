@@ -10,6 +10,14 @@ import { Items } from '../../api/item/item';
 
 /** Renders the Page for editing a single document. */
 class UserProfileById extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      rateCount: 1,
+      ratingSum: 3,
+      disabled: false,
+    };
+  }
 
   getItems(items, owner) {
     const stuff = sortBy(items, 'owner');
@@ -23,6 +31,12 @@ class UserProfileById extends React.Component {
     const total = stuff.filter(item => item.owner === owner);
     return size(total);
   }
+
+  handleRate = (e, { rating }) => this.setState({
+    ratingSum: this.state.ratingSum + rating,
+    rateCount: this.state.rateCount + 1,
+    disabled: true,
+  })
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
@@ -43,6 +57,8 @@ class UserProfileById extends React.Component {
         ' background-blend-mode: overlay; background-size: cover;}'}
         </style>
     );
+    console.log(this.state.rateCount);
+    console.log(this.state.ratingSum);
     return (
         <Grid container verticalAlign='middle' style={gridStyle}>
           {background}
@@ -68,7 +84,9 @@ class UserProfileById extends React.Component {
                       </a>
                     </Card.Content>
                     <Card.Content>
-                      <Rating icon='star' defaultRating={4} maxRating={5}/>
+                      <Rating rating={Math.floor(this.state.ratingSum / this.state.rateCount)} icon='star'
+                              onRate={this.handleRate}
+                              maxRating={5} disabled={this.state.disabled}/>
                     </Card.Content>
                   </Card>
                 </Grid.Column>
