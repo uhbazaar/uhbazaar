@@ -26,6 +26,20 @@ import { first } from 'underscore';
  ********************************************************************** */
 
 class CategoryMenuList extends React.Component {
+  /**
+   * FinishWord makes sure that a word is completed before limiting the
+   * size of the item.description.
+   * @param array: item.description
+   * @param n: cut off number
+   * @return {result}: The n number of characters needed to complete task.
+   */
+  finishWord(array, n) {
+    let result = n;
+    while (array[result].match(/[a-z]/i)) {
+      result++;
+    }
+    return result;
+  }
 
   render() {
     const dateStyle = {
@@ -52,7 +66,7 @@ class CategoryMenuList extends React.Component {
      * Check if the item description is too long, if so, only display the first n characters.
      */
     if (this.props.item.description.length > n) {
-      description = first(this.props.item.description, n);
+      description = first(this.props.item.description, this.finishWord(this.props.item.description, n));
       description = description.concat('.', '.', '.');
     } else {
       description = this.props.item.description;

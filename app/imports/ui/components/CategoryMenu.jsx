@@ -20,9 +20,19 @@ import { Users } from '../../api/user/user';
  *        FILE:           CategoryMenu.jsx
  *
  *        DESCRIPTION:
+ *            This component contains the card view for which an
+ *            item takes while being displayed in CategoryPage.jsx.
+ *
  ********************************************************************** */
 
 class CategoryMenu extends React.Component {
+  /**
+   * An old method: my personal way of dealing with the undefined data
+   * object issue we were having. Matches and returns the user if it is
+   * not undefined.
+   * @param users: list of users in data.
+   * @return use: the user that has been matched
+   */
   /* getUserImage(users) {
     let use = find(users, (user) => user.username === this.props.item.owner);
     if (use === undefined) {
@@ -32,7 +42,13 @@ class CategoryMenu extends React.Component {
     }
     return use;
   } */
-
+  /**
+   * FinishWord makes sure that a word is completed before limiting the
+   * size of the item.description.
+   * @param array: item.description
+   * @param n: cut off number
+   * @return {result}: The n number of characters needed to complete task.
+   */
   finishWord(array, n) {
     let result = n;
     while (array[result].match(/[a-z]/i)) {
