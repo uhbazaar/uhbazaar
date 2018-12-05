@@ -18,7 +18,7 @@ class ItemAdmin extends React.Component {
   handleClick() {
     confirmAlert({
       title: 'Confirm to submit',
-      message: 'Are you sure to do this.',
+      message: 'Are you sure you want to do this?',
       buttons: [
         {
           label: 'Yes',

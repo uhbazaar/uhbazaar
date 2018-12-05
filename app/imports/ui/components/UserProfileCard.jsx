@@ -45,7 +45,7 @@ class UserProfileCard extends React.Component {
                     </Card.Content>
                     <Card.Content extra>
                       <Link to={`/edituserprofile/${this.props.user._id}`}>
-                        <Button floated='right' color='black' size='tiny'>Edit Profile</Button>
+                        <Button floated='right' color='blue' inverted size='tiny'>Edit Profile</Button>
                       </Link>
                     </Card.Content>
                   </Card>

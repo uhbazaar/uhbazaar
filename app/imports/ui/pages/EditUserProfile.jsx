@@ -21,7 +21,7 @@ class EditUserProfile extends React.Component {
     this.onClick = this.onClick.bind(this);
     this.deleteCallback = this.deleteCallback.bind(this);
     this.state = {
-      image: this.props.doc,
+      image: 'images/user.png',
       file: null,
       imagePreviewUrl: null,
     };
@@ -109,17 +109,27 @@ class EditUserProfile extends React.Component {
                       Upload an image, under 1 mb
                     </Header>
                     <Container style={thumbStyle}>
-                      <Image centered size='small' rounded src={user.image !== null ? user.image : this.state.image}/>
+                      <Image centered size='small'
+                             rounded src={user.image !== 'images/user.png' ? user.image : this.state.image}
+                      />
                     </Container>
                     <Input fluid type="file" id="input" onChange={this.upload.bind(this)}/>
                   </Segment>
                   <SubmitField value='Submit'/>
                   <Link to={'/userprofile/'}>
-                    <Button color='red' onClick={this.onClick}>Delete my account</Button>
-                  </Link>
-                  <Link to={'/userprofile/'}>
                     <Button floated='right'>Back to Profile</Button>
                   </Link>
+                  <Segment placeholder>
+                    <Header textAlign='center' icon>
+                      <Icon name='warning sign'/>
+                      Danger!
+                    </Header>
+                    <Container textAlign='center'>
+                      <Link to={'/userprofile/'}>
+                        <Button inverted color='red' onClick={this.onClick}>Delete my account</Button>
+                      </Link>
+                    </Container>
+                  </Segment>
                   <ErrorsField/>
                   <HiddenField name='username'/>
                 </Segment>

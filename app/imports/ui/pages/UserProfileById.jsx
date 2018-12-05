@@ -84,7 +84,7 @@ class UserProfileById extends React.Component {
                       <Card.Header style={cardFontStyle}><Icon name='warehouse' circular/>The Goods</Card.Header>
                     </Card.Content>
                     <Card.Content>
-                      <Item.Group>
+                      <Item.Group divided>
                         {this.getItems(this.props.item, this.props.doc.username)}
                       </Item.Group>
                     </Card.Content>

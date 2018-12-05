@@ -16,7 +16,7 @@ class UserProfile extends React.Component {
     const stuff = sortBy(items, 'owner');
     if (this.getItemAmount(owner, items) !== 0) {
       return stuff.filter(item => item.owner === owner).map((item) => <OwnerShowcaseItem key={item._id}
-                                                                                    item={item}/>);
+                                                                                         item={item}/>);
     }
     return <Link to='/createitem'><Button>Add Something!</Button></Link>;
   }
@@ -54,7 +54,7 @@ class UserProfile extends React.Component {
                       <Card.Header style={cardFontStyle}><Icon name='warehouse' circular/>The Goods</Card.Header>
                     </Card.Content>
                     <Card.Content>
-                      <Item.Group>
+                      <Item.Group divided>
                         {this.getItems(this.props.item, this.props.user.username)}
                       </Item.Group>
                     </Card.Content>

@@ -13,10 +13,10 @@ class ShowcaseItem extends React.Component {
       fontSize: '16px',
     };
     const button = { backgroundColor: '#3aafa9', color: '#feffff' };
-    const imageStyle = { marginLeft: '32px' };
+    const imageStyle = { marginLeft: '32px', marginTop: '48px' };
     const itemStyle = { marginBottom: '48px', marginTop: '32px' };
     return (
-        <Item.Group>
+
           <Item style={itemStyle}>
             <Item.Image rounded size='medium' style={imageStyle} src={this.props.item.image}/>
             <Item.Content verticalAlign='middle'>
@@ -35,7 +35,6 @@ class ShowcaseItem extends React.Component {
               </Button>
             </Item.Content>
           </Item>
-        </Item.Group>
     );
   }
 }

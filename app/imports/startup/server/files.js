@@ -11,8 +11,8 @@ Slingshot.createDirective('fileUploads', Slingshot.S3Storage, {
   maxSize: 1 * 512 * 512,
   acl: 'public-read',
   allowedFileTypes: ['image/png', 'image/jpeg', 'image/gif'],
-  AWSAccessKeyId: 'YourAccessKey',
-  AWSSecretAccessKey: 'YourSecretAccessKey',
+  AWSAccessKeyId: 'AKIAIGYSXNKMYMM4NXMQ',
+  AWSSecretAccessKey: 'BjHFCYudEyTahX3zatZS9NKJgKRMYuwuRH7JQJui',
   region: 'us-west-1',
 
   authorize: function () {

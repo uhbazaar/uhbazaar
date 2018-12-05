@@ -48,7 +48,7 @@ class OwnerShowcaseItem extends React.Component {
               <Item.Description style={cardFontStyle}>
                 {this.props.item.description}
               </Item.Description>
-              <Item.Content extra>
+              <Item.Content>
                 <Button color='red' onClick={this.onClick}>Remove</Button>
               </Item.Content>
             </Item.Content>
