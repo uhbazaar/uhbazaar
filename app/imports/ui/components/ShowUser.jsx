@@ -29,14 +29,6 @@ class ShowUser extends React.Component {
         </style>
     );
     const iconStyle = { marginRight: '8px', marginTop: '4px' };
-    let description = '';
-    const n = 30;
-    if (this.props.user.description.length > n) {
-      description = first(this.props.user.description, this.finishWord(this.props.user.description, n));
-      description = description.concat('.', '.', '.');
-    } else {
-      description = this.props.user.description;
-    }
     return (
         <Card>
           {background}
