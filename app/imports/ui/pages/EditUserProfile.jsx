@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Loader, Header, Segment, Button, Container, Input, Image } from 'semantic-ui-react';
+import { Grid, Loader, Header, Segment, Button, Container, Input, Image, Icon } from 'semantic-ui-react';
 import { Users, UserSchema } from '/imports/api/user/user';
 import { Bert } from 'meteor/themeteorchef:bert';
 import AutoForm from 'uniforms-semantic/AutoForm';
@@ -13,8 +13,6 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Slingshot } from 'meteor/edgee:slingshot';
-import { Accounts } from 'meteor/accounts-base';
-
 
 /** Renders the Page for editing a single document. */
 class EditUserProfile extends React.Component {
@@ -48,7 +46,7 @@ class EditUserProfile extends React.Component {
     // we create this rule both on client and server
     Slingshot.fileRestrictions('image', {
       allowedFileTypes: ['image/png', 'image/jpeg', 'image/gif'],
-      maxSize: 1 * 512 * 512,
+      maxSize: 1 * 1024 * 1024,
     });
   }
 
@@ -106,13 +104,17 @@ class EditUserProfile extends React.Component {
                   <TextField name='firstName'/>
                   <TextField name='lastName'/>
                   <LongTextField name='description'/>
-                  <Header as='h3'>Upload an image</Header>
-                  <Input type="file" id="input" onChange={this.upload.bind(this)}/>
-                  <Container style={thumbStyle}>
-                    <Image size='small' rounded src={user.image !== null ? user.image : this.state.image}/>
-                  </Container>
+                  <Segment placeholder>
+                    <Header textAlign='center' icon><Icon name='image'/>
+                      Upload an image, under 1 mb
+                    </Header>
+                    <Container style={thumbStyle}>
+                      <Image centered size='small' rounded src={user.image !== null ? user.image : this.state.image}/>
+                    </Container>
+                    <Input fluid type="file" id="input" onChange={this.upload.bind(this)}/>
+                  </Segment>
                   <SubmitField value='Submit'/>
-                  <Link to={'/signout/'}>
+                  <Link to={'/userprofile/'}>
                     <Button color='red' onClick={this.onClick}>Delete my account</Button>
                   </Link>
                   <Link to={'/userprofile/'}>
