@@ -34,10 +34,9 @@ class OwnerShowcaseItem extends React.Component {
       fontWeight: 'bold',
       fontSize: '16px',
     };
-    const imageStyle = { marginLeft: '32px' };
+    const imageStyle = { marginLeft: '32px', marginTop: '48px' };
     const itemStyle = { marginBottom: '48px', marginTop: '32px' };
     return (
-        <Item.Group>
           <Item style={itemStyle}>
             <Item.Image rounded size='medium' style={imageStyle} src={this.props.item.image}/>
             <Item.Content verticalAlign='middle'>
@@ -53,7 +52,6 @@ class OwnerShowcaseItem extends React.Component {
               </Item.Content>
             </Item.Content>
           </Item>
-        </Item.Group>
     );
   }
 }

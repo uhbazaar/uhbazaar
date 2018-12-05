@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Header, Segment, Container, Input, Image } from 'semantic-ui-react';
+import { Grid, Header, Segment, Container, Input, Image, Button } from 'semantic-ui-react';
 import { Users, UserSchema } from '/imports/api/user/user';
 import { Bert } from 'meteor/themeteorchef:bert';
 import { Meteor } from 'meteor/meteor';
@@ -8,6 +8,7 @@ import TextField from 'uniforms-semantic/TextField';
 import LongTextField from 'uniforms-semantic/LongTextField';
 import SubmitField from 'uniforms-semantic/SubmitField';
 import HiddenField from 'uniforms-semantic/HiddenField';
+import { Link } from 'react-router-dom';
 import ErrorsField from 'uniforms-semantic/ErrorsField';
 import { Slingshot } from 'meteor/edgee:slingshot';
 
@@ -92,6 +93,11 @@ class CreateUserProfile extends React.Component {
                     <Image size='small' rounded src={this.state.image}/>
                   </Container>
                   <SubmitField value='Submit'/>
+                  <Link to={'/'}>
+                    <Button animated='fade' size='medium'>
+                      <Button.Content visible>Home</Button.Content>
+                    </Button>
+                  </Link>
                   <ErrorsField/>
                   <HiddenField name='username' value='fakeuser@foo.com'/>
                   <HiddenField name='image' value='images/user.png'/>

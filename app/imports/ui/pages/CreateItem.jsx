@@ -1,6 +1,6 @@
 import React from 'react';
 import { Items, ItemSchema } from '/imports/api/item/item';
-import { Grid, Segment, Header, Container, Input, Image, Icon, Button } from 'semantic-ui-react';
+import { Grid, Segment, Header, Container, Input, Image, Icon } from 'semantic-ui-react';
 import AutoForm from 'uniforms-semantic/AutoForm';
 import TextField from 'uniforms-semantic/TextField';
 import SelectField from 'uniforms-semantic/SelectField';
@@ -27,6 +27,7 @@ class CreateItem extends React.Component {
       image: 'images/uhbazaarlogo.png',
       file: null,
       imagePreviewUrl: null,
+      percent: 0,
     };
   }
 
@@ -79,7 +80,6 @@ class CreateItem extends React.Component {
       paddingBottom: '128px',
       marginBottom: '24vh',
     };
-    const buttonStyle = { marginLeft: '4px', marginBottom: '8px' };
     const thumbStyle = { paddingTop: '8px', marginBottom: '32px' };
     return (
         <Container>
@@ -105,7 +105,7 @@ class CreateItem extends React.Component {
                       <Image centered size='small' rounded src={this.state.image}/>;
                     </Container>
                     <Container>
-                      <Input type="file" id="input" onChange={this.upload.bind(this)}/>
+                      <Input fluid type="file" id="input" onChange={this.upload.bind(this)}/>
                     </Container>
                   </Segment>
                   <SubmitField value='submit'/>
