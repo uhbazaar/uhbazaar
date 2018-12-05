@@ -14,15 +14,35 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Slingshot } from 'meteor/edgee:slingshot';
 
+
 /** Renders the Page for editing a single document. */
 class EditUserProfile extends React.Component {
   constructor(props) {
     super(props);
+    this.onClick = this.onClick.bind(this);
+    this.deleteCallback = this.deleteCallback.bind(this);
     this.state = {
       image: this.props.doc,
       file: null,
       imagePreviewUrl: null,
     };
+  }
+
+  deleteCallback(error) {
+    if (error) {
+      Bert.alert({ type: 'danger', message: `Delete failed: ${error.message}` });
+    } else {
+      Bert.alert({ type: 'success', message: 'Delete succeeded' });
+      this.formRef.reset();
+    }
+  }
+
+  onClick() {
+    if (confirm('The will permanently delete your account!')) {
+      const username = this.props.doc.username;
+      Users.remove(this.props.doc._id, this.deleteCallback);
+      Meteor.users.remove(username);
+    }
   }
 
   componentWillMount() {
@@ -93,6 +113,9 @@ class EditUserProfile extends React.Component {
                     <Image size='small' rounded src={user.image !== null ? user.image : this.state.image}/>
                   </Container>
                   <SubmitField value='Submit'/>
+                  <Link to={'/signout/'}>
+                    <Button color='red' onClick={this.onClick}>Delete my account</Button>
+                  </Link>
                   <Link to={'/userprofile/'}>
                     <Button floated='right'>Back to Profile</Button>
                   </Link>
