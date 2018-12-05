@@ -13,6 +13,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Slingshot } from 'meteor/edgee:slingshot';
+import { Accounts } from 'meteor/accounts-base';
 
 
 /** Renders the Page for editing a single document. */
@@ -39,9 +40,7 @@ class EditUserProfile extends React.Component {
 
   onClick() {
     if (confirm('The will permanently delete your account!')) {
-      const username = this.props.doc.username;
       Users.remove(this.props.doc._id, this.deleteCallback);
-      Meteor.users.remove(username);
     }
   }
 
