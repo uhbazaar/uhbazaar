@@ -35,9 +35,9 @@ class CreateReport extends React.Component {
 
   /** On submit, insert the data. */
   submit(data) {
-    const { name, issue, description, progress } = data;
+    const { name, issue, description, progress, createdAt } = data;
     const owner = Meteor.user().username;
-    Reports.insert({ name, description, issue, progress, owner }, this.insertCallback);
+    Reports.insert({ name, description, issue, progress, createdAt, owner }, this.insertCallback);
   }
 
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
@@ -57,6 +57,7 @@ class CreateReport extends React.Component {
                 </Link>
                 <HiddenField name='progress' value='open'/>
                 <HiddenField name='owner' value='fakeuser@foo.com'/>
+                <HiddenField name='createdAt' value={new Date()}/>
                 <ErrorsField/>
               </Segment>
             </AutoForm>

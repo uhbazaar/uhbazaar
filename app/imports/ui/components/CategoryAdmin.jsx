@@ -48,6 +48,7 @@ class CategoryAdmin extends React.Component {
             </Table.Cell>
           <Table.Cell>{this.props.category.icon}</Table.Cell>
           <Table.Cell>{this.props.category._id}</Table.Cell>
+          <Table.Cell>0</Table.Cell>
           <Table.Cell>
             <Link to={`/edit-category/${this.props.category._id}`}><Button>Edit</Button></Link>
             <Button color='red' basic onClick={this.handleClick}>Delete</Button>

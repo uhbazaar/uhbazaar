@@ -8,6 +8,7 @@ import LongTextField from 'uniforms-semantic/LongTextField';
 import SelectField from 'uniforms-semantic/SelectField';
 import SubmitField from 'uniforms-semantic/SubmitField';
 import ErrorsField from 'uniforms-semantic/ErrorsField';
+import HiddenField from 'uniforms-semantic/HiddenField';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
@@ -47,6 +48,7 @@ class EditReportAdmin extends React.Component {
                   <Button floated='right'>Back</Button>
                 </Link>
                 <ErrorsField/>
+                <HiddenField name='createdAt' value={new Date()}/>
               </Segment>
             </AutoForm>
           </Grid.Column>

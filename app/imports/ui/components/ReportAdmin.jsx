@@ -45,6 +45,7 @@ class ReportAdmin extends React.Component {
         <Table.Row>
           <Table.Cell>{this.props.report.name}</Table.Cell>
           <Table.Cell>{this.props.report.issue}</Table.Cell>
+          <Table.Cell>{this.props.report.createdAt.toLocaleDateString('en-US')}</Table.Cell>
           <Table.Cell>{this.props.report._id}</Table.Cell>
           <Table.Cell>{this.props.report.progress}</Table.Cell>
           <Table.Cell>{this.props.report.description}</Table.Cell>
