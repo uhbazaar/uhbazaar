@@ -23,6 +23,10 @@ import CategoriesMenu from '../components/CategoriesMenu';
  *        FILE:           CategoryPage.jsx
  *
  *        DESCRIPTION:
+ *            This file contains the functions and user interface for
+ *            which the user can choose an item by its category and
+ *            sort the items in various ways as follows.
+ *
  ********************************************************************** */
 class CategoryPage extends React.Component {
   constructor(props) {
@@ -48,6 +52,18 @@ class CategoryPage extends React.Component {
 
   handleSidebarHide = () => this.setState({ visible: false });
 
+  /**
+   * sortByItem Maps the item card data from ether
+   * CategoryMenu.jsx or CategoryMenuList.jsx and sorts
+   * which ever way the client desires.
+   *
+   * @param items: List of items,
+   * @param cat: current category,
+   * @param sortKey: Which field do we sort by,
+   * @param Component: to be passed; list or gallery,
+   * @param reverse: the order of sort,
+   * @return {array}: List of cards mapped through Component
+   */
   sortByItem(items, cat, sortKey, Component, reverse) {
     const stuff = sortBy(items, sortKey);
     if (reverse) {
@@ -57,6 +73,13 @@ class CategoryPage extends React.Component {
     return stuff.filter(item => item.category === cat).map((item) => <Component key={item._id} item={item}/>);
   }
 
+  /**
+   * sortByCategory Maps the categories card data from CategoriesMenu.jsx
+   * and sorts them alphabetically.
+   *
+   * @param categories: List of categories.
+   * @return {array}: List of cards mapped through CategoriesMenu.jsx
+   */
   sortByCategory(categories) {
     const stuff = sortBy(categories, 'name');
     return stuff.map((category) => <CategoriesMenu key={category._id} category={category}/>);
@@ -65,6 +88,13 @@ class CategoryPage extends React.Component {
   render() {
     const { visible } = this.state;
     let itemsComponent;
+    /**
+     * toggleName reverses the string indicating if sort is reverse or not.
+     *
+     * @param toggle: if we want to reverse then reverse,
+     * @param message: string to be reversed,
+     * @return {string}: string that was reversed.
+     */
     const toggleName = (toggle, message) => {
       let str = '';
       if (toggle) {
@@ -97,7 +127,14 @@ class CategoryPage extends React.Component {
     const catSideMenu = {
       fontWeight: 'bold',
     };
-
+    /** *********************************************************************************************
+     *
+     *   JSX FUNCTION TITLES:       titleCheckbox, dateCheckbox, priceCheckbox
+     *
+     *   DESCRIPTION:
+     *        These three jsx functions change the state of the page when a sorting checkbox
+     *        is activated by the user.  No two check boxes can be checked simultaneously.
+     */
     const titleCheckbox = (
         <Checkbox checked={this.state.titleIsActive} onClick={() => this.setState({
           sorter: 'title',
@@ -131,6 +168,14 @@ class CategoryPage extends React.Component {
           reverse: false,
         })} label='Price'/>
     );
+    /** *********************************************************************************************
+     *
+     *   JSX FUNCTION TITLES:       titleToggle, dateToggle, priceToggle
+     *
+     *   DESCRIPTION:
+     *        These three jsx functions change the state of the page when a reverse toggle
+     *        switch is activated by the user.  No two switches can be toggled simultaneously.
+     */
     const priceToggle = (
         <Checkbox checked={this.state.priceToggle} disabled={!this.state.priceIsActive}
                   onClick={() => this.setState({ priceToggle: !this.state.priceToggle, reverse: !this.state.reverse })}
@@ -152,6 +197,14 @@ class CategoryPage extends React.Component {
                   label={toggleName(this.state.titleToggle, 'A - Z')}/>
 
     );
+    /** *********************************************************************************************
+     *
+     *   JSX FUNCTION TITLES:       listCheckbox, cardCheckbox
+     *
+     *   DESCRIPTION:
+     *        These two jsx functions contain the checkboxes that allow the user
+     *        to switch to gallery or list modes.
+     */
     const listCheckbox = (
         <Checkbox checked={this.state.listMode} onClick={() => this.setState({
           listMode: true,
@@ -193,7 +246,7 @@ class CategoryPage extends React.Component {
               Show Options
             </Button>
           </Button.Group>
-          <Sidebar.Pushable >
+          <Sidebar.Pushable>
             <Sidebar
                 as={Menu}
                 vertical

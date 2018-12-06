@@ -48,7 +48,6 @@ class UserProfile extends React.Component {
             <Grid>
               <Grid.Row style={showcaseRow}>
                 <Grid container centered style={showcaseStyle}>
-
                   <Card style={cardStyle}>
                     <Card.Content>
                       <Card.Header style={cardFontStyle}><Icon name='warehouse' circular/>The Goods</Card.Header>
@@ -58,9 +57,7 @@ class UserProfile extends React.Component {
                         {this.getItems(this.props.item, this.props.user.username)}
                       </Item.Group>
                     </Card.Content>
-
                   </Card>
-
                 </Grid>
               </Grid.Row>
             </Grid>
@@ -72,7 +69,7 @@ class UserProfile extends React.Component {
 
 UserProfile.propTypes = {
   item: PropTypes.array.isRequired,
-  user: PropTypes.object.isRequired,
+  user: PropTypes.object,
   ready: PropTypes.bool.isRequired,
 };
 
