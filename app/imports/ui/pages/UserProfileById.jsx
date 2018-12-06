@@ -24,7 +24,6 @@ class UserProfileById extends React.Component {
   }
 
   handleRate = (e, { rating, maxRating }) => this.setState({ rating, maxRating },
-      console.log(this.state.rating),
       this.setData())
 
   getItems(items, owner) {
@@ -53,7 +52,6 @@ class UserProfileById extends React.Component {
           Bert.alert({ type: 'success', message: 'Update succeeded' })));
       this.setState({ disabled: true });
     }
-    console.log(myRatings);
   }
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
