@@ -5,11 +5,26 @@ import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { size, sortBy } from 'underscore';
+import { Bert } from 'meteor/themeteorchef:bert';
 import ShowcaseItem from '../components/ShowcaseItem';
 import { Items } from '../../api/item/item';
+import { Ratings } from '../../api/rating/rating';
 
 /** Renders the Page for editing a single document. */
+
 class UserProfileById extends React.Component {
+  constructor(props) {
+    super(props);
+    this.rating = this.rating;
+    this.state = {
+      rating: 4,
+      maxRating: 5,
+      disabled: false,
+    };
+  }
+
+  handleRate = (e, { rating, maxRating }) => this.setState({ rating, maxRating },
+      this.setData())
 
   getItems(items, owner) {
     const stuff = sortBy(items, 'owner');
@@ -22,6 +37,21 @@ class UserProfileById extends React.Component {
   getItemAmount(owner, stuff) {
     const total = stuff.filter(item => item.owner === owner);
     return size(total);
+  }
+
+  setData() {
+    const myRatings = Ratings.find({ owner: this.props.doc.username }).fetch();
+    if (this.state.rating !== 0) {
+      const owner = this.props.doc.username;
+      const ratingSum = myRatings[0].ratingSum + this.state.rating;
+      const ratingCount = myRatings[0].ratingCount + 1;
+      const _id = myRatings[0]._id;
+
+      Ratings.update({ _id: _id }, { $set: { owner, ratingSum, ratingCount } }, (error) => (error ?
+          Bert.alert({ type: 'danger', message: `Update failed: ${error.message}` }) :
+          Bert.alert({ type: 'success', message: 'Update succeeded' })));
+      this.setState({ disabled: true });
+    }
   }
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
@@ -43,6 +73,7 @@ class UserProfileById extends React.Component {
         ' background-blend-mode: overlay; background-size: cover;}'}
         </style>
     );
+    const myRatings = Ratings.find({ owner: this.props.doc.username }).fetch();
     return (
         <Grid container verticalAlign='middle' style={gridStyle}>
           {background}
@@ -68,7 +99,11 @@ class UserProfileById extends React.Component {
                       </a>
                     </Card.Content>
                     <Card.Content>
-                      <Rating icon='star' defaultRating={4} maxRating={5}/>
+                      <Rating icon='star'
+                              onRate={this.handleRate}
+                              rating={myRatings.length === 0 ? 3 : myRatings[0].ratingSum / myRatings[0].ratingCount}
+                              maxRating={5}
+                              disabled={this.state.disabled}/>
                     </Card.Content>
                   </Card>
                 </Grid.Column>
@@ -103,7 +138,9 @@ class UserProfileById extends React.Component {
 /** Require the presence of a Stuff document in the props object. Uniforms adds 'model' to the props, which we use. */
 UserProfileById.propTypes = {
   doc: PropTypes.object,
+  ratings: PropTypes.array,
   ready: PropTypes.bool.isRequired,
+  ready2: PropTypes.bool.isRequired,
   items: PropTypes.array.isRequired,
 };
 
@@ -113,9 +150,12 @@ export default withTracker(({ match }) => {
   const documentId = match.params._id;
   // Get access to Stuff documents.
   const subscription = Meteor.subscribe('UserSearch');
+  const subscription2 = Meteor.subscribe('Ratings');
   return {
     items: Items.find({}).fetch(),
     doc: Users.findOne(documentId),
+    ratings: Ratings.find({}).fetch(),
     ready: subscription.ready(),
+    ready2: subscription2.ready(),
   };
 })(UserProfileById);

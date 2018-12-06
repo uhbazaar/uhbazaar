@@ -11,6 +11,7 @@ import HiddenField from 'uniforms-semantic/HiddenField';
 import { Link } from 'react-router-dom';
 import ErrorsField from 'uniforms-semantic/ErrorsField';
 import { Slingshot } from 'meteor/edgee:slingshot';
+import { Ratings } from '../../api/rating/rating';
 
 /** Renders the Page for editing a single document. */
 class CreateUserProfile extends React.Component {
@@ -57,12 +58,18 @@ class CreateUserProfile extends React.Component {
     }
   }
 
+
   /** On successful submit, insert the data. */
   submit(data) {
     const { firstName, lastName, description } = data;
     const image = this.state.image;
     const username = Meteor.user().username;
     Users.insert({ firstName, lastName, description, image, username }, this.insertCallback);
+
+    const owner = Meteor.users.findOne(Meteor.userId()).username;
+    const ratingSum = 3;
+    const ratingCount = 1;
+    Ratings.insert({ owner, ratingSum, ratingCount });
   }
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
@@ -82,7 +89,9 @@ class CreateUserProfile extends React.Component {
           <Grid style={formStyle} container centered>
             <Grid.Column>
               <Header as="h2" textAlign="center">Create Your Profile</Header>
-              <AutoForm ref={(ref) => { this.formRef = ref; }} schema={UserSchema} onSubmit={this.submit}>
+              <AutoForm ref={(ref) => {
+                this.formRef = ref;
+              }} schema={UserSchema} onSubmit={this.submit}>
                 <Segment>
                   <TextField name='firstName'/>
                   <TextField name='lastName'/>

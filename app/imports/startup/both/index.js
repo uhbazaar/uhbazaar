@@ -4,3 +4,4 @@ import '/imports/api/category';
 import '/imports/api/item';
 import '/imports/api/report';
 import '/imports/api/files';
+import '/imports/api/rating';

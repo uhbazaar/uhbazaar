@@ -27,7 +27,7 @@ class ShowcaseItem extends React.Component {
             <Item.Description style={cardFontStyle}>
               {this.props.item.description}
             </Item.Description>
-            <Item.Content textAlign='center' extra>
+            <Item.Content textAlign='center'>
               <Button.Group textAlign='center'>
                 <Button href={`mailto:${this.props.item.owner}`} animated='vertical' style={button} size='medium'>
                   <Button.Content visible>Barter!</Button.Content>

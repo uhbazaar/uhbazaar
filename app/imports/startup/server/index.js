@@ -5,3 +5,4 @@ import './category.js';
 import './item.js';
 import './report.js';
 import './files.js';
+import './rating.js';

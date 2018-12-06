@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 import React from 'react';
 import { Card, Icon, Button, Image } from 'semantic-ui-react';
-import { first, size } from 'underscore';
+import { size } from 'underscore';
 import { Items } from '../../api/item/item';
 
 class ShowUser extends React.Component {
