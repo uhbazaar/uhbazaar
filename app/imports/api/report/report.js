@@ -18,6 +18,7 @@ const ReportSchema = new SimpleSchema({
     type: String,
     allowedValues: ['Misuse of website', 'Inappropriate post or image', 'Report a bug', 'Other'],
   },
+  createdAt: Date,
 }, { tracker: Tracker });
 
 /** Attach this schema to the collection. */

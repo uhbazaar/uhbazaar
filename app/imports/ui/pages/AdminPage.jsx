@@ -26,6 +26,10 @@ class ListStuffAdmin extends React.Component {
     this.setState({ activeIndex: newIndex });
   }
 
+  numOfItems(items, cat) {
+    return items.filter(item => item.category === cat).length;
+  }
+
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
@@ -34,12 +38,16 @@ class ListStuffAdmin extends React.Component {
   /** Render the page once subscriptions have been received. */
   renderPage() {
     const { activeIndex } = this.state;
+    const aStyle = { marginTop: '8px', marginBottom: '128px' };
     return (
-        <Container>
+        <Container style={aStyle}>
+          <style>{'body { background: rgba(222,242,241, 0.7) url(\'/images/mat.jpg\') no-repeat fixed;' +
+          ' background-blend-mode: overlay; background-size: cover;}'}
+          </style>
           <Header as="h2" textAlign="center">Admin Page</Header>
           <Accordion fluid styled exclusive={false}>
             <Accordion.Title active={activeIndex === 0} index={0} onClick={this.handleClick}>
-              <Header as="h3" textAlign="left"><Icon name='dropdown'/>Reports</Header>
+              <Header as="h3" textAlign="left"><Icon name='dropdown'/>Open/In Progress Reports</Header>
             </Accordion.Title>
             <Accordion.Content active={activeIndex === 0}>
               <Table celled>
@@ -47,6 +55,7 @@ class ListStuffAdmin extends React.Component {
                   <Table.Row>
                     <Table.HeaderCell>Report</Table.HeaderCell>
                     <Table.HeaderCell>Issue</Table.HeaderCell>
+                    <Table.HeaderCell>Date Created</Table.HeaderCell>
                     <Table.HeaderCell>ID</Table.HeaderCell>
                     <Table.HeaderCell>Progress</Table.HeaderCell>
                     <Table.HeaderCell>Description</Table.HeaderCell>
@@ -55,12 +64,38 @@ class ListStuffAdmin extends React.Component {
                 </Table.Header>
                 <Table.Body>
                   {_.sortBy(_.reject(this.props.reports, function (report) {
-                    return report.progress == 'closed'
+                    return report.progress === 'closed'
                   }), 'progress').map((report) => <ReportAdmin key={report._id}
                                                                report={report}/>)}
                 </Table.Body>
               </Table>
             </Accordion.Content>
+
+            < fluid styled exclusive={false}>
+              <Accordion.Title active={activeIndex === 4} index={4} onClick={this.handleClick}>
+                <Header as="h3" textAlign="left"><Icon name='dropdown'/>Closed Reports</Header>
+              </Accordion.Title>
+              <Accordion.Content active={activeIndex === 4}>
+                <Table celled>
+                  <Table.Header>
+                    <Table.Row>
+                      <Table.HeaderCell>Report</Table.HeaderCell>
+                      <Table.HeaderCell>Issue</Table.HeaderCell>
+                      <Table.HeaderCell>Date Created</Table.HeaderCell>
+                      <Table.HeaderCell>ID</Table.HeaderCell>
+                      <Table.HeaderCell>Progress</Table.HeaderCell>
+                      <Table.HeaderCell>Description</Table.HeaderCell>
+                      <Table.HeaderCell>Edit/Delete</Table.HeaderCell>
+                    </Table.Row>
+                  </Table.Header>
+                  <Table.Body>
+                    {_.sortBy(_.filter(this.props.reports, function (report) {
+                      return report.progress === 'closed'
+                    }), 'progress').map((report) => <ReportAdmin key={report._id}
+                                                                 report={report}/>)}
+                  </Table.Body>
+                </Table>
+              </Accordion.Content>
 
             <Accordion.Title active={activeIndex === 1} index={1} onClick={this.handleClick}>
               <Header as="h3" textAlign="left"><Icon name='dropdown'/>Items For Sale</Header>
@@ -86,12 +121,14 @@ class ListStuffAdmin extends React.Component {
               <Header as="h3" textAlign="left"><Icon name='dropdown'/>Categories</Header>
             </Accordion.Title>
             <Accordion.Content active={activeIndex === 2}>
+              <AddCategory/>
               <Table celled>
                 <Table.Header>
                   <Table.Row>
                     <Table.HeaderCell>Category</Table.HeaderCell>
                     <Table.HeaderCell>Icon</Table.HeaderCell>
                     <Table.HeaderCell>ID</Table.HeaderCell>
+                    <Table.HeaderCell># of Listings</Table.HeaderCell>
                     <Table.HeaderCell>Edit/Delete</Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>
@@ -100,7 +137,6 @@ class ListStuffAdmin extends React.Component {
                                                                                             category={category}/>)}
                 </Table.Body>
               </Table>
-              <AddCategory/>
             </Accordion.Content>
 
             <Accordion.Title active={activeIndex === 3} index={3} onClick={this.handleClick}>
@@ -123,6 +159,7 @@ class ListStuffAdmin extends React.Component {
                 </Table.Body>
               </Table>
             </Accordion.Content>
+            </fluid>
           </Accordion>
         </Container>
     );
