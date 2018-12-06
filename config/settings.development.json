@@ -142,7 +142,7 @@
       "price": "700",
       "description": "The first sci-fi ever",
       "location": "Manoa",
-      "owner": "john@foo.edu"
+      "owner": "john@foo.com"
     },
     {
       "title": "Rosen Text Book",
@@ -204,5 +204,11 @@
       "location": "Uh Dorms",
       "owner": "john@foo.com"
     }
-  ]
+  ],
+  "AwsData":
+  {
+    "AWSAccessKeyId": "YourKey",
+    "AWSSecretAccessKey": "YourSecretKey",
+    "AWSRegion": "us-west-1"
+  }
 }

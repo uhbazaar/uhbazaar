@@ -43,7 +43,9 @@ class CategoryAdmin extends React.Component {
   render() {
     return (
         <Table.Row>
-          <Table.Cell>{this.props.category.name}</Table.Cell>
+          <Table.Cell>
+            <Link to={`/categorypage/${this.props.category.name}/${this.props.category.icon}`}>{this.props.category.name}</Link>
+            </Table.Cell>
           <Table.Cell>{this.props.category.icon}</Table.Cell>
           <Table.Cell>{this.props.category._id}</Table.Cell>
           <Table.Cell>

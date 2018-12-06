@@ -7,9 +7,30 @@ import { sortBy } from 'underscore';
 import { Categories } from '../../api/category/category';
 import CategoriesMenu from '../components/CategoriesMenu';
 
-/** A simple static component to render some text for the landing page. */
-class CategoriesPage extends React.Component {
+/** **********************************************************************
+ *
+ *        NAME:           Zachary Gilbert
+ *
+ *        PROJECT:        UH Bazaar
+ *
+ *        CLASS:          ICS 314
+ *
+ *        INSTRUCTOR:     Philip Johnson
+ *
+ *        FILE:           CategoriesPage.jsx
+ *
+ *        DESCRIPTION:
+ *            The page that displays all the categories.
+ *
+ ********************************************************************** */
 
+class CategoriesPage extends React.Component {
+  /**
+   * sortByCategory Maps the categories card data from CategoriesMenu.jsx
+   * and sorts them alphabetically.
+   * @param categories: List of categories.
+   * @return {array}: List of cards mapped through CategoriesMenu.jsx
+   */
   sortByCategory(categories) {
     const stuff = sortBy(categories, 'name');
     return stuff.map((category) => <CategoriesMenu key={category._id} category={category}/>);

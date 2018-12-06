@@ -43,7 +43,9 @@ class UserAdmin extends React.Component {
   render() {
     return (
         <Table.Row>
-          <Table.Cell>{this.props.user.firstName} {this.props.user.lastName}</Table.Cell>
+          <Table.Cell>
+            <Link to={`/userprofilebyid/${this.props.user._id}`}>{this.props.user.firstName} {this.props.user.lastName}</Link>
+          </Table.Cell>
           <Table.Cell>{this.props.user.username}</Table.Cell>
           <Table.Cell>{this.props.user._id}</Table.Cell>
           <Table.Cell>{this.props.user.image}</Table.Cell>

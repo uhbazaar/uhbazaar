@@ -64,7 +64,7 @@ class UserProfileById extends React.Component {
                     <Card.Content extra>
                       <a>
                         <Icon name='gem'/>
-                        {`${this.getItemAmount(this.props.doc.username, this.props.item)} item(s) to barter!`}
+                        {`${this.getItemAmount(this.props.doc.username, this.props.items)} item(s) to barter!`}
                       </a>
                     </Card.Content>
                     <Card.Content>
@@ -84,8 +84,8 @@ class UserProfileById extends React.Component {
                       <Card.Header style={cardFontStyle}><Icon name='warehouse' circular/>The Goods</Card.Header>
                     </Card.Content>
                     <Card.Content>
-                      <Item.Group>
-                        {this.getItems(this.props.item, this.props.doc.username)}
+                      <Item.Group divided>
+                        {this.getItems(this.props.items, this.props.doc.username)}
                       </Item.Group>
                     </Card.Content>
                   </Card>
@@ -102,9 +102,9 @@ class UserProfileById extends React.Component {
 
 /** Require the presence of a Stuff document in the props object. Uniforms adds 'model' to the props, which we use. */
 UserProfileById.propTypes = {
-  doc: PropTypes.array,
+  doc: PropTypes.object,
   ready: PropTypes.bool.isRequired,
-  item: PropTypes.object.isRequired,
+  items: PropTypes.array.isRequired,
 };
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
@@ -114,7 +114,7 @@ export default withTracker(({ match }) => {
   // Get access to Stuff documents.
   const subscription = Meteor.subscribe('UserSearch');
   return {
-    item: Items.find({}).fetch(),
+    items: Items.find({}).fetch(),
     doc: Users.findOne(documentId),
     ready: subscription.ready(),
   };

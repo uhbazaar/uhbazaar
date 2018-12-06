@@ -6,8 +6,33 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { NavLink } from 'react-router-dom';
 import { Items } from '../../api/item/item';
 
+/** **********************************************************************
+ *
+ *        NAME:           Zachary Gilbert
+ *
+ *        PROJECT:        UH Bazaar
+ *
+ *        CLASS:          ICS 314
+ *
+ *        INSTRUCTOR:     Philip Johnson
+ *
+ *        FILE:           CategoriesMenu.jsx
+ *
+ *        DESCRIPTION:
+ *            This component contains the card view for which a
+ *            category takes while being displayed in
+ *            CategoriesPage.jsx
+ *
+ ********************************************************************** */
+
 class CategoriesMenu extends React.Component {
 
+  /**
+   * Get the number of items for sale in the current category.
+   * @param items: List of items.
+   * @param cat: The current category
+   * @return {*}: a filtered version of items
+   */
   numOfItems(items, cat) {
     return items.filter(item => item.category === cat).length;
   }

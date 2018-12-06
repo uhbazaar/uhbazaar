@@ -104,7 +104,9 @@ class FullWidthImage extends React.Component {
                 <LandingBar/>
               </div>
           ) : ''}
-        </Container>
+          <LandingBar/>
+          <Image fluid centered src='images/uh-logo.png'/>
+
     );
   }
 }

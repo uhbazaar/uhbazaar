@@ -15,6 +15,7 @@ class NavBar extends React.Component {
     const imageStyle = { height: '64px' };
     const dropdownStyle = { marginRight: '32px' };
     const topMenu = { marginBottom: '0px' };
+
     return (
         <div>
           {this.props.currentUser !== '' ? (
@@ -42,7 +43,7 @@ class NavBar extends React.Component {
                 </Menu.Item>
                 <Menu.Item>
                   {this.props.currentUser !== '' ? (
-                      <Dropdown style={dropdownStyle} pointing="top right" icon={'large bars'}>
+                      <Dropdown style={dropdownStyle} pointing="top right" icon={dropDownIcon}>
                         <Dropdown.Menu>
                           <Dropdown.Item text="My Account" as={NavLink} className="" exact to="/userprofile" key='add'/>
                           <Dropdown.Item text="Add New Item" as={NavLink} className="" exact to="/createitem"
