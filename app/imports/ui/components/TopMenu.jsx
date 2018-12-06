@@ -1,25 +1,18 @@
 import React from 'react';
-import { Container, Menu, Dropdown, Icon, Image } from 'semantic-ui-react';
+import { Menu } from 'semantic-ui-react';
 
 export default class TopMenu extends React.Component {
   render() {
+    const menuStyle = {
+      paddingLeft: '500px',
+      paddingBottom: '0px',
+      backgroundColor: '#2b7a78',
+    };
     return (
-
-        <Container>
-          <Menu fixed className='ui topmenu fixed menu'>
-            <Menu.Item as={'a'} className="right item">
-              Join/Log In To NikePlus Account
-            </Menu.Item>
-
-
-            <Menu.Item><Icon name="cart" /></Menu.Item>
+          <Menu attached='top' fluid inverted borderless style={menuStyle}>
             <Menu.Item>
-              <Image className="ui flag image"
-                     src="https://content.nike.com/content/dam/nike/global/country_flags/us_sml.png"/>
-            </Menu.Item>
+              CLASSIFIED ADS AND COMMUNITY NOTICES FOR THE UHM OHANA </Menu.Item>
           </Menu>
-        </Container>
-
     );
   }
 }

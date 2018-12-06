@@ -17,7 +17,8 @@ html {
   left:30%
 }
 .background-bar {
-  background-size: cover;
   background: #2b7a78 no-repeat center center fixed;
-  height: 450px;
+  height: 470px;
+  margin-top:50px;
+  margin-bottom: 0;
 }

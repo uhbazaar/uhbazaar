@@ -6,12 +6,12 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter, Link } from 'react-router-dom';
 import LandingBar from './LandingBar';
 
-
 class FullWidthImage extends React.Component {
   render() {
     const mainContainerStyle = {
       paddingTop: '280px',
     };
+
     const logoContainerStyleOne = {
       width: '200%',
       bottom: '0',
@@ -27,18 +27,30 @@ class FullWidthImage extends React.Component {
       marginBottom: '300px',
     };
     const headerOneStyle = {
-      fontFamily: 'PT Sans Caption',
+      fontFamily: 'Oswald',
       opacity: '10 !important',
       color: '#17252a',
       paddingLeft: '16px',
       paddingRight: '16px',
       fontSize: '80px',
     };
+
+    const headerTwoStyle = {
+      fontFamily: 'Oswald',
+      opacity: '10 !important',
+      color: '#feffff',
+      paddingLeft: '150px',
+      fontSize: '100px',
+    };
+    const headerThreeStyle = {
+      fontFamily: 'Oswald',
+      color: '#def2f1',
+      paddingLeft: '150px',
+      fontSize: '32px',
+    };
+
     const buttonOneStyle = {
       fontFamily: 'PT Sans Caption',
-      // color: '#084543',
-      // paddingLeft: '50px',
-      // paddingRight: '16px',
       fontSize: '20px',
 
     };
@@ -51,39 +63,45 @@ class FullWidthImage extends React.Component {
     return (
         <Container fluid style={mainContainerStyle}>
           {this.props.currentUser === '' ? (
-          <Grid verticalAlign='middle'>
+              <Grid verticalAlign='middle'>
 
-            <Container style={logoContainerStyleOne}>
-              <Header style={headerOneStyle} textAlign='center'>
-                CLASSIFIED ADS AND COMMUNITY NOTICES FOR THE UHM OHANA
-              </Header>
+                <Container style={logoContainerStyleOne}>
+                  <Header style={headerOneStyle} textAlign='center'>
+                    CLASSIFIED ADS AND COMMUNITY NOTICES FOR THE UHM OHANA
+                  </Header>
 
-              <Grid centered>
-                <Link to={'/signup'}>
-                  <Button basic color={'black'} style={buttonOneStyle}>
-                    BECOME A MEMBER
-                  </Button>
-                </Link>
-                <Link to={'/signin'}>
-                  <Button color={'black'} style={buttonTwoStyle}>
-                    LOGIN
-                  </Button>
-                </Link>
+                  <Grid centered>
+                    <Link to={'/signup'}>
+                      <Button basic color={'black'} style={buttonOneStyle}>
+                        BECOME A MEMBER
+                      </Button>
+                    </Link>
+                    <Link to={'/signin'}>
+                      <Button color={'black'} style={buttonTwoStyle}>
+                        LOGIN
+                      </Button>
+                    </Link>
+                  </Grid>
+                </Container>
               </Grid>
-            </Container>
-          </Grid>
           ) : ''}
 
           {this.props.currentUser !== '' ? (
               <div>
-          <Grid verticalAlign='middle'>
-            <Container style={logoContainerStyleTwo}>
-              <Header style={headerOneStyle} textAlign='center'>
-                CLASSIFIED ADS AND COMMUNITY NOTICES FOR THE UHM OHANA
-              </Header>
-            </Container>
-          </Grid>
-          <LandingBar/>
+                <Grid verticalAlign='middle'>
+                  <Container style={logoContainerStyleTwo}>
+                    <div>
+                      <h1 style={headerTwoStyle}>
+                        UHBAZAAR
+                      </h1>
+                    </div>
+                    <div>
+                      <h2 style={headerThreeStyle}>
+                        AT THE UNIVERSITY OF HAWAIʻI AT MĀNOA </h2>
+                    </div>
+                  </Container>
+                </Grid>
+                <LandingBar/>
               </div>
           ) : ''}
         </Container>
