@@ -1,42 +1,56 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Header, Container, Grid, Button, Image } from 'semantic-ui-react';
+import { Header, Container, Grid, Button } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
-import { withRouter, Link, NavLink } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import LandingBar from './LandingBar';
-import { Roles } from 'meteor/alanning:roles';
-
 
 class FullWidthImage extends React.Component {
   render() {
     const mainContainerStyle = {
-      marginTop: '300px',
-      paddingBottom: '16px',
+      paddingTop: '280px',
     };
-    const logoContainerStyle = {
-      // backgroundColor: '#2b7a78',
-      // opacity: '0.8',
+
+    const logoContainerStyleOne = {
+      width: '200%',
+      bottom: '0',
+      borderRadius: '20px',
+      paddingTop: '16px',
+    };
+    const logoContainerStyleTwo = {
       width: '200%',
       bottom: '0',
       borderRadius: '20px',
       paddingBottom: '16px',
       paddingTop: '16px',
-      marginBottom: '360px',
+      marginBottom: '300px',
     };
     const headerOneStyle = {
-      fontFamily: 'PT Sans Caption',
+      fontFamily: 'Oswald',
       opacity: '10 !important',
       color: '#17252a',
       paddingLeft: '16px',
       paddingRight: '16px',
       fontSize: '80px',
     };
+
+    const headerTwoStyle = {
+      fontFamily: 'Oswald',
+      opacity: '10 !important',
+      color: '#feffff',
+      paddingLeft: '150px',
+      fontSize: '100px',
+    };
+    const headerThreeStyle = {
+      fontFamily: 'Oswald',
+      color: '#def2f1',
+      paddingLeft: '150px',
+      fontSize: '32px',
+    };
+
     const buttonOneStyle = {
       fontFamily: 'PT Sans Caption',
-      // color: '#084543',
-      // paddingLeft: '50px',
-      // paddingRight: '16px',
       fontSize: '20px',
 
     };
@@ -49,41 +63,50 @@ class FullWidthImage extends React.Component {
     return (
         <Container fluid style={mainContainerStyle}>
           {this.props.currentUser === '' ? (
-          <Grid verticalAlign='middle'>
+              <Grid verticalAlign='middle'>
 
-            <Container style={logoContainerStyle}>
-              <Header style={headerOneStyle} textAlign='center'>
-                CLASSIFIED ADS AND COMMUNITY NOTICES FOR THE UHM OHANA
-              </Header>
+                <Container style={logoContainerStyleOne}>
+                  <Header style={headerOneStyle} textAlign='center'>
+                    CLASSIFIED ADS AND COMMUNITY NOTICES FOR THE UHM OHANA
+                  </Header>
 
-              <Grid centered>
-                <Link to={'/signup'}>
-                  <Button basic color={'black'} style={buttonOneStyle}>
-                    BECOME A MEMBER
-                  </Button>
-                </Link>
-                <Link to={'/signin'}>
-                  <Button color={'black'} style={buttonTwoStyle}>
-                    LOGIN
-                  </Button>
-                </Link>
+                  <Grid centered>
+                    <Link to={'/signup'}>
+                      <Button basic color={'black'} style={buttonOneStyle}>
+                        BECOME A MEMBER
+                      </Button>
+                    </Link>
+                    <Link to={'/signin'}>
+                      <Button color={'black'} style={buttonTwoStyle}>
+                        LOGIN
+                      </Button>
+                    </Link>
+                  </Grid>
+                </Container>
               </Grid>
-            </Container>
-          </Grid>
           ) : ''}
 
           {this.props.currentUser !== '' ? (
-          <Grid verticalAlign='middle'>
-            <Container style={logoContainerStyle}>
-              <Header style={headerOneStyle} textAlign='center'>
-                CLASSIFIED ADS AND COMMUNITY NOTICES FOR THE UHM OHANA
-              </Header>
-            </Container>
-          </Grid>
+              <div>
+                <Grid verticalAlign='middle'>
+                  <Container style={logoContainerStyleTwo}>
+                    <div>
+                      <h1 style={headerTwoStyle}>
+                        UHBAZAAR
+                      </h1>
+                    </div>
+                    <div>
+                      <h2 style={headerThreeStyle}>
+                        AT THE UNIVERSITY OF HAWAIʻI AT MĀNOA </h2>
+                    </div>
+                  </Container>
+                </Grid>
+                <LandingBar/>
+              </div>
           ) : ''}
           <LandingBar/>
           <Image fluid centered src='images/uh-logo.png'/>
-        </Container>
+
     );
   }
 }

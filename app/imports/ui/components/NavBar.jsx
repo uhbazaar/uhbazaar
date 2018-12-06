@@ -3,23 +3,23 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter, NavLink } from 'react-router-dom';
-import { Menu, Dropdown, Image, Icon } from 'semantic-ui-react';
+import { Menu, Dropdown, Image, Container } from 'semantic-ui-react';
 import { Roles } from 'meteor/alanning:roles';
 import SearchBar from './SearchBar';
+import TopMenu from './TopMenu';
 
 /** The NavBar appears at the top of every page. Rendered by the App Layout component. */
 class NavBar extends React.Component {
   render() {
-    const menuStyle = { backgroundColor: '#17252a', fontFamily: 'PT Sans Caption' };
+    const menuStyle = { backgroundColor: '#17252a', fontFamily: 'PT Sans Caption', marginTop: '0px' };
     const imageStyle = { height: '64px' };
     const dropdownStyle = { marginRight: '32px' };
-    const dropDownIcon = (
-        <Icon name='bars' size='large'/>
-    );
+    const topMenu = { marginBottom: '0px' };
+
     return (
         <div>
           {this.props.currentUser !== '' ? (
-              <Menu stackable style={menuStyle} attached="top" borderless inverted>
+              <Menu stackable style={menuStyle} attached="top" borderless inverted lighten>
 
                 <Menu.Item as={NavLink} activeClassName="" exact to="/">
                   <Image style={imageStyle} src='images/navbar-logo.png'/>
@@ -55,6 +55,15 @@ class NavBar extends React.Component {
                 </Menu.Item>
               </Menu>
           ) : ''}
+
+          <Container fluid>
+            {this.props.currentUser !== '' ? (
+                <div style={topMenu}>
+                  <TopMenu/>
+                </div>
+            ) : ''}
+          </Container>
+
         </div>
     );
   }

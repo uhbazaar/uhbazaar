@@ -14,7 +14,6 @@ class Footer extends React.Component {
       width: '100%',
       height: '100px',
       fontFamily: 'PT Sans Caption',
-      paddingTop: '16vh',
     };
     const darkify = {
       backgroundColor: '#17252a',
