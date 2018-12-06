@@ -30,14 +30,18 @@ class NavBar extends React.Component {
 
                 {this.props.currentUser !== '' ? (
                     [
-                      <Menu.Item as={NavLink} className="" exact to="/categoriespage" key='cat'>Categories</Menu.Item>,
-                      <Menu.Item as={NavLink} className="" exact to="/showusers" key='show'>Show Users</Menu.Item>,
+                      <Menu.Item as={'a'} key='io' position="right">
+                        <a href="https://uhbazaar.github.io/">About Us</a>
+                      </Menu.Item>,
+                      <Menu.Item as={NavLink} className="" exact to="/categoriespage"
+                                 key='cat'>Categories</Menu.Item>,
+                      <Menu.Item as={NavLink} className="" exact to="/showusers" key='show'>Portfolios</Menu.Item>,
                     ]
                 ) : ''}
 
-                <Menu.Item fitted position="right">
+                <Menu.Item fitted>
                   {this.props.currentUser !== '' ? (
-                      <Menu.Item position='right'><SearchBar/></Menu.Item>
+                      <Menu.Item><SearchBar/></Menu.Item>
                   ) : ''}
                 </Menu.Item>
                 <Menu.Item>

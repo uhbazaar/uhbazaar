@@ -1,23 +1,33 @@
 html {
   min-height: 100vh;
 }
+
 .user-profile-background {
   color: #2b7a78;
   padding: 0 40px 0 40px;
   border-radius: 10px;
 }
 
-.landing-welcome{
-  font-family:"Allerta Stencil", sans-serif;
+.landing-welcome {
+  font-family: "Allerta Stencil", sans-serif;
   font-size: 100px;
   color: white;
   position: absolute;
   top: 25%;
-  left:30%
+  left: 30%
 }
+
 .background-bar {
   background: #2b7a78 no-repeat center center fixed;
   height: 470px;
-  margin-top:50px;
+  margin-top: 50px;
   margin-bottom: 0;
+}
+
+.footer-background {
+  background-color: #17252a;
+  color: white;
+  font-family: "PT Sans Caption", sans-serif;
+  padding-top: 10px;
+  padding-right: 10px;
 }
