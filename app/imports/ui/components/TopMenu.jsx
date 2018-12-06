@@ -9,10 +9,10 @@ export default class TopMenu extends React.Component {
       backgroundColor: '#2b7a78',
     };
     return (
-          <Menu attached='top' fluid inverted borderless style={menuStyle}>
-            <Menu.Item>
-              CLASSIFIED ADS AND COMMUNITY NOTICES FOR THE UHM OHANA </Menu.Item>
-          </Menu>
+        <Menu attached='top' fluid inverted borderless style={menuStyle}>
+          <Menu.Item>
+            CLASSIFIED ADS AND COMMUNITY NOTICES FOR THE UHM OHANA </Menu.Item>
+        </Menu>
     );
   }
 }
