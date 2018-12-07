@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Image, Label } from 'semantic-ui-react';
+import { Grid, Image, Label, Header, Responsive } from 'semantic-ui-react';
 
 export default class LandingBar extends React.Component {
   render() {
@@ -18,24 +18,32 @@ export default class LandingBar extends React.Component {
     const imageStyle = { opacity: '0.9' };
 
     return (
-        <div fluid className='background-bar'>
-          <Grid divided='vertically'>
-            <Grid.Row internally celled columns={2}>
-              <Grid.Column container textAlign='center' verticalAlign='middle' style={landingBarStyle}>
-                <Label color={'teal'} size={'massive'}>
-                  WHAT IS OUR FOCUS?
-                </Label>
-                <p style={headerStyle2}> At UH Bazaar, the focus is the student. What UHB aims to provide is
-                  a comfortable and easy experience when it comes to getting the things
-                  you need. Leaving more time and energy to focus on what matters: Learning.
-                </p>
-              </Grid.Column>
-              <Grid.Column container textAlign='center' verticalAlign='middle' style={landingBarStyle}>
-                <Image style={imageStyle} centered src='/images/uh-bazaar-logo.png' size='large' circular/>
-              </Grid.Column>
-            </Grid.Row>
-            <Grid/>
-          </Grid>
+
+        <div>
+          <Responsive minWidth={768}>
+            <div className='background-bar'>
+              <Grid container divided='vertically'>
+                <Grid.Row columns={2}>
+                  <Grid.Column textAlign='center' verticalAlign='middle' style={landingBarStyle}>
+                    <Header style={headerStyle2}>
+                      <Label color={'teal'} size={'massive'}>
+                        WHAT IS OUR FOCUS?
+                      </Label>
+                      <br/>
+                      <br/>
+                      At UH Bazaar, the focus is the student. What UHB aims to provide is
+                      a comfortable and easy experience when it comes to getting the things
+                      you need. Leaving more time and energy to focus on what matters: Learning.
+                    </Header>
+                  </Grid.Column>
+                  <Grid.Column textAlign='center' verticalAlign='middle' style={landingBarStyle}>
+                    <Image style={imageStyle} centered src='/images/uh-bazaar-logo.png' size='large' circular/>
+                  </Grid.Column>
+                </Grid.Row>
+                <Grid/>
+              </Grid>
+            </div>
+          </Responsive>
         </div>
     );
   }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Card, Header, Loader, Menu, Icon } from 'semantic-ui-react';
+import { Container, Card, Header, Loader, Menu, Icon, Responsive } from 'semantic-ui-react';
 import { Users } from '/imports/api/user/user';
 import { withTracker } from 'meteor/react-meteor-data';
 import { sortBy } from 'underscore';
@@ -50,21 +50,59 @@ class ShowUsers extends React.Component {
           </Container>
       );
     }
+
+    let size = 3;
+    switch (this.state.activeView) {
+      case 'big':
+        size = 3;
+        break;
+      case 'small':
+        size = 7;
+        break;
+      case 'single':
+        size = 1;
+        break;
+      case 'double':
+        size = 2;
+        break;
+      default:
+        size = 3;
+        break;
+    }
+
     return (
         <Container style={styleCards}>
-          <Menu text>
-            <Menu.Item header>View</Menu.Item>
-            <Menu.Item
-                name='big'
-                active={activeView === 'big'}
-                onClick={this.handleViewClick}
-            />
-            <Menu.Item
-                name='small'
-                active={activeView === 'small'}
-                onClick={this.handleViewClick}
-            />
-          </Menu>
+          <Responsive minWidth={768}>
+            <Menu text>
+              <Menu.Item header>View</Menu.Item>
+              <Menu.Item
+                  name='big'
+                  active={activeView === 'big'}
+                  onClick={this.handleViewClick}
+              />
+              <Menu.Item
+                  name='small'
+                  active={activeView === 'small'}
+                  onClick={this.handleViewClick}
+              />
+            </Menu>
+          </Responsive>
+
+          <Responsive maxWidth={768}>
+            <Menu text>
+              <Menu.Item header>View</Menu.Item>
+              <Menu.Item
+                  name='single'
+                  active={activeView === 'single'}
+                  onClick={this.handleViewClick}
+              />
+              <Menu.Item
+                  name='double'
+                  active={activeView === 'double'}
+                  onClick={this.handleViewClick}
+              />
+            </Menu>
+          </Responsive>
 
           <Menu text>
             <Menu.Item header>Sort By</Menu.Item>
@@ -91,7 +129,7 @@ class ShowUsers extends React.Component {
             <Icon name='law' circular/>
             <Header.Content>Merchants and Craftsman</Header.Content>
           </Header>
-          <Card.Group centered itemsPerRow={this.state.activeView === 'big' ? 3 : 7}>
+          <Card.Group centered itemsPerRow={size}>
             {this.getUsers(this.props.users)}
           </Card.Group>
         </Container>

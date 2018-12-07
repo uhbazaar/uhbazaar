@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Container } from 'semantic-ui-react';
+import { Grid, Container, Responsive } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
@@ -11,9 +11,9 @@ class Footer extends React.Component {
     return (
         <div>
           {this.props.currentUser !== '' ? (
-              <Container fluid className='footer-background'>
+              <Responsive minWidth={768} as={Container} fluid className='footer-background'>
                 <Grid divided='vertically'>
-                  <Grid.Row textAlign={'center'} internally celled padded columns={3}>
+                  <Grid.Row textAlign={'center'} columns={3}>
                     <Grid.Column>
                     </Grid.Column>
                     <Grid.Column>
@@ -21,7 +21,7 @@ class Footer extends React.Component {
                     </Grid.Column>
                   </Grid.Row>
                 </Grid>
-              </Container>
+              </Responsive>
           ) : ''}
         </div>
     );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Loader, Header, Container, Image, Icon, Card, Rating, Item } from 'semantic-ui-react';
+import { Grid, Loader, Header, Container, Image, Icon, Card, Rating, Item, Responsive } from 'semantic-ui-react';
 import { Users } from '/imports/api/user/user';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
@@ -40,12 +40,13 @@ class UserProfileById extends React.Component {
   }
 
   setData() {
-    const myRatings = Ratings.find({ owner: this.props.doc.username }).fetch();
+    const myRatings = Ratings.findOne({ owner: this.props.doc.username });
+    console.log(myRatings);
     if (this.state.rating !== 0) {
       const owner = this.props.doc.username;
-      const ratingSum = myRatings[0].ratingSum + this.state.rating;
-      const ratingCount = myRatings[0].ratingCount + 1;
-      const _id = myRatings[0]._id;
+      const ratingSum = myRatings.ratingSum + this.state.rating;
+      const ratingCount = myRatings.ratingCount + 1;
+      const _id = myRatings._id;
 
       Ratings.update({ _id: _id }, { $set: { owner, ratingSum, ratingCount } }, (error) => (error ?
           Bert.alert({ type: 'danger', message: `Update failed: ${error.message}` }) :
@@ -112,7 +113,7 @@ class UserProfileById extends React.Component {
 
             <Grid>
               <Grid.Row style={showcaseRow}>
-                <Grid container centered style={showcaseStyle}>
+                <Grid stackable container centered style={showcaseStyle}>
 
                   <Card fluid style={cardStyle}>
                     <Card.Content>
