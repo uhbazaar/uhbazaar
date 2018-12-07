@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import React from 'react';
 import { Card, Icon, Image, Loader } from 'semantic-ui-react';
-import { first } from 'underscore';
+import { find, first } from 'underscore';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { withTracker } from 'meteor/react-meteor-data';
@@ -33,15 +33,10 @@ class CategoryMenu extends React.Component {
    * @param users: list of users in data.
    * @return use: the user that has been matched
    */
-  /* getUserImage(users) {
-    let use = find(users, (user) => user.username === this.props.item.owner);
-    if (use === undefined) {
-      use = 'images/user.png';
-    } else {
-      use = use.image;
-    }
-    return use;
-  } */
+  getUserImage(users) {
+    return find(users, (user) => user.username === this.props.item.owner).image;
+  }
+
   /**
    * FinishWord makes sure that a word is completed before limiting the
    * size of the item.description.
@@ -87,7 +82,7 @@ class CategoryMenu extends React.Component {
             <span className='location'>{this.props.item.location}</span>
           </Card.Content>
           <Card.Content extra>
-            <Image avatar src={this.props.item.image}/>
+            <Image avatar src={this.getUserImage(this.props.users)}/>
             <span className='seller'>{this.props.item.owner}</span>
           </Card.Content>
         </Card>
