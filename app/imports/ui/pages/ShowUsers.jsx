@@ -141,14 +141,17 @@ class ShowUsers extends React.Component {
 ShowUsers.propTypes = {
   users: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
+  ready2: PropTypes.bool.isRequired,
 };
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
   // Get access to Stuff documents.
   const subscription = Meteor.subscribe('UserSearch');
+  const subscription2 = Meteor.subscribe('Items');
   return {
     users: Users.find({}).fetch(),
     ready: (subscription.ready()),
+    ready2: (subscription2.ready()),
   };
 })(ShowUsers);

@@ -141,7 +141,7 @@ class FullWidthImage extends React.Component {
                         UHM Bazaar
                       </Header>
                       <Header size='medium' style={headerThreeStyleMobile}>
-                        Add an ttem by clicking the dropdown, or go see
+                        Add an item by clicking the dropdown, or go see
                         what is on offer by portfolio or category!
                       </Header>
                     </Container>

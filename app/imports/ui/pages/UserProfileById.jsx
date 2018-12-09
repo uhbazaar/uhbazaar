@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Loader, Header, Container, Image, Icon, Card, Rating, Item, Responsive } from 'semantic-ui-react';
+import { Grid, Loader, Header, Container, Image, Icon, Card, Rating, Item } from 'semantic-ui-react';
 import { Users } from '/imports/api/user/user';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
@@ -62,19 +62,38 @@ class UserProfileById extends React.Component {
 
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   renderPage() {
-    const cardFontStyle = { color: '#17252a' };
-    const gridStyle = { marginTop: '128px', marginBottom: '128px' };
-    const borderStyle = { border: 'solid 1px #feffff' };
-    const cardColor = { backgroundColor: '#feffff' };
-    const cardStyle = { backgroundColor: '#feffff', width: '600px' };
-    const showcaseRow = { marginTop: '64px' };
-    const showcaseStyle = { marginTop: '8px', marginBottom: '128px' };
+    const cardFontStyle = {
+      color: '#17252a',
+    };
+    const gridStyle = {
+      marginTop: '128px',
+      marginBottom: '128px',
+    };
+    const borderStyle = {
+      border: 'solid 1px #feffff',
+    };
+    const cardColor = {
+      backgroundColor: '#feffff',
+    };
+    const cardStyle = {
+      backgroundColor: '#feffff',
+      width: '600px',
+    };
+    const showcaseRow = {
+      marginTop: '64px',
+    };
+    const showcaseStyle = {
+      marginTop: '8px',
+      marginBottom: '128px',
+    };
     const background = (
         <style>{'body { background: rgba(222,242,241, 0.7) url(\'/images/canoe.jpg\') no-repeat fixed;' +
         ' background-blend-mode: overlay; background-size: cover;}'}
         </style>
     );
+
     const myRatings = Ratings.find({ owner: this.props.doc.username }).fetch();
+
     return (
         <Grid container verticalAlign='middle' style={gridStyle}>
           {background}
@@ -110,11 +129,9 @@ class UserProfileById extends React.Component {
                 </Grid.Column>
               </Grid.Row>
             </Grid>
-
             <Grid>
               <Grid.Row style={showcaseRow}>
                 <Grid stackable container centered style={showcaseStyle}>
-
                   <Card fluid style={cardStyle}>
                     <Card.Content>
                       <Card.Header style={cardFontStyle}><Icon name='warehouse' circular/>The Goods</Card.Header>
@@ -125,12 +142,10 @@ class UserProfileById extends React.Component {
                       </Item.Group>
                     </Card.Content>
                   </Card>
-
                 </Grid>
               </Grid.Row>
             </Grid>
           </Container>
-
         </Grid>
     );
   }
@@ -142,6 +157,7 @@ UserProfileById.propTypes = {
   ratings: PropTypes.array,
   ready: PropTypes.bool.isRequired,
   ready2: PropTypes.bool.isRequired,
+  ready3: PropTypes.bool.isRequired,
   items: PropTypes.array.isRequired,
 };
 
@@ -152,11 +168,13 @@ export default withTracker(({ match }) => {
   // Get access to Stuff documents.
   const subscription = Meteor.subscribe('UserSearch');
   const subscription2 = Meteor.subscribe('Ratings');
+  const subscription3 = Meteor.subscribe('Items');
   return {
     items: Items.find({}).fetch(),
     doc: Users.findOne(documentId),
     ratings: Ratings.find({}).fetch(),
     ready: subscription.ready(),
     ready2: subscription2.ready(),
+    ready3: subscription3.ready(),
   };
 })(UserProfileById);
