@@ -13,7 +13,7 @@ class ShowUsers extends React.Component {
     super(props);
     this.state = {
       activeItem: 'rating',
-      activeView: 'big',
+      activeView: 'double',
     };
   }
 
@@ -66,7 +66,7 @@ class ShowUsers extends React.Component {
         size = 2;
         break;
       default:
-        size = 3;
+        size = 2;
         break;
     }
 

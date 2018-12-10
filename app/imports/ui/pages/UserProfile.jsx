@@ -27,14 +27,24 @@ class UserProfile extends React.Component {
   }
 
   render() {
-    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
+    return ((this.props.ready && this.props.ready2)) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
 
   renderPage() {
-    const cardFontStyle = { color: '#17252a' };
-    const cardStyle = { backgroundColor: '#feffff', width: '600px' };
-    const showcaseRow = { marginTop: '64px' };
-    const showcaseStyle = { marginTop: '8px', marginBottom: '128px' };
+    const cardFontStyle = {
+      color: '#17252a',
+    };
+    const cardStyle = {
+      backgroundColor: '#feffff',
+      width: '600px',
+    };
+    const showcaseRow = {
+      marginTop: '64px',
+    };
+    const showcaseStyle = {
+      marginTop: '8px',
+      marginBottom: '128px',
+    };
     const gridStyle = {
       marginTop: '128px',
       marginBottom: '128px',
@@ -45,8 +55,8 @@ class UserProfile extends React.Component {
         </style>
     );
     return (
-          <Grid container verticalAlign='middle' style={gridStyle}>
-            <Container>
+        <Grid container verticalAlign='middle' style={gridStyle}>
+          <Container>
             {background}
             <UserProfileCard/>
             <Grid>
@@ -66,7 +76,7 @@ class UserProfile extends React.Component {
               </Grid.Row>
             </Grid>
           </Container>
-          </Grid>
+        </Grid>
     );
   }
 }
@@ -75,6 +85,7 @@ UserProfile.propTypes = {
   item: PropTypes.array.isRequired,
   user: PropTypes.object,
   ready: PropTypes.bool.isRequired,
+  ready2: PropTypes.bool.isRequired,
 };
 
 export default withTracker(() => {
@@ -85,5 +96,6 @@ export default withTracker(() => {
     item: Items.find({}).fetch(),
     user: Users.findOne(),
     ready: subscription.ready(),
+    ready2: subscription2.ready(),
   };
 })(UserProfile);

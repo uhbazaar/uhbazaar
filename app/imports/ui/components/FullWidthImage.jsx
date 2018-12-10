@@ -84,7 +84,40 @@ class FullWidthImage extends React.Component {
 
     return (
         <Container fluid style={mainContainerStyle}>
-          {this.props.currentUser === '' ? (
+          {this.props.currentUser !== '' ? (
+                  <div>
+                    <Responsive maxWidth={768}>
+                      <Grid verticalAlign='middle'>
+                        <Container style={logoContainerStyleTwo}>
+                          <Header as='h1' style={headerTwoStyleMobile}>
+                            UHM Bazaar
+                          </Header>
+                          <Header size='medium' style={headerThreeStyleMobile}>
+                            Add an item by clicking the dropdown, or go see
+                            what is on offer by portfolio or category!
+                          </Header>
+                        </Container>
+                      </Grid>
+                    </Responsive>
+
+                    <Responsive minWidth={768}>
+                      <Grid verticalAlign='middle'>
+                        <Container style={logoContainerStyleTwo}>
+                          <div>
+                            <Header as='h1' style={headerTwoStyle}>
+                              UHBAZAAR
+                            </Header>
+                          </div>
+                          <div>
+                            <Header as='h2' style={headerThreeStyle}>
+                              AT THE UNIVERSITY OF HAWAIʻI AT MĀNOA </Header>
+                          </div>
+                        </Container>
+                      </Grid>
+                    </Responsive>
+                    <LandingBar/>
+                  </div>
+              ) :
               <div>
                 <Responsive minWidth={768}><Grid verticalAlign='middle'>
                   <Container fluid style={logoContainerStyleOne}>
@@ -129,43 +162,7 @@ class FullWidthImage extends React.Component {
                     </Container>
                   </Grid>
                 </Responsive>
-              </div>
-          ) : ''}
-
-          {this.props.currentUser !== '' ? (
-              <div>
-                <Responsive maxWidth={768}>
-                  <Grid verticalAlign='middle'>
-                    <Container style={logoContainerStyleTwo}>
-                      <Header as='h1' style={headerTwoStyleMobile}>
-                        UHM Bazaar
-                      </Header>
-                      <Header size='medium' style={headerThreeStyleMobile}>
-                        Add an item by clicking the dropdown, or go see
-                        what is on offer by portfolio or category!
-                      </Header>
-                    </Container>
-                  </Grid>
-                </Responsive>
-
-                <Responsive minWidth={768}>
-                  <Grid verticalAlign='middle'>
-                    <Container style={logoContainerStyleTwo}>
-                      <div>
-                        <Header as='h1' style={headerTwoStyle}>
-                          UHBAZAAR
-                        </Header>
-                      </div>
-                      <div>
-                        <Header as='h2' style={headerThreeStyle}>
-                          AT THE UNIVERSITY OF HAWAIʻI AT MĀNOA </Header>
-                      </div>
-                    </Container>
-                  </Grid>
-                </Responsive>
-                <LandingBar/>
-              </div>
-          ) : ''}
+              </div>}
         </Container>
     );
   }

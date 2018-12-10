@@ -17,7 +17,7 @@ class Footer extends React.Component {
                     <Grid.Column>
                     </Grid.Column>
                     <Grid.Column>
-                     A COMMUNITY FOR THE COMMUNITY, WHERE EAST MEETS WEST
+                     WHERE EAST MEETS WEST
                     </Grid.Column>
                   </Grid.Row>
                 </Grid>
