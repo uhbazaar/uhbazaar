@@ -34,11 +34,11 @@ class OwnerShowcaseItem extends React.Component {
       fontWeight: 'bold',
       fontSize: '16px',
     };
-    const imageStyle = { marginLeft: '32px', marginTop: '48px' };
+    const imageStyle = { marginTop: '48px' };
     const itemStyle = { marginBottom: '48px', marginTop: '32px' };
     return (
           <Item style={itemStyle}>
-            <Item.Image rounded size='medium' style={imageStyle} src={this.props.item.image}/>
+            <Item.Image centered rounded size='medium' style={imageStyle} src={this.props.item.image}/>
             <Item.Content verticalAlign='middle'>
               <Item.Header>{this.props.item.title}</Item.Header>
               <Item.Meta>
@@ -47,7 +47,7 @@ class OwnerShowcaseItem extends React.Component {
               <Item.Description style={cardFontStyle}>
                 {this.props.item.description}
               </Item.Description>
-              <Item.Content>
+              <Item.Content centered>
                 <Button color='red' onClick={this.onClick}>Remove</Button>
               </Item.Content>
             </Item.Content>

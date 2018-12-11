@@ -27,27 +27,41 @@ class UserProfile extends React.Component {
   }
 
   render() {
-    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
+    return ((this.props.ready && this.props.ready2)) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
 
   renderPage() {
-    const cardFontStyle = { color: '#17252a' };
-    const cardStyle = { backgroundColor: '#feffff', width: '600px' };
-    const showcaseRow = { marginTop: '64px' };
-    const showcaseStyle = { marginTop: '8px', marginBottom: '128px' };
+    const cardFontStyle = {
+      color: '#17252a',
+    };
+    const cardStyle = {
+      backgroundColor: '#feffff',
+      width: '600px',
+    };
+    const showcaseRow = {
+      marginTop: '64px',
+    };
+    const showcaseStyle = {
+      marginTop: '8px',
+      marginBottom: '128px',
+    };
+    const gridStyle = {
+      marginTop: '128px',
+      marginBottom: '128px',
+    };
     const background = (
         <style>{'body { background: rgba(222,242,241, 0.7) url(\'/images/mat.jpg\') no-repeat fixed;' +
         ' background-blend-mode: overlay; background-size: cover;}'}
         </style>
     );
     return (
-        <div>
+        <Grid container verticalAlign='middle' style={gridStyle}>
           <Container>
             {background}
             <UserProfileCard/>
             <Grid>
               <Grid.Row style={showcaseRow}>
-                <Grid container centered style={showcaseStyle}>
+                <Grid container stackable centered style={showcaseStyle}>
                   <Card style={cardStyle}>
                     <Card.Content>
                       <Card.Header style={cardFontStyle}><Icon name='warehouse' circular/>The Goods</Card.Header>
@@ -62,7 +76,7 @@ class UserProfile extends React.Component {
               </Grid.Row>
             </Grid>
           </Container>
-        </div>
+        </Grid>
     );
   }
 }
@@ -71,14 +85,17 @@ UserProfile.propTypes = {
   item: PropTypes.array.isRequired,
   user: PropTypes.object,
   ready: PropTypes.bool.isRequired,
+  ready2: PropTypes.bool.isRequired,
 };
 
 export default withTracker(() => {
   // Get access to Stuff documents.
   const subscription = Meteor.subscribe('Users');
+  const subscription2 = Meteor.subscribe('Items');
   return {
     item: Items.find({}).fetch(),
     user: Users.findOne(),
     ready: subscription.ready(),
+    ready2: subscription2.ready(),
   };
 })(UserProfile);
