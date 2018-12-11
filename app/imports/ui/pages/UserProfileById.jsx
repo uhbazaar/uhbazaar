@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Loader, Header, Container, Image, Icon, Card, Rating, Item } from 'semantic-ui-react';
+import { Grid, Loader, Header, Container, Image, Icon, Card, Rating, Item, Responsive } from 'semantic-ui-react';
 import { Users } from '/imports/api/user/user';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
@@ -55,6 +55,17 @@ class UserProfileById extends React.Component {
     }
   }
 
+  Itemizer(user, items) {
+    let status = 'Nothing to see here!';
+    if (this.getItemAmount(user, items) > 1) {
+      status = `${this.getItemAmount(user, items)} items to barter!`;
+    } else
+      if (this.getItemAmount(user, items) === 1) {
+        status = '1 item to barter!';
+      }
+    return status;
+  }
+
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
     return ((this.props.ready && this.props.ready2 && this.props.ready3)) ? this.renderPage() :
@@ -99,37 +110,67 @@ class UserProfileById extends React.Component {
         <Grid container verticalAlign='middle' style={gridStyle}>
           {background}
           <Container>
-            <Grid verticalAlign='middle' className='user-profile-background' columns={4}>
-              <Grid.Row centered>
-                <Grid.Column width={6}>
-                  <Image style={borderStyle} size='medium' rounded floated='left'
-                         src={this.props.doc.image}/>
-                </Grid.Column>
-                <Grid.Column width={8}>
-                  <Card style={cardColor} floated='right' fluid>
-                    <Card.Content>
-                      <Header as='h1'>{this.props.doc.firstName} {this.props.doc.lastName}</Header>
-                      <Card.Description style={cardFontStyle}>
-                        {this.props.doc.description}
-                      </Card.Description>
-                    </Card.Content>
-                    <Card.Content extra>
-                      <a>
+            <Responsive minWidth={768}>
+              <Grid verticalAlign='middle' className='user-profile-background' columns={4}>
+                <Grid.Row centered>
+                  <Grid.Column width={6}>
+                    <Image style={borderStyle} size='medium' rounded floated='left'
+                           src={this.props.doc.image}/>
+                  </Grid.Column>
+                  <Grid.Column width={8}>
+                    <Card style={cardColor} floated='right' fluid>
+                      <Card.Content>
+                        <Header as='h1'>{this.props.doc.firstName} {this.props.doc.lastName}</Header>
+                        <Card.Description style={cardFontStyle}>
+                          {this.props.doc.description}
+                        </Card.Description>
+                      </Card.Content>
+                      <Card.Content extra>
                         <Icon name='gem'/>
-                        {`${this.getItemAmount(this.props.doc.username, this.props.items)} item(s) to barter!`}
-                      </a>
-                    </Card.Content>
-                    <Card.Content>
-                      <Rating icon='star'
-                              onRate={this.handleRate}
-                              rating={myRatings.length === 0 ? 3 : myRatings[0].ratingSum / myRatings[0].ratingCount}
-                              maxRating={5}
-                              disabled={this.state.disabled}/>
-                    </Card.Content>
-                  </Card>
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
+                        {this.Itemizer(this.props.doc.username, this.props.items)}
+                      </Card.Content>
+                      <Card.Content>
+                        <Rating icon='star'
+                                onRate={this.handleRate}
+                                rating={myRatings.length === 0 ? 3 : myRatings[0].ratingSum / myRatings[0].ratingCount}
+                                maxRating={5}
+                                disabled={this.state.disabled}/>
+                      </Card.Content>
+                    </Card>
+                  </Grid.Column>
+                </Grid.Row>
+              </Grid>
+            </Responsive>
+            <Responsive maxWidth={768}>
+              <Grid verticalAlign='middle' className='user-profile-background' columns={4}>
+                <Grid.Row centered>
+                  <Grid.Column width={12}>
+                    <Card style={cardColor} floated='right' fluid>
+                      <Image style={borderStyle} size='large' rounded floated='left'
+                             src={this.props.doc.image}/>
+                      <Card.Content>
+                        <Header as='h1'>{this.props.doc.firstName} {this.props.doc.lastName}</Header>
+                        <Card.Description style={cardFontStyle}>
+                          {this.props.doc.description}
+                        </Card.Description>
+                      </Card.Content>
+                      <Card.Content extra>
+                        <Icon name='gem'/>
+                        {this.Itemizer(this.props.doc.username, this.props.items)}
+                      </Card.Content>
+                      <Card.Content>
+                        <Rating icon='star'
+                                onRate={this.handleRate}
+                                rating={myRatings.length === 0 ? 3 : myRatings[0].ratingSum / myRatings[0].ratingCount}
+                                maxRating={5}
+                                disabled={this.state.disabled}/>
+                      </Card.Content>
+                    </Card>
+                  </Grid.Column>
+                </Grid.Row>
+              </Grid>
+            </Responsive>
+
             <Grid>
               <Grid.Row style={showcaseRow}>
                 <Grid stackable container centered style={showcaseStyle}>

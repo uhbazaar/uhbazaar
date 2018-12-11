@@ -17,6 +17,12 @@ class ShowUsers extends React.Component {
     };
   }
 
+  getUsers(everybody) {
+    const users = sortBy(everybody, this.state.activeItem);
+    return users.map((user, index) => <ShowUser key={index}
+                                                user={user}/>);
+  }
+
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
   handleViewClick = (e, { name }) => this.setState({ activeView: name })
@@ -24,12 +30,6 @@ class ShowUsers extends React.Component {
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
-  }
-
-  getUsers(everybody) {
-    const users = sortBy(everybody, this.state.activeItem);
-    return users.map((user, index) => <ShowUser key={index}
-                                                user={user}/>);
   }
 
   /** Render the page once subscriptions have been received. */
@@ -41,6 +41,7 @@ class ShowUsers extends React.Component {
     };
     const { activeItem } = this.state.activeItem;
     const { activeView } = this.state.activeView;
+
     if (!Users.findOne()) {
       return (
           <Container style={styleCards}>
@@ -72,6 +73,25 @@ class ShowUsers extends React.Component {
 
     return (
         <Container style={styleCards}>
+          <Menu text>
+            <Menu.Item header>Sort By</Menu.Item>
+            <Menu.Item
+                name='firstName'
+                active={activeItem === 'firstName'}
+                onClick={this.handleItemClick}
+            />
+            <Menu.Item
+                name='lastName'
+                active={activeItem === 'lastName'}
+                onClick={this.handleItemClick}
+            />
+            <Menu.Item
+                name='rating'
+                active={activeItem === 'rating'}
+                onClick={this.handleItemClick}
+            />
+          </Menu>
+
           <Responsive minWidth={768}>
             <Menu text>
               <Menu.Item header>View</Menu.Item>
@@ -103,25 +123,6 @@ class ShowUsers extends React.Component {
               />
             </Menu>
           </Responsive>
-
-          <Menu text>
-            <Menu.Item header>Sort By</Menu.Item>
-            <Menu.Item
-                name='firstName'
-                active={activeItem === 'firstName'}
-                onClick={this.handleItemClick}
-            />
-            <Menu.Item
-                name='lastName'
-                active={activeItem === 'lastName'}
-                onClick={this.handleItemClick}
-            />
-            <Menu.Item
-                name='rating'
-                active={activeItem === 'rating'}
-                onClick={this.handleItemClick}
-            />
-          </Menu>
 
           <style>{'body { background: url(images/uh-logo.png) no-repeat center fixed; }'}</style>
           <style>{'body { background-color: #def2f1; }'}</style>
